@@ -12,6 +12,8 @@ public class BandMember : MonoBehaviour{
 	public Stats stats;
 	public int skill;
 	public int innfallsTall;
+	public bool active = true;
+	public bool dead = false; 
 
 	public BandMember (String name, int id, int skill, Role role)
 	{
@@ -44,7 +46,7 @@ public class BandMember : MonoBehaviour{
 	}
 
 	void Strandtur (){
-		print ("Jeg liker lange turer på stranden");
+		print ("Jeg liker lange turer på stranden.");
 	}
 }
 

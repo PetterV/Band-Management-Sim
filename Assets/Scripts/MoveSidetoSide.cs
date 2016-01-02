@@ -17,11 +17,11 @@ public class MoveSidetoSide : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey("left")){
 			newPositionX = transform.position.x-moveSpeed;
-			transform.position = new Vector3 (newPositionX, transform.position.y, 0);
+			transform.position = new Vector3 (newPositionX, transform.position.y, transform.position.z);
 		}
 		if (Input.GetKey("right")){
 			newPositionX = transform.position.x+moveSpeed;
-			transform.position = new Vector3 (newPositionX, transform.position.y, 0);
+			transform.position = new Vector3 (newPositionX, transform.position.y, transform.position.z);
 		}
 	}
 
