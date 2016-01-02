@@ -34,11 +34,13 @@ public class BandMember : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown("z")){
+			//Generer innfallstall og sjekk mot innfallsoversikten.
 			innfallsTall = UnityEngine.Random.Range(1, 100);
 			Innfall();
 		}
 	}
 
+	//Innfallsoversikten
 	void Innfall () {
 		print (innfallsTall);
 		if (innfallsTall <= 50){
@@ -49,12 +51,27 @@ public class BandMember : MonoBehaviour{
 		}
 	}
 
+	//Innfallshandlinger
 	void Score (){
 		print ("I kveld scorer jeg!");
 	}
 
 	void Strandtur (){
 		print ("Jeg liker lange turer på stranden.");
+	}
+
+	//Bli drept av spilleren
+	void OnTriggerStay(Collider coll){
+		if (coll.gameObject.tag == "Player" && Input.GetKeyDown("space")){
+			dead = true;
+			Dying();
+		}
+	}
+
+	//Blir bonka av spilleren
+	void Dying (){
+		print ("I'm dying!");
+		Destroy(gameObject);
 	}
 }
 
