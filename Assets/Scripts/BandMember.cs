@@ -3,23 +3,33 @@ using System;
 
 public class BandMember : MonoBehaviour{
 	
-	//maa kanskje flytte denne ut til egen klasse senere, slik at andre GameObjects/klasser kan accesse :)
 	public enum Role{Drummer, Singer, GuitarPlayer, BassPlayer}; 
 
-	public String givenName;
-	public int id;
 	public Role role;
 	public Stats stats;
 	public int skill;
 	public int innfallsTall;
+	public bool active = true;
+	public bool dead = false; 
 
-	public BandMember (String name, int id, int skill, Role role)
+	public BandMember (String name, int skill, Role role)
 	{
 		this.name = name;
-		this.id = id;
 		this.stats = new Stats(skill);
 		this.role = role;
 	}
+
+    public void InitializeBandMember(String name, int skill, Role role)
+    {
+        this.name = name;
+        this.skill = skill;
+        this.role = role;
+    }
+
+    void Start ()
+    {
+        print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -44,7 +54,7 @@ public class BandMember : MonoBehaviour{
 	}
 
 	void Strandtur (){
-		print ("Jeg liker lange turer på stranden");
+		print ("Jeg liker lange turer på stranden.");
 	}
 }
 
