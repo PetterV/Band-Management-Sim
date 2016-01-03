@@ -25,6 +25,7 @@ public class MoveSidetoSide : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider coll){
+
         print("whatever egentlig");
 		if(coll.gameObject.tag == "Stairs" && Input.GetKeyUp("up") ){
 			coll.gameObject.SendMessage ("MoveUp", this.gameObject);
