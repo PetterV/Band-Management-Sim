@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class BandMember : MonoBehaviour{
-	
+
 	public enum Role{Drummer, Singer, GuitarPlayer, BassPlayer};
-
-    //Dette er Innfalls-oversikten. Hvis du vil legge til flere, gjør du det på samme måte som her. Navnet på innfallet = <Sjansen for at innfallet slår til, høyere = mer sannsynlig>
-
-    public enum Innfall { Score = 2, Strandtur = 1, Nothing = 10 };
+    public enum Innfall {Score, Strandtur, Nothing};
+    public Dictionary<Innfall, int> innfallsOversikt;
 
 	public Role role;
 	public Stats stats;
@@ -32,13 +31,24 @@ public class BandMember : MonoBehaviour{
         this.role = role;
     }
 
+    private void InitializeInnfall()
+    {
+        //Dette er Innfalls-oversikten. Hvis du vil legge til flere, gjør du det på samme måte som her.
+        this.innfallsOversikt = new Dictionary<Innfall, int>()
+        {
+            {Innfall.Score, 1 },
+            {Innfall.Strandtur, 2 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
+            {Innfall.Nothing, 7 } //Sannsynligheten for Nothing er sju ganger større enn Score
+        };
+        foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
+        {
+            innfallSum += entry.Value;
+        }
+    }
+
     void Start ()
     {
-        
-        foreach (Innfall inn in Enum.GetValues(typeof(Innfall)))
-        {
-            innfallSum += (int)inn;
-        }
+        InitializeInnfall();
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
     }
 
@@ -54,33 +64,38 @@ public class BandMember : MonoBehaviour{
         //Generer innfallstall og sjekk mot innfallsoversikten.
         this.innfallsTall = UnityEngine.Random.Range(0, innfallSum);
         int tempUpperBound = 0;
-        foreach(Innfall inn in Enum.GetValues(typeof(Innfall)))
+        foreach(KeyValuePair<Innfall, int> entry in this.innfallsOversikt)
         {
-            tempUpperBound += (int)inn;
+            tempUpperBound += entry.Value;
             if (innfallsTall < tempUpperBound)
             {
-                performInnfall(inn);
+                performInnfall(entry.Key);
                 break;
             }
                 
         }
         print (innfallsTall);
-		/*if (innfallsTall <= 50){
-			Score();
-		}
-		if (innfallsTall > 50){
-			Strandtur();
-		}*/
 	}
 
     void performInnfall(Innfall inn)
     {
-        if (inn == Innfall.Score)
-            Score();
-        else if (inn == Innfall.Strandtur)
-            Strandtur();
-        else if (inn == Innfall.Nothing)
-            return;
+        switch (inn)
+        {
+            case Innfall.Score:
+                {
+                    Score();
+                    break;
+                }
+            case Innfall.Strandtur:
+                {
+                    Strandtur();
+                    break;
+                }
+            case Innfall.Nothing:
+                {
+                    break;
+                }
+        }
     }
 
 	//Innfallshandlinger
@@ -95,7 +110,6 @@ public class BandMember : MonoBehaviour{
 	//Bli drept av spilleren
 	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "Player" && Input.GetKeyDown("space")){
-			dead = true;
 			Dying();
 		}
 	}
@@ -103,7 +117,8 @@ public class BandMember : MonoBehaviour{
 	//Blir bonka av spilleren
 	void Dying (){
 		print ("I'm dying!");
-		Destroy(gameObject);
+        dead = true;
+        Destroy(gameObject);
 	}
 }
 
