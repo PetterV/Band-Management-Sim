@@ -25,11 +25,11 @@ public class MoveSidetoSide : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider coll){
-		if(coll.gameObject.tag == "Stairs" && Input.GetKeyDown("up") ){
+		if(coll.gameObject.tag == "Stairs" && Input.GetKey("up") ){
 			coll.gameObject.SendMessage ("MoveUp", this.gameObject);
 			//currentFloor = currentFloor + 1;
 		}
-		if(coll.gameObject.tag == "Stairs" && Input.GetKeyDown("down") ){
+		if(coll.gameObject.tag == "Stairs" && Input.GetKey("down") ){
 			coll.gameObject.SendMessage ("MoveDown", this.gameObject);
 			//currentFloor = currentFloor - 1;
 		}

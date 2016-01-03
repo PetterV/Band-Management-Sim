@@ -6,13 +6,10 @@ public class Stairs : MonoBehaviour {
 	public float floorDifference = 4f;
 	public Stairs upExit;
 	public Stairs downExit;
-	private GameControl gameControl;
-	private List<GameObject> stairs = new List<GameObject> ();
 
 	// Use this for initialization
 	void Start () {
-		this.gameControl = GameObject.Find ("GameControl").GetComponent<GameControl>();
-		this.stairs = gameControl.stairs;
+		
 	}
 	
 	// Update is called once per frame

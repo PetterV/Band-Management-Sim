@@ -12,30 +12,19 @@ public class BandMemberMoving : MonoBehaviour {
 
 	private GameControl gameControl;
 	private Vector3 targetPosition;
-	private List<GameObject> waypoints = new List<GameObject>();
-	private List<GameObject> stairs = new List<GameObject>();
+	private GameObject[] waypoints;
+	private GameObject[] stairs;
 	private float moveValue;
 	private int currentFloor = 2;
 
 	void Start(){
-		this.gameControl = GameObject.Find ("GameControl").GetComponent<GameControl>();
+		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
 		this.waypoints = this.gameControl.waypoints;
 		this.stairs = this.gameControl.stairs;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		/*if (moving == true){
-			moveTiming--;
-			if (moveTiming < 0){
-				moveValue = UnityEngine.Random.Range(0, 8) - 4f;
-				float currentMove = transform.position.x + moveValue;
-				targetPosition = new Vector3 (currentMove, transform.position.y, transform.position.z);
-				moveTiming = moveTimingStartValue;
-			}
-			float step = speed * Time.deltaTime;
-			transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-		}*/
 		if (moving == true) {
 			if (movingToWaypoint == WaypointID.None) {
 				//x% sjanse for å bevege, x% for å stå stille - skal bli kontrollert av innfall
