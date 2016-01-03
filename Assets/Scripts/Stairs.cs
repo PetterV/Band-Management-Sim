@@ -25,6 +25,7 @@ public class Stairs : MonoBehaviour {
 	}
 
 	public void MoveUp(GameObject toMove){
+        print("Moving up!");
 		toMove.transform.position = upExit.gameObject.transform.position;
 	}
 }
