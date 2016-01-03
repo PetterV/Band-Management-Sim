@@ -5,7 +5,7 @@ public class MoveSidetoSide : MonoBehaviour {
 	private float newPositionX;
 	private float newPositionY;
 	public float moveSpeed = 0.5f;
-	public int currentFloor = 1;
+	public int currentFloor = 1;    
 
 	// Use this for initialization
 	void Start () {
@@ -25,11 +25,14 @@ public class MoveSidetoSide : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider coll){
-		if(coll.gameObject.tag == "Stairs" && Input.GetKey("up") ){
+
+        print("whatever egentlig");
+		if(coll.gameObject.tag == "Stairs" && Input.GetKeyUp("up") ){
 			coll.gameObject.SendMessage ("MoveUp", this.gameObject);
+            print("lolol");
 			//currentFloor = currentFloor + 1;
 		}
-		if(coll.gameObject.tag == "Stairs" && Input.GetKey("down") ){
+		if(coll.gameObject.tag == "Stairs" && Input.GetKeyUp("down") ){
 			coll.gameObject.SendMessage ("MoveDown", this.gameObject);
 			//currentFloor = currentFloor - 1;
 		}
