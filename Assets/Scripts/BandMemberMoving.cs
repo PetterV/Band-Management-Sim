@@ -12,9 +12,9 @@ public class BandMemberMoving : MonoBehaviour {
 	private GameControl gameControl;
 	private Vector3 targetPosition;
 	private GameObject[] waypoints;
-	private GameObject[] stairs;
+	public GameObject[] stairs;
 	private float moveValue;
-	private int currentFloor = 1;
+	private int currentFloor = 0;
 
 	void Start(){
 		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
@@ -44,10 +44,11 @@ public class BandMemberMoving : MonoBehaviour {
 		
 	void GoToFloor(int targetFloor){
 		float step = speed * Time.deltaTime;
-		Vector3 stairLocation = GetNearestStairLocation();
+		Stairs nearestStair = GetNearestStair();
+		Vector3 stairLocation = nearestStair.gameObject.transform.position;
 		Vector3 stepTowardsStairs = Vector3.MoveTowards (this.transform.position, stairLocation, step);
 		if (stairLocation == stepTowardsStairs) {
-			TakeStairsTo (targetFloor);
+			TakeStairsTo (targetFloor, nearestStair);
 		}
 		else{
 			transform.position = stepTowardsStairs;
@@ -66,9 +67,9 @@ public class BandMemberMoving : MonoBehaviour {
 		}
 	}
 
-	Vector3 GetNearestStairLocation(){
+	Stairs GetNearestStair(){
 		Stairs tempClosest = null;
-		foreach (GameObject go in stairs) {
+		foreach (GameObject go in this.stairs) {
 			Stairs possibleClosest = go.GetComponent<Stairs> ();
 			if (possibleClosest.floor == this.currentFloor) {
 				if (tempClosest == null)
@@ -78,18 +79,19 @@ public class BandMemberMoving : MonoBehaviour {
 				}
 			}
 		}
-		return tempClosest.transform.position;
+		return tempClosest;
 	}
 
-	void TakeStairsTo (int targetFloor)
+	void TakeStairsTo (int targetFloor, Stairs nearestStair)
 	{
 		if (this.currentFloor < targetFloor) {
-			stairs [this.currentFloor - 1].SendMessage ("MoveUp", this.gameObject);
+			nearestStair.SendMessage ("MoveUp", this.gameObject);
 			this.currentFloor++;
 		} else {
-			stairs [this.currentFloor - 1].SendMessage ("MoveDown", this.gameObject);
+			nearestStair.SendMessage ("MoveDown", this.gameObject);
 			this.currentFloor--;
 		}
+		new WaitForSeconds (1);
 	}
 
 }
