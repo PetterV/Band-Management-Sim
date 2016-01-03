@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class Stairs : MonoBehaviour {
 	public int floor;
 	public float floorDifference = 4f;
+	public Stairs upExit;
+	public Stairs downExit;
 	private GameControl gameControl;
 	private List<GameObject> stairs = new List<GameObject> ();
 
@@ -19,15 +21,10 @@ public class Stairs : MonoBehaviour {
 	}
 
 	public void MoveDown(GameObject toMove){
-		float newPositionY = transform.position.y-floorDifference;
-		float newPositionX = this.stairs [this.floor - 2].transform.position.x;
-		toMove.transform.position = new Vector3 (newPositionX, newPositionY, toMove.transform.position.z);
-        print("fnutt");
+		toMove.transform.position = downExit.gameObject.transform.position;
 	}
 
 	public void MoveUp(GameObject toMove){
-		float newPositionY = transform.position.y + floorDifference;
-		float newPositionX = this.stairs [this.floor].transform.position.x;
-		toMove.transform.position = new Vector3 (newPositionX, newPositionY, toMove.transform.position.z);
+		toMove.transform.position = upExit.gameObject.transform.position;
 	}
 }
