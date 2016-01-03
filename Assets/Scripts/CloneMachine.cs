@@ -39,6 +39,7 @@ public class CloneMachine : MonoBehaviour {
 		}
         
 		GameObject clone = MakeNewBandMemberClone("Mr. M8", 13, roleImminentClone);
+		clone.GetComponent<BandMember>().active = false;
 	}
 
     private GameObject MakeNewBandMemberClone(string name, int skill, BandMember.Role role)

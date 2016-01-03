@@ -17,9 +17,13 @@ public class PlayerInteractions : MonoBehaviour {
 	void Update () {
 		//Går nedover lista i prioritert rekkefølge for å interacte 
 		if (Input.GetKeyUp("e")){
-			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false){
+			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<BandMember>().active == true){
 				print ("Don't do that!");
 				currentBandMember.GetComponent<BandMember>().Kjeft();
+			}
+			else if(bandCollision == true && currentBandMember.GetComponent<BandMember>().active == false){
+				currentBandMember.GetComponent<BandMember>().active = true;
+				print ("I'm active now!");
 			}
 			else if (genMatCollision == true){
 				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false){
