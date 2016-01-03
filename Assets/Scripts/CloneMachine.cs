@@ -16,7 +16,7 @@ public class CloneMachine : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider coll){
-		if(coll.gameObject.tag == "Player" && Input.GetKeyDown("space")){
+		if(coll.gameObject.tag == "Player" && Input.GetKeyDown("e")){
 			//Need to know which band member you want to clone here... Oy, design lead!
             GameObject clone = MakeNewBandMemberClone("Mr. M8", 13, BandMember.Role.BassPlayer);
             

@@ -20,7 +20,14 @@ public class PlayerInteractions : MonoBehaviour {
 				currentBandMember.GetComponent<BandMember>().Kjeft();
 			}
 			else if (genMatCollision == true){
+				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false){
 				print ("Yuck!");
+				currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = true;
+				}
+				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true){
+					currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = false;
+					print ("I'm not carrying this!");
+				}
 			}
 			else if (cloneMachineCollision == true){
 				print ("Let's get this show on the road.");
@@ -31,12 +38,15 @@ public class PlayerInteractions : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.tag == "BandMember"){
 			bandCollision = true;
+			currentBandMember = coll.gameObject;
 		}
 		if (coll.gameObject.tag == "GeneticMaterial"){
 			genMatCollision = true;
+			currentGenMat = coll.gameObject;
 		}
 		if (coll.gameObject.tag == "CloneMachine"){
 			cloneMachineCollision = true;
+			currentCloneMachine = coll.gameObject;
 		}
 		print ("Hanging out with" + coll.gameObject.tag);
 	}
@@ -44,15 +54,12 @@ public class PlayerInteractions : MonoBehaviour {
 	void OnTriggerExit (Collider coll){
 		if (coll.gameObject.tag == "BandMember"){
 			bandCollision = false;
-			currentBandMember = coll.gameObject;
 		}
 		if (coll.gameObject.tag == "GeneticMaterial"){
 			genMatCollision = false;
-			currentGenMat = coll.gameObject;
 		}
 		if (coll.gameObject.tag == "CloneMachine"){
 			cloneMachineCollision = false;
-			currentCloneMachine = coll.gameObject;
 		}
 		print ("No longer hanging out with" + coll.gameObject.tag);
 	}

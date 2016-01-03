@@ -17,6 +17,9 @@ public class BandMember : MonoBehaviour{
 
     private int innfallSum = 0;
 
+	//Genetic material
+	public GameObject GenMat1;
+	public GameObject instantiatedGenMat;
 
 	//Kjeftesystem
 	private int myMedgjørlighet = 70;
@@ -68,6 +71,9 @@ public class BandMember : MonoBehaviour{
 	void Update () {
 		if (Input.GetKeyDown("z")){
 			CheckInnfall();
+		}
+		if (Input.GetKeyDown("g")){
+			LeaveGenetics();
 		}
 	}
 
@@ -133,8 +139,19 @@ public class BandMember : MonoBehaviour{
         Destroy(gameObject);
 	}
 
+	void LeaveGenetics (){
+		Vector3 spawnPosition = this.transform.position;
+		Quaternion spawnRotation = this.transform.rotation;
+		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, spawnRotation);
+		instantiatedGenMat.GetComponent<GenetiskMateriale>().skillForCloning = skill;
+	}
+
 	//Bli kjefta på
 	public void Kjeft (){
+		//Hvis de allerede har fått kjeft:
+		if (fikkKjeft == true){
+			print ("Jeg har bestemt meg allerede!");
+		}
 		if (fikkKjeft == false){
 			print ("Jeg fikk kjeft!");
 			//Kan bare få kjeft én gang i løpet av et innfall
@@ -149,10 +166,6 @@ public class BandMember : MonoBehaviour{
 			//Gjør det mindre sannsynlig at de gjør som du sier neste gang
 			myMedgjørlighet = myMedgjørlighet - medgjørlighetReduksjon;
 			//Legg inn avbrudd av innfall her.
-		}
-		//Hvis de allerede har fått kjeft:
-		if (fikkKjeft == true){
-			print ("Jeg har bestemt meg allerede!");
 		}
 	}
 }
