@@ -17,7 +17,7 @@ public class PlayerInteractions : MonoBehaviour {
 	void Update () {
 		//Går nedover lista i prioritert rekkefølge for å interacte 
 		if (Input.GetKeyUp("e")){
-			if(bandCollision == true){
+			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false){
 				print ("Don't do that!");
 				currentBandMember.GetComponent<BandMember>().Kjeft();
 			}
@@ -29,7 +29,8 @@ public class PlayerInteractions : MonoBehaviour {
 				carryingGenMat = true;
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true && cloneMachineCollision == true){
-					print ("Destroy me - GenMat");
+					//print ("Destroy me - GenMat");
+					GameObject.Find("CloneMachine").GetComponent<CloneMachine>().Cloning();
 					Destroy(currentGenMat);
 					carryingGenMat = false;
 				}
@@ -38,9 +39,6 @@ public class PlayerInteractions : MonoBehaviour {
 					print ("I'm not carrying this!");
 					carryingGenMat = false;
 				}
-			}
-			else if (cloneMachineCollision == true){
-				print ("Let's get this show on the road.");
 			}
 		}
 	}
