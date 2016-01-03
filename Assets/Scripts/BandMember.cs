@@ -17,6 +17,18 @@ public class BandMember : MonoBehaviour{
 
     private int innfallSum = 0;
 
+
+	//Kjeftesystem
+	private int myMedgjørlighet = 70;
+	public bool fikkKjeft = false;
+
+	//Happinessystem
+	public int myHappiness = 1;
+	private int happinessImprovementTimer = 3000;
+	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
+	public int happinessImprovementTimerStart = 3000;
+	private int medgjørlighetReduksjon = 15;
+
 	public BandMember (String name, int skill, Role role)
 	{
 		this.name = name;
@@ -119,6 +131,29 @@ public class BandMember : MonoBehaviour{
 		print ("I'm dying!");
         dead = true;
         Destroy(gameObject);
+	}
+
+	//Bli kjefta på
+	public void Kjeft (){
+		if (fikkKjeft == false){
+			print ("Jeg fikk kjeft!");
+			//Kan bare få kjeft én gang i løpet av et innfall
+			fikkKjeft = true;
+			int medgjørlig = UnityEngine.Random.Range (0, 99);
+			if (medgjørlig <= myMedgjørlighet){
+				print ("Tror ikke jeg gjør det, jeg.");
+			}
+			if (medgjørlig > myMedgjørlighet){
+				print ("Jeg gjør det jeg vil!");
+			}
+			//Gjør det mindre sannsynlig at de gjør som du sier neste gang
+			myMedgjørlighet = myMedgjørlighet - medgjørlighetReduksjon;
+			//Legg inn avbrudd av innfall her.
+		}
+		//Hvis de allerede har fått kjeft:
+		if (fikkKjeft == true){
+			print ("Jeg har bestemt meg allerede!");
+		}
 	}
 }
 
