@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 4e64c2640cc10264d827256d7b31c503
+timeCreated: 1451839673
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Body
+    100004: Body_jnt
+    100006: Foot_Left
+    100008: Foot_Left_jnt
+    100010: Foot_Left_jnt1
+    100012: Foot_Right
+    100014: Foot_Right_jnt
+    100016: Foot_Right_jnt1
+    100018: Hand_Left
+    100020: Hand_Left_jnt
+    100022: Hand_Right
+    100024: Hand_Right_jnt
+    100026: Hat_jnt
+    100028: Hat_jnt1
+    100030: Head
+    100032: Head_jnt
+    100034: Hips_jnt
+    100036: LowerArm_Left
+    100038: LowerArm_Left_jnt
+    100040: LowerArm_Right
+    100042: LowerArm_Right_jnt
+    100044: LowerBody
+    100046: LowerLeg_Left
+    100048: LowerLeg_Left_jnt
+    100050: LowerLeg_Right
+    100052: LowerLeg_Right_jnt
+    100054: Prop_FireFighterPack
+    100056: Root_jnt
+    100058: Spine_jnt
+    100060: UpperArm_Left
+    100062: UpperArm_Left24
+    100064: UpperArm_Left25
+    100066: UpperArm_Left_jnt
+    100068: UpperArm_Right
+    100070: UpperArm_Right23
+    100072: UpperArm_Right24
+    100074: UpperArm_Right_jnt
+    100076: UpperLeg_Left
+    100078: UpperLeg_Left_jnt
+    100080: UpperLeg_Right
+    100082: UpperLeg_Right_jnt
+    100084: Weapon_Shield
+    100086: Weapon_Sword
+    400000: //RootNode
+    400002: Body
+    400004: Body_jnt
+    400006: Foot_Left
+    400008: Foot_Left_jnt
+    400010: Foot_Left_jnt1
+    400012: Foot_Right
+    400014: Foot_Right_jnt
+    400016: Foot_Right_jnt1
+    400018: Hand_Left
+    400020: Hand_Left_jnt
+    400022: Hand_Right
+    400024: Hand_Right_jnt
+    400026: Hat_jnt
+    400028: Hat_jnt1
+    400030: Head
+    400032: Head_jnt
+    400034: Hips_jnt
+    400036: LowerArm_Left
+    400038: LowerArm_Left_jnt
+    400040: LowerArm_Right
+    400042: LowerArm_Right_jnt
+    400044: LowerBody
+    400046: LowerLeg_Left
+    400048: LowerLeg_Left_jnt
+    400050: LowerLeg_Right
+    400052: LowerLeg_Right_jnt
+    400054: Prop_FireFighterPack
+    400056: Root_jnt
+    400058: Spine_jnt
+    400060: UpperArm_Left
+    400062: UpperArm_Left24
+    400064: UpperArm_Left25
+    400066: UpperArm_Left_jnt
+    400068: UpperArm_Right
+    400070: UpperArm_Right23
+    400072: UpperArm_Right24
+    400074: UpperArm_Right_jnt
+    400076: UpperLeg_Left
+    400078: UpperLeg_Left_jnt
+    400080: UpperLeg_Right
+    400082: UpperLeg_Right_jnt
+    400084: Weapon_Shield
+    400086: Weapon_Sword
+    2300000: Body
+    2300002: Foot_Left
+    2300004: Foot_Right
+    2300006: Hand_Left
+    2300008: Hand_Right
+    2300010: Head
+    2300012: LowerArm_Left
+    2300014: LowerArm_Right
+    2300016: LowerBody
+    2300018: LowerLeg_Left
+    2300020: LowerLeg_Right
+    2300022: Prop_FireFighterPack
+    2300024: UpperArm_Left
+    2300026: UpperArm_Left24
+    2300028: UpperArm_Left25
+    2300030: UpperArm_Right
+    2300032: UpperArm_Right23
+    2300034: UpperArm_Right24
+    2300036: UpperLeg_Left
+    2300038: UpperLeg_Right
+    2300040: Weapon_Shield
+    2300042: Weapon_Sword
+    3300000: Body
+    3300002: Foot_Left
+    3300004: Foot_Right
+    3300006: Hand_Left
+    3300008: Hand_Right
+    3300010: Head
+    3300012: LowerArm_Left
+    3300014: LowerArm_Right
+    3300016: LowerBody
+    3300018: LowerLeg_Left
+    3300020: LowerLeg_Right
+    3300022: Prop_FireFighterPack
+    3300024: UpperArm_Left
+    3300026: UpperArm_Left24
+    3300028: UpperArm_Left25
+    3300030: UpperArm_Right
+    3300032: UpperArm_Right23
+    3300034: UpperArm_Right24
+    3300036: UpperLeg_Left
+    3300038: UpperLeg_Right
+    3300040: Weapon_Shield
+    3300042: Weapon_Sword
+    4300000: Foot_Left
+    4300002: LowerLeg_Left
+    4300004: UpperLeg_Left
+    4300006: Foot_Right
+    4300008: LowerLeg_Right
+    4300010: UpperLeg_Right
+    4300012: Head
+    4300014: Hand_Right
+    4300016: Weapon_Sword
+    4300018: LowerArm_Right
+    4300020: UpperArm_Right
+    4300022: UpperArm_Left24
+    4300024: UpperArm_Right23
+    4300026: Hand_Left
+    4300028: Weapon_Shield
+    4300030: LowerArm_Left
+    4300032: UpperArm_Left
+    4300034: UpperArm_Right24
+    4300036: UpperArm_Left25
+    4300038: Body
+    4300040: Prop_FireFighterPack
+    4300042: LowerBody
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

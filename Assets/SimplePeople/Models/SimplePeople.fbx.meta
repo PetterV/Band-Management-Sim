@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: e00141d5b5e98ac45a15dbf7a0bbe219
+timeCreated: 1451839675
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body_jnt
+    100002: Foot_Left_jnt
+    100004: Foot_Right_jnt
+    100006: Hand_Left_jnt
+    100008: Hand_Right_jnt
+    100010: Hat_jnt
+    100012: Head_jnt
+    100014: Hips_jnt
+    100016: LowerArm_Left_jnt
+    100018: LowerArm_Right_jnt
+    100020: LowerLeg_Left_jnt
+    100022: LowerLeg_Right_jnt
+    100024: mesh_Base
+    100026: mesh_BusinessMan
+    100028: mesh_FireFighter
+    100030: mesh_Hobo
+    100032: mesh_Pimp
+    100034: mesh_Policeman
+    100036: mesh_Prostitute
+    100038: mesh_Punk
+    100040: mesh_RiotCop
+    100042: mesh_Roadworker
+    100044: mesh_Robber
+    100046: mesh_Sheriff
+    100048: mesh_StreetMan
+    100050: mesh_Trucker
+    100052: mesh_Woman
+    100054: Root_jnt
+    100056: //RootNode
+    100058: Spine_jnt
+    100060: UpperArm_Left_jnt
+    100062: UpperArm_Right_jnt
+    100064: UpperLeg_Left_jnt
+    100066: UpperLeg_Right_jnt
+    400000: Body_jnt
+    400002: Foot_Left_jnt
+    400004: Foot_Right_jnt
+    400006: Hand_Left_jnt
+    400008: Hand_Right_jnt
+    400010: Hat_jnt
+    400012: Head_jnt
+    400014: Hips_jnt
+    400016: LowerArm_Left_jnt
+    400018: LowerArm_Right_jnt
+    400020: LowerLeg_Left_jnt
+    400022: LowerLeg_Right_jnt
+    400024: mesh_Base
+    400026: mesh_BusinessMan
+    400028: mesh_FireFighter
+    400030: mesh_Hobo
+    400032: mesh_Pimp
+    400034: mesh_Policeman
+    400036: mesh_Prostitute
+    400038: mesh_Punk
+    400040: mesh_RiotCop
+    400042: mesh_Roadworker
+    400044: mesh_Robber
+    400046: mesh_Sheriff
+    400048: mesh_StreetMan
+    400050: mesh_Trucker
+    400052: mesh_Woman
+    400054: Root_jnt
+    400056: //RootNode
+    400058: Spine_jnt
+    400060: UpperArm_Left_jnt
+    400062: UpperArm_Right_jnt
+    400064: UpperLeg_Left_jnt
+    400066: UpperLeg_Right_jnt
+    4300000: mesh_Base
+    4300002: mesh_Roadworker
+    4300004: mesh_Prostitute
+    4300006: mesh_BusinessMan
+    4300008: mesh_Hobo
+    4300010: mesh_Robber
+    4300012: mesh_Woman
+    4300014: mesh_Pimp
+    4300016: mesh_Punk
+    4300018: mesh_Sheriff
+    4300020: mesh_FireFighter
+    4300022: mesh_Trucker
+    4300024: mesh_StreetMan
+    4300026: mesh_Policeman
+    4300028: mesh_RiotCop
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: mesh_Base
+    13700002: mesh_BusinessMan
+    13700004: mesh_FireFighter
+    13700006: mesh_Hobo
+    13700008: mesh_Pimp
+    13700010: mesh_Policeman
+    13700012: mesh_Prostitute
+    13700014: mesh_Punk
+    13700016: mesh_RiotCop
+    13700018: mesh_Roadworker
+    13700020: mesh_Robber
+    13700022: mesh_Sheriff
+    13700024: mesh_StreetMan
+    13700026: mesh_Trucker
+    13700028: mesh_Woman
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
