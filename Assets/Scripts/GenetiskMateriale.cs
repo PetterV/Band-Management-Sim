@@ -5,6 +5,7 @@ public class GenetiskMateriale : MonoBehaviour {
 
 	public bool beingCarried = false;
 	public int skillForCloning = 0;
+	public BandMember.Role roleForCloning;
 
 	// Update is called once per frame
 	void Update () {

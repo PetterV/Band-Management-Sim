@@ -144,6 +144,7 @@ public class BandMember : MonoBehaviour{
 		Quaternion spawnRotation = this.transform.rotation;
 		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, spawnRotation);
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().skillForCloning = skill;
+		instantiatedGenMat.GetComponent<GenetiskMateriale>().roleForCloning = role;
 	}
 
 	//Bli kjefta på
