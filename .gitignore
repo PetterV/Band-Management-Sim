@@ -19,6 +19,7 @@ obj/
 *.unityproj
 *.booproj
 *.meta
+*.unity
 
 # ============ #
 # OS generated #
