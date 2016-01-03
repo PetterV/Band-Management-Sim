@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 
 public class BandMemberMoving : MonoBehaviour {
-	public enum WaypointID{None = -1, FirstFloor = 0, SecondFloor = 1, ThirdFloor = 2};
 
 	public bool moving = true;
 	public float moveTiming = 300f;
 	public float moveTimingStartValue = 300f;
 	public float speed = 5f;
-	public WaypointID movingToWaypoint = WaypointID.None;
+	public GameObject waypointToMoveTo;
 
 	private GameControl gameControl;
 	private Vector3 targetPosition;
 	private GameObject[] waypoints;
 	private GameObject[] stairs;
 	private float moveValue;
-	private int currentFloor = 2;
+	private int currentFloor = 1;
 
 	void Start(){
 		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
@@ -26,16 +25,16 @@ public class BandMemberMoving : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (moving == true) {
-			if (movingToWaypoint == WaypointID.None) {
+			if (waypointToMoveTo == null) {
 				//x% sjanse for å bevege, x% for å stå stille - skal bli kontrollert av innfall
 			} else {
-				MoveToWayPoint ((int)movingToWaypoint);
+				MoveToWayPoint (waypointToMoveTo);
 			}
 		}
 	}
 
-	void MoveToWayPoint(int waypoint){
-		Waypoint wp = waypoints [waypoint].GetComponent<Waypoint> ();
+	void MoveToWayPoint(GameObject waypoint){
+		Waypoint wp = waypoint.GetComponent<Waypoint>();
 		if (this.currentFloor != wp.floor) {
 			GoToFloor (wp.floor);
 		} else {
@@ -45,7 +44,7 @@ public class BandMemberMoving : MonoBehaviour {
 		
 	void GoToFloor(int targetFloor){
 		float step = speed * Time.deltaTime;
-		Vector3 stairLocation = stairs[this.currentFloor-1].transform.position;
+		Vector3 stairLocation = GetNearestStairLocation();
 		Vector3 stepTowardsStairs = Vector3.MoveTowards (this.transform.position, stairLocation, step);
 		if (stairLocation == stepTowardsStairs) {
 			TakeStairsTo (targetFloor);
@@ -60,11 +59,26 @@ public class BandMemberMoving : MonoBehaviour {
 		Vector3 wpLocation = wp.gameObject.transform.position;
 		Vector3 stepTowardsWp = Vector3.MoveTowards (this.transform.position, wpLocation, step);
 		if (wpLocation == stepTowardsWp) {
-			this.movingToWaypoint = WaypointID.None;
+			this.waypointToMoveTo = null;
 			print ("Arrived at waypoint!");
 		} else {
 			this.transform.position = stepTowardsWp;
 		}
+	}
+
+	Vector3 GetNearestStairLocation(){
+		Stairs tempClosest = null;
+		foreach (GameObject go in stairs) {
+			Stairs possibleClosest = go.GetComponent<Stairs> ();
+			if (possibleClosest.floor == this.currentFloor) {
+				if (tempClosest == null)
+					tempClosest = possibleClosest;
+				else if(possibleClosest.transform.position.x < tempClosest.transform.position.x) {
+					tempClosest = possibleClosest;
+				}
+			}
+		}
+		return tempClosest.transform.position;
 	}
 
 	void TakeStairsTo (int targetFloor)
