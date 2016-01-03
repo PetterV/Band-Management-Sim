@@ -9,6 +9,8 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject currentBandMember;
 	public GameObject currentGenMat;
 	public GameObject currentCloneMachine;
+	public BandMember.Role bringingRole;
+	public bool carryingGenMat = false;
 
 	
 	// Update is called once per frame
@@ -23,10 +25,18 @@ public class PlayerInteractions : MonoBehaviour {
 				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false){
 				print ("Yuck!");
 				currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = true;
+				bringingRole = currentGenMat.GetComponent<GenetiskMateriale>().roleForCloning;
+				carryingGenMat = true;
+				}
+				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true && cloneMachineCollision == true){
+					print ("Destroy me - GenMat");
+					Destroy(currentGenMat);
+					carryingGenMat = false;
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true){
 					currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = false;
 					print ("I'm not carrying this!");
+					carryingGenMat = false;
 				}
 			}
 			else if (cloneMachineCollision == true){
@@ -40,7 +50,7 @@ public class PlayerInteractions : MonoBehaviour {
 			bandCollision = true;
 			currentBandMember = coll.gameObject;
 		}
-		if (coll.gameObject.tag == "GeneticMaterial"){
+		if (coll.gameObject.tag == "GeneticMaterial" && carryingGenMat == false){
 			genMatCollision = true;
 			currentGenMat = coll.gameObject;
 		}
@@ -55,7 +65,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (coll.gameObject.tag == "BandMember"){
 			bandCollision = false;
 		}
-		if (coll.gameObject.tag == "GeneticMaterial"){
+		if (coll.gameObject.tag == "GeneticMaterial" && carryingGenMat == false){
 			genMatCollision = false;
 		}
 		if (coll.gameObject.tag == "CloneMachine"){

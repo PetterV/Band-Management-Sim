@@ -4,6 +4,7 @@ using System.Collections;
 public class CloneMachine : MonoBehaviour {
 
 	public GameObject bandMemberToBeCloned;
+	public BandMember.Role roleImminentClone;
 
 	// Use this for initialization
 	void Start () {
@@ -16,9 +17,12 @@ public class CloneMachine : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider coll){
-		if(coll.gameObject.tag == "Player" && Input.GetKeyDown("e")){
+		if(coll.gameObject.tag == "Player" && Input.GetKeyDown("e") && coll.GetComponent<PlayerInteractions>().carryingGenMat == true){
+			roleImminentClone = coll.gameObject.GetComponent<PlayerInteractions>().bringingRole;
+			print (roleImminentClone);
 			//Need to know which band member you want to clone here... Oy, design lead!
-            GameObject clone = MakeNewBandMemberClone("Mr. M8", 13, BandMember.Role.BassPlayer);
+            GameObject clone = MakeNewBandMemberClone("Mr. M8", 13, roleImminentClone);
+
             
 		}
 	}
