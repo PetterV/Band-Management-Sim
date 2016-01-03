@@ -5,7 +5,6 @@ public class MoveSidetoSide : MonoBehaviour {
 	private float newPositionX;
 	private float newPositionY;
 	public float moveSpeed = 0.5f;
-	public float floorDifference = 1f;
 	public int currentFloor = 1;
 
 	// Use this for initialization
@@ -27,13 +26,11 @@ public class MoveSidetoSide : MonoBehaviour {
 
 	void OnTriggerStay(Collider coll){
 		if(coll.gameObject.tag == "Stairs" && Input.GetKeyDown("up") && currentFloor < 2){
-			newPositionY = transform.position.y+floorDifference;
-			transform.position = new Vector3 (transform.position.x, newPositionY, 0);
+			coll.gameObject.SendMessage ("MoveUp", this.gameObject);
 			currentFloor++;
 		}
 		if(coll.gameObject.tag == "Stairs" && Input.GetKeyDown("down") && currentFloor > 0){
-			newPositionY = transform.position.y-floorDifference;
-			transform.position = new Vector3 (transform.position.x, newPositionY, 0);
+			coll.gameObject.SendMessage ("MoveDown", this.gameObject);
 			currentFloor--;
 		}
 	}
