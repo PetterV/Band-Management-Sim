@@ -585,6 +585,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: stairs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 469798, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2.9022558
@@ -621,6 +625,26 @@ Prefab:
       propertyPath: active
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: waypointToMoveTo
+      value: 
+      objectReference: {fileID: 1471229000}
+    - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: speed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: moveTimingStartValue
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: moveTiming
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: stairs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1471229000}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
   m_IsPrefabParent: 0
@@ -883,10 +907,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1471229001}
+  - 114: {fileID: 1471229002}
   m_Layer: 0
   m_Name: Waypoint
   m_TagString: Waypoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5082302936091411984, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -897,11 +922,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1471229000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.071, y: 0.954, z: 0.556}
+  m_LocalPosition: {x: -1.576, y: 0.974, z: 0.556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &1471229002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471229000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 3
 --- !u!1001 &1532206841
 Prefab:
   m_ObjectHideFlags: 0
