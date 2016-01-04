@@ -112,6 +112,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 
 	//INNFALLSHANDLINGER
+	//Skal score
 	void Score (){
 		print ("I kveld scorer jeg!");
 		harInfall = true;
@@ -119,16 +120,103 @@ public class Innfallsystemet : MonoBehaviour {
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
 		handlingGjennomført = "Jeg scorte!";
 		//Tid
-		actionCounter = 100;
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().scoreTid;
 	}
-	
+
+	//Tur på stranden
 	void Strandtur (){
 		print ("Jeg liker lange turer på stranden.");
-		//harInfall = true;
+		harInfall = true;
 		target = GameObject.Find("StrandSted");
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
 		handlingGjennomført = "Jeg gikk på stranden!";
 		//Tid
-		actionCounter = 600;
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().strandTid;
 	}
+
+	//Starte solokarriere
+	void Solokarriere (){
+		print ("Jeg vil starte en solokarriere.");
+		harInfall = true;
+		target = GameObject.Find("SoloSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "I'm outta here!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().soloTid;
+	}
+
+	void MusikkLytting (){
+		print ("Jeg vil høre på musikk.");
+		harInfall = true;
+		target = GameObject.Find("MusikkSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Jeg hørte på litt muzak!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().høreTid;
+	}
+
+	void SintTweet (){
+		print ("Jeg er pissed og vil at hele verden skal vite det!");
+		harInfall = true;
+		target = GameObject.Find("TweetSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Så sant som det er sagt! Av meg!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().tweeteTid;
+	}
+
+	void GladTweet (){
+		print ("Jeg vil fortelle fansen hvor mye de betyr for meg!");
+		harInfall = true;
+		target = GameObject.Find("TweetSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Ah, det føles så deilig å få masse anerkjennelse fra fornøyde fans!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().tweeteTid;
+	}
+
+	void Drikke (){
+		print ("Nå skarre drekkes!");
+		harInfall = true;
+		target = GameObject.Find("DrikkeSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Yay, drekking! Livet betyr mer nå!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().drikkeTid;
+	}
+
+	void Dusje (){
+		print ("Oh boy, jeg trenger en dusj!");
+		harInfall = true;
+		target = GameObject.Find("DusjeSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Ah, det føles så deilig å få masse anerkjennelse fra fornøyde fans!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().dusjeTid;
+	}
+
+	void Spise (){
+		print ("Nå er jeg sulten!");
+		harInfall = true;
+		target = GameObject.Find("SpiseSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Nå er jeg mett!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().dusjeTid;
+	}
+
+	void SexyDance (){
+		print ("Nå skal jeg ha litt alenetid!");
+		harInfall = true;
+		target = GameObject.Find("DanceSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Phew! Litt av en runde!";
+		//Tid
+		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().danceTid;
+	}
+
+	//Øve på spilling
+	//Krever spesifikk ordning pr. bandmedlem i forhold til instrument etc.
+
+	//
 }
