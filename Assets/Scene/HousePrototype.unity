@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de00dc8821066814f9cd431b3583af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 1
-  floorDifference: 1
+  floor: 0
+  floorDifference: 0
   upExit: {fileID: 1129259416}
   downExit: {fileID: 0}
 --- !u!65 &17121987
@@ -197,6 +197,8 @@ MonoBehaviour:
   currentGenMat: {fileID: 0}
   currentCloneMachine: {fileID: 0}
   bringingRole: 0
+  bringingSkill: 0
+  "bringingMedgj\xF8rlighet": 0
   carryingGenMat: 0
 --- !u!1001 &382813778
 Prefab:
@@ -239,12 +241,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11447008, guid: 16f2e84ea6c1346fe939d611c97fb029, type: 2}
       propertyPath: floor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11447008, guid: 16f2e84ea6c1346fe939d611c97fb029, type: 2}
       propertyPath: upExit
       value: 
       objectReference: {fileID: 1129259416}
+    - target: {fileID: 164852, guid: 16f2e84ea6c1346fe939d611c97fb029, type: 2}
+      propertyPath: m_TagString
+      value: Stairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447008, guid: 16f2e84ea6c1346fe939d611c97fb029, type: 2}
+      propertyPath: floorDifference
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16f2e84ea6c1346fe939d611c97fb029, type: 2}
   m_IsPrefabParent: 0
@@ -278,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de00dc8821066814f9cd431b3583af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 3
-  floorDifference: 1
+  floor: 2
+  floorDifference: 0
   upExit: {fileID: 0}
   downExit: {fileID: 1129259416}
 --- !u!65 &658432348
@@ -338,6 +348,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1 &666270122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 666270124}
+  - 114: {fileID: 666270123}
+  - 65: {fileID: 666270125}
+  m_Layer: 0
+  m_Name: StrandSted
+  m_TagString: Waypoint
+  m_Icon: {fileID: -5082302936091411984, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &666270123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666270122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 0
+--- !u!4 &666270124
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666270122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.519, y: -0.983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+--- !u!65 &666270125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666270122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &906969855
 Prefab:
   m_ObjectHideFlags: 0
@@ -443,6 +506,10 @@ Prefab:
       propertyPath: m_Name
       value: GameControl
       objectReference: {fileID: 0}
+    - target: {fileID: 188166, guid: 27288b25236244a82a8c936c566d476f, type: 2}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27288b25236244a82a8c936c566d476f, type: 2}
   m_IsPrefabParent: 0
@@ -476,8 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de00dc8821066814f9cd431b3583af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 2
-  floorDifference: 1
+  floor: 1
+  floorDifference: 0
   upExit: {fileID: 658432347}
   downExit: {fileID: 17121986}
 --- !u!65 &1129259417
@@ -547,7 +614,7 @@ GameObject:
   - 114: {fileID: 1175487262}
   m_Layer: 0
   m_Name: GameControl
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,15 +654,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: stairs.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 469798, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.9022558
+      value: -1.558
       objectReference: {fileID: 0}
     - target: {fileID: 469798, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 469798, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: m_LocalPosition.z
@@ -628,23 +695,31 @@ Prefab:
     - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: waypointToMoveTo
       value: 
-      objectReference: {fileID: 1471229000}
+      objectReference: {fileID: 0}
     - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: speed
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: moveTimingStartValue
-      value: 30
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: moveTiming
-      value: 30
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11423988, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
       propertyPath: stairs.Array.data[0]
       value: 
-      objectReference: {fileID: 1471229000}
+      objectReference: {fileID: 0}
+    - target: {fileID: 199576, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: m_TagString
+      value: BandMember
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450890, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: "myMedgj\xF8rlighet"
+      value: 99
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
   m_IsPrefabParent: 0
@@ -782,6 +857,9 @@ MonoBehaviour:
   bassist: {fileID: 199576, guid: fd2aef9c75091e940a3f2571d040f2aa, type: 2}
   trommis: {fileID: 199576, guid: 1b287a8966e0e044b8115e0f1c09e4d3, type: 2}
   roleImminentClone: 0
+  cloneSkill: 0
+  "cloneMedgj\xF8rlighet": 0
+  cloneName: 
 --- !u!212 &1329614911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -909,7 +987,7 @@ GameObject:
   - 4: {fileID: 1471229001}
   - 114: {fileID: 1471229002}
   m_Layer: 0
-  m_Name: Waypoint
+  m_Name: ScoreSted
   m_TagString: Waypoint
   m_Icon: {fileID: -5082302936091411984, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -922,7 +1000,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1471229000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.576, y: 0.974, z: 0.556}
+  m_LocalPosition: {x: 2.793, y: -0.967, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -938,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 3
+  floor: 0
 --- !u!1001 &1532206841
 Prefab:
   m_ObjectHideFlags: 0
@@ -980,12 +1058,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11470012, guid: 5e922a346c21242bab955ebb11080dda, type: 2}
       propertyPath: floor
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11470012, guid: 5e922a346c21242bab955ebb11080dda, type: 2}
       propertyPath: downExit
       value: 
       objectReference: {fileID: 1129259416}
+    - target: {fileID: 198966, guid: 5e922a346c21242bab955ebb11080dda, type: 2}
+      propertyPath: m_TagString
+      value: Stairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470012, guid: 5e922a346c21242bab955ebb11080dda, type: 2}
+      propertyPath: floorDifference
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e922a346c21242bab955ebb11080dda, type: 2}
   m_IsPrefabParent: 0
@@ -1030,7 +1116,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490012, guid: 7b79e1ea562b8423f8d410093484dbb8, type: 2}
       propertyPath: floor
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11490012, guid: 7b79e1ea562b8423f8d410093484dbb8, type: 2}
       propertyPath: downExit
@@ -1040,6 +1126,14 @@ Prefab:
       propertyPath: upExit
       value: 
       objectReference: {fileID: 658432347}
+    - target: {fileID: 106080, guid: 7b79e1ea562b8423f8d410093484dbb8, type: 2}
+      propertyPath: m_TagString
+      value: Stairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490012, guid: 7b79e1ea562b8423f8d410093484dbb8, type: 2}
+      propertyPath: floorDifference
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b79e1ea562b8423f8d410093484dbb8, type: 2}
   m_IsPrefabParent: 0

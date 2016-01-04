@@ -62,6 +62,8 @@ public class BandMemberMoving : MonoBehaviour {
 		if (wpLocation == stepTowardsWp) {
 			this.waypointToMoveTo = null;
 			print ("Arrived at waypoint!");
+			//Lagt til innfall
+			GetComponentInParent<Innfallsystemet>().riktigPlass = true;
 		} else {
 			this.transform.position = stepTowardsWp;
 		}

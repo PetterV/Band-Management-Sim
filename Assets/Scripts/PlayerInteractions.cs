@@ -10,6 +10,8 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject currentGenMat;
 	public GameObject currentCloneMachine;
 	public BandMember.Role bringingRole;
+	public int bringingSkill;
+	public int bringingMedgjørlighet;
 	public bool carryingGenMat = false;
 
 	
@@ -30,6 +32,8 @@ public class PlayerInteractions : MonoBehaviour {
 				print ("Yuck!");
 				currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = true;
 				bringingRole = currentGenMat.GetComponent<GenetiskMateriale>().roleForCloning;
+				bringingSkill = currentGenMat.GetComponent<GenetiskMateriale>().skillForCloning;
+				bringingMedgjørlighet = currentGenMat.GetComponent<GenetiskMateriale>().medgjørlighetForCloning;
 				carryingGenMat = true;
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true && cloneMachineCollision == true){

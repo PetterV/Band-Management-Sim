@@ -6,6 +6,11 @@ public class Innfallsystemet : MonoBehaviour {
 	public enum Innfall {Score, Strandtur, Nothing};
 	public Dictionary<Innfall, int> innfallsOversikt;
 	public int innfallsTall;
+	public bool harInfall = false;
+	public GameObject target;
+	public bool riktigPlass = false;
+	public int actionCounter;
+	public string handlingGjennomført;
 
 	private int innfallSum = 0;
 
@@ -32,6 +37,19 @@ public class Innfallsystemet : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown("z")){
 			CheckInnfall();
+		}
+		if (target != null){
+			//For at den ikke skal freake ut
+		}
+		if (harInfall == true){
+			if (riktigPlass == true){
+				actionCounter--;
+			}
+			if (actionCounter < 0){
+				print (handlingGjennomført);
+				//Add happiness
+				harInfall = false;
+			}
 		}
 	}
 
@@ -74,19 +92,43 @@ public class Innfallsystemet : MonoBehaviour {
 		}
 	}
 
-	//Innfallshandlinger
-	void Score (){
-		print ("I kveld scorer jeg!");
-	}
-
-	void Strandtur (){
-		print ("Jeg liker lange turer på stranden.");
-	}
 
 	//Bli drept av spilleren
 	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "Player" && Input.GetKeyDown("space")){
 			GetComponentInParent<BandMember>().Dying();
 		}
+	}
+
+	//Interruption
+	public void Interrupt(){
+		if (harInfall == true){
+			harInfall = false;
+			//Fjerner ikke target
+			target = null;
+			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = null;
+		}
+	}
+
+
+	//INNFALLSHANDLINGER
+	void Score (){
+		print ("I kveld scorer jeg!");
+		harInfall = true;
+		target = GameObject.Find("ScoreSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Jeg scorte!";
+		//Tid
+		actionCounter = 100;
+	}
+	
+	void Strandtur (){
+		print ("Jeg liker lange turer på stranden.");
+		//harInfall = true;
+		target = GameObject.Find("StrandSted");
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		handlingGjennomført = "Jeg gikk på stranden!";
+		//Tid
+		actionCounter = 600;
 	}
 }

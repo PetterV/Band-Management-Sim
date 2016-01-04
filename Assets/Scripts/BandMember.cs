@@ -17,7 +17,7 @@ public class BandMember : MonoBehaviour{
 	public GameObject instantiatedGenMat;
 
 	//Kjeftesystem
-	private int myMedgjørlighet = 70;
+	public int myMedgjørlighet = 70;
 	public bool fikkKjeft = false;
 
 	//Happinessystem
@@ -34,11 +34,12 @@ public class BandMember : MonoBehaviour{
 		this.role = role;
 	}
 
-    public void InitializeBandMember(String name, int skill, Role role)
+	public void InitializeBandMember(String name, int skill, int myMedgjørlighet, Role role)
     {
         this.name = name;
         this.skill = skill;
         this.role = role;
+		this.myMedgjørlighet = myMedgjørlighet;
     }
 
     void Start ()
@@ -66,7 +67,15 @@ public class BandMember : MonoBehaviour{
 		Vector3 spawnPosition = this.transform.position;
 		Quaternion spawnRotation = this.transform.rotation;
 		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, spawnRotation);
-		instantiatedGenMat.GetComponent<GenetiskMateriale>().skillForCloning = skill;
+		int skillvariation = UnityEngine.Random.Range(-10, 10);
+		int skillTransfer = skill + skillvariation;
+		int medgjørligvariation = UnityEngine.Random.Range(-20, 40);
+		int medgjørligTransfer = myMedgjørlighet + medgjørligvariation;
+		if (medgjørligTransfer > 99){
+			medgjørligTransfer = 99;
+		}
+		instantiatedGenMat.GetComponent<GenetiskMateriale>().skillForCloning = skillTransfer;
+		instantiatedGenMat.GetComponent<GenetiskMateriale>().medgjørlighetForCloning = medgjørligTransfer;
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().roleForCloning = role;
 	}
 
@@ -83,6 +92,7 @@ public class BandMember : MonoBehaviour{
 			int medgjørlig = UnityEngine.Random.Range (0, 99);
 			if (medgjørlig <= myMedgjørlighet){
 				print ("Tror ikke jeg gjør det, jeg.");
+				GetComponentInParent<Innfallsystemet>().Interrupt();
 			}
 			if (medgjørlig > myMedgjørlighet){
 				print ("Jeg gjør det jeg vil!");
