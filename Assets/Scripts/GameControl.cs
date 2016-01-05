@@ -5,6 +5,7 @@ public class GameControl : MonoBehaviour {
 
 	public GameObject[] waypoints;
 	public GameObject[] stairs;
+	public GameObject[] houseTransfers;
 
 
 	// Penger og popularitet
@@ -31,6 +32,7 @@ public class GameControl : MonoBehaviour {
 	void Start () {
 		this.waypoints = GameObject.FindGameObjectsWithTag ("Waypoint");
 		this.stairs = GameObject.FindGameObjectsWithTag ("Stairs");
+		this.houseTransfers = GameObject.FindGameObjectsWithTag ("TransferCenter");
 	}
 	
 	// Update is called once per frame
