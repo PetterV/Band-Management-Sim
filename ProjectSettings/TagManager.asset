@@ -10,6 +10,7 @@ TagManager:
   - GeneticMaterial
   - Waypoint
   - CameraTarget
+  - GeneticMaterial
   - House 1
   layers:
   - Default

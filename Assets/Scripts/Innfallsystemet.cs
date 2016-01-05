@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Innfallsystemet : MonoBehaviour {
 
-	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Ove, Nothing};
+	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Ove, GoLeft, GoRight, Nothing};
 	public Dictionary<Innfall, int> innfallsOversikt;
 	public int innfallsTall;
 	public bool harInfall = false;
@@ -26,10 +26,15 @@ public class Innfallsystemet : MonoBehaviour {
 	private bool spiseInnfall = false;
 	private bool danseInnfall = false;
 	private bool oveInnfall = false;
+	private bool innfallGoRight = false;
+	private bool innfallGoLeft = false;
 	//Innfallstriggers over.									^ Innfall her ^
 
 	bool setActionCounter = false;
 	bool innfallComplete = false;
+	bool goingThere = false;
+	float moveTarget;
+	float moveThisStep;
 
 	private int innfallSum = 0;
 
@@ -43,7 +48,7 @@ public class Innfallsystemet : MonoBehaviour {
 		this.innfallsOversikt = new Dictionary<Innfall, int>()
 		{
 			{Innfall.Score, 0 },
-			{Innfall.Strandtur, 1 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
+			{Innfall.Strandtur, 0 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
 			{Innfall.Solo, 0 },
 			{Innfall.Lytte, 0 },
 			{Innfall.SintTweet, 0 },
@@ -53,6 +58,8 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Dusje, 0 },
 			{Innfall.Danse, 0 },
 			{Innfall.Ove, 0 },
+			{Innfall.GoLeft, 1 },
+			{Innfall.GoRight, 1 },
 			{Innfall.Nothing, 0 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
@@ -85,6 +92,12 @@ public class Innfallsystemet : MonoBehaviour {
 		}
 		if (strandInnfall == true){
 			Strandtur();
+		}
+		if (innfallGoLeft == true){
+			GoLeft();
+		}
+		if (innfallGoRight == true){
+			GoRight();
 		}
 	}
 
@@ -174,6 +187,16 @@ public class Innfallsystemet : MonoBehaviour {
 				oveInnfall = true;
 				break;
 			}
+		case Innfall.GoRight:
+			{
+				innfallGoRight = true;
+				break;
+			}
+		case Innfall.GoLeft:
+			{
+				innfallGoLeft = true;
+				break;
+			}
 		case Innfall.Nothing:
 			{
 				break;
@@ -187,22 +210,14 @@ public class Innfallsystemet : MonoBehaviour {
 
 	//Prøv å finne ut hvorfor jeg flyttet denne hit. Var det et uhell eller en god idé?
 	//BLI DREPT AV SPILLEREN
-	void OnTriggerStay(Collider coll){
-		if (coll.gameObject.tag == "Player" && Input.GetKeyDown("space")){
-			if (GetComponentInParent<BandMember>().dead == false){
-				Interrupt();
-				GetComponentInParent<BandMember>().Dying();
-			}
-		}
-	}
 
 	//INTERRUPTION
 	public void Interrupt(){
 		if (harInfall == true){
 			WrapUp();
 			//Stopper ikke faktisk noe her
-			target = null;
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = null;
+			target = null;
 		}
 	}
 
@@ -219,7 +234,7 @@ public class Innfallsystemet : MonoBehaviour {
 	void Score (){
 		harInfall = true;
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter = false){
+		if (setActionCounter == false){
 			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().scoreTid;
 			setActionCounter = true;
 		}
@@ -464,6 +479,40 @@ public class Innfallsystemet : MonoBehaviour {
 		}
 	}
 
+	void GoRight (){
+		if (goingThere = false){
+			float walkDistance = UnityEngine.Random.Range(1, 5);
+			moveTarget = this.transform.position.x + walkDistance;
+			moveThisStep = this.transform.position.x + 1;
+			goingThere = true;
+		}
+		if (this.transform.position.x < moveTarget){
+			print ("Going there!");
+			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
+		}
+		if (this.transform.position.x >= moveTarget){
+			print ("Got there!");
+			WrapUp();
+		}
+	}
+
+	void GoLeft (){
+		if (goingThere = false){
+			float walkDistance = UnityEngine.Random.Range(1, 5);
+			moveTarget = this.transform.position.x - walkDistance;
+			moveThisStep = this.transform.position.x + 1;
+			goingThere = true;
+		}
+		if (this.transform.position.x > moveTarget){
+			print ("Going there!");
+			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
+		}
+		if (this.transform.position.x <= moveTarget){
+			print ("Got there");
+			WrapUp();
+		}
+	}
+
 	//Øve på spilling
 	//Krever spesifikk ordning pr. bandmedlem i forhold til instrument etc.
 
@@ -492,5 +541,8 @@ public class Innfallsystemet : MonoBehaviour {
 		danseInnfall = false;
 		oveInnfall = false;
 		innfallComplete = false;
+		goingThere = false;
+		innfallGoLeft = false;
+		innfallGoRight = false;
 	}
 }
