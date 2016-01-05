@@ -8,18 +8,18 @@ public class GameControl : MonoBehaviour {
 
 
 	//Tid innfall tar
-	public int scoreTid = 3;
-	public int strandTid = 3;
-	public int øveTid = 3;
-	public int høreTid = 3;
-	public int soloTid = 3;
-	public int tweeteTid = 3;
-	public int drikkeTid = 3;
-	public int dusjeTid = 3;
-	public int bajsTid = 3;
-	public int spiseTid = 3;
-	public int danceTid = 3;
-	public int oppkastTid = 3;
+	public float scoreTid = 3;
+	public float strandTid = 3;
+	public float øveTid = 3;
+	public float høreTid = 3;
+	public float soloTid = 3;
+	public float tweeteTid = 3;
+	public float drikkeTid = 3;
+	public float dusjeTid = 3;
+	public float bajsTid = 3;
+	public float spiseTid = 3;
+	public float danceTid = 3;
+	public float oppkastTid = 3;
 
 	// Use this for initialization
 	void Start () {

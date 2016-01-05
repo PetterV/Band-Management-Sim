@@ -3,13 +3,14 @@ using System.Collections.Generic;
 
 public class Innfallsystemet : MonoBehaviour {
 
-	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Øve, Nothing};
+	public enum Innfall {Score, Strandtur, Nothing};
+	// Legg til enum: Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Øve,
 	public Dictionary<Innfall, int> innfallsOversikt;
 	public int innfallsTall;
 	public bool harInfall = false;
 	public GameObject target;
 	public bool riktigPlass = false;
-	public int actionCounter;
+	public float actionCounter;
 	public bool success = false;
 	public string handlingGjennomført;
 
@@ -44,15 +45,15 @@ public class Innfallsystemet : MonoBehaviour {
 		{
 			{Innfall.Score, 1 },
 			{Innfall.Strandtur, 2 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
-			{Innfall.Solo, 1 },
-			{Innfall.Lytte, 3 },
-			{Innfall.SintTweet, 2 },
-			{Innfall.GladTweet, 3 },
-			{Innfall.Drikke, 5 },
-			{Innfall.Spise, 6 },
-			{Innfall.Dusje, 4 },
-			{Innfall.Danse, 4 },
-			{Innfall.Øve, 6 },
+//			{Innfall.Solo, 1 },
+//			{Innfall.Lytte, 3 },
+//			{Innfall.SintTweet, 2 },
+//			{Innfall.GladTweet, 3 },
+//			{Innfall.Drikke, 5 },
+//			{Innfall.Spise, 6 },
+//			{Innfall.Dusje, 4 },
+//			{Innfall.Danse, 4 },
+//			{Innfall.Øve, 6 },
 			{Innfall.Nothing, 50 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
@@ -76,9 +77,6 @@ public class Innfallsystemet : MonoBehaviour {
 		if (Input.GetKeyDown("z")){
 			setActionCounter = false;
 			CheckInnfall();
-		}
-		if (target != null){
-			//For at den ikke skal freake ut
 		}
 		if (scoreInnfall == true){
 			Score();
@@ -127,56 +125,56 @@ public class Innfallsystemet : MonoBehaviour {
 				strandInnfall = true;
 				break;
 			}
-		case Innfall.Solo:
-			{
-				soloInnfall = true;
-				break;
-			}
-		case Innfall.Score:
-			{
-				lytteInnfall = true;
-				break;
-			}
-		case Innfall.Strandtur:
-			{
-				sintTweetInnfall = true;
-				break;
-			}
-		case Innfall.Solo:
-			{
-				gladTweetInnfall = true;
-				break;
-			}
-		case Innfall.Nothing:
-			{
-				drikkeInnfall = true;
-				break;
-			}
-		case Innfall.Score:
-			{
-				scoreInnfall = true;
-				break;
-			}
-		case Innfall.Strandtur:
-			{
-				dusjeInnfall = true;
-				break;
-			}
-		case Innfall.Solo:
-			{
-				spiseInnfall = true;
-				break;
-			}
-		case Innfall.Nothing:
-			{
-				danseInnfall = true;
-				break;
-			}
-		case Innfall.Øve:
-			{
-				oveInnfall = true;
-				break;
-			}
+//		case Innfall.Solo:
+//			{
+//				soloInnfall = true;
+//				break;
+//			}
+//		case Innfall.Score:
+//			{
+//				lytteInnfall = true;
+//				break;
+//			}
+//		case Innfall.Strandtur:
+//			{
+//				sintTweetInnfall = true;
+//				break;
+//			}
+//		case Innfall.Solo:
+//			{
+//				gladTweetInnfall = true;
+//				break;
+//			}
+//		case Innfall.Nothing:
+//			{
+//				drikkeInnfall = true;
+//				break;
+//			}
+//		case Innfall.Score:
+//			{
+//				scoreInnfall = true;
+//				break;
+//			}
+//		case Innfall.Strandtur:
+//			{
+//				dusjeInnfall = true;
+//				break;
+//			}
+//		case Innfall.Solo:
+//			{
+//				spiseInnfall = true;
+//				break;
+//			}
+//		case Innfall.Nothing:
+//			{
+//				danseInnfall = true;
+//				break;
+//			}
+//		case Innfall.Øve:
+//			{
+//				oveInnfall = true;
+//				break;
+//			}
 		case Innfall.Nothing:
 			{
 				break;
@@ -225,12 +223,12 @@ public class Innfallsystemet : MonoBehaviour {
 			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().scoreTid;
 			setActionCounter = true;
 		}
-		if (!riktigPlass){
+		if (riktigPlass = false){
 			target = GameObject.Find("ScoreSted");
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
-		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+		else if (riktigPlass = true){
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -255,7 +253,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -280,7 +278,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -305,7 +303,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -330,7 +328,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -355,7 +353,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -380,7 +378,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -405,7 +403,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -430,7 +428,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -455,7 +453,7 @@ public class Innfallsystemet : MonoBehaviour {
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
-			int reduceCounter = 1 * Time.deltaTime;
+			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
 				innfallComplete = true;
