@@ -42,17 +42,17 @@ public class Innfallsystemet : MonoBehaviour {
 		//Dette er Innfalls-oversikten. Hvis du vil legge til flere, gjør du det på samme måte som her.
 		this.innfallsOversikt = new Dictionary<Innfall, int>()
 		{
-			{Innfall.Score, 1 },
-			{Innfall.Strandtur, 2 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
-			{Innfall.Solo, 1 },
-			{Innfall.Lytte, 3 },
-			{Innfall.SintTweet, 2 },
-			{Innfall.GladTweet, 3 },
-			{Innfall.Drikke, 5 },
-			{Innfall.Spise, 6 },
-			{Innfall.Dusje, 4 },
-			{Innfall.Danse, 4 },
-			{Innfall.Ove, 6 },
+			{Innfall.Score, 100 },
+			{Innfall.Strandtur, 100 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
+			{Innfall.Solo, 0 },
+			{Innfall.Lytte, 100 },
+			{Innfall.SintTweet, 0 },
+			{Innfall.GladTweet, 0 },
+			{Innfall.Drikke, 0 },
+			{Innfall.Spise, 0 },
+			{Innfall.Dusje, 0 },
+			{Innfall.Danse, 100 },
+			{Innfall.Ove, 0 },
 			{Innfall.Nothing, 50 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)

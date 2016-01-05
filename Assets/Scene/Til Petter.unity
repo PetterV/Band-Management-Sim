@@ -2608,10 +2608,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 233053066}
+  - 114: {fileID: 233053067}
   m_Layer: 0
   m_Name: ScoreSted
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Waypoint
+  m_Icon: {fileID: 1638116407661442457, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2621,12 +2622,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 233053065}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalRotation: {x: 0, y: 0.707106, z: 0, w: 0.7071076}
+  m_LocalPosition: {x: 4.03, y: 14.07, z: -77.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1771347610}
+  m_RootOrder: 0
+--- !u!114 &233053067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233053065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 2
 --- !u!1001 &236507685
 Prefab:
   m_ObjectHideFlags: 0
@@ -10854,10 +10867,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1085349577}
+  - 114: {fileID: 1085349578}
   m_Layer: 0
   m_Name: StrandSted
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Waypoint
+  m_Icon: {fileID: 1638116407661442457, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10867,12 +10881,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1085349576}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalRotation: {x: 0, y: 0.707106, z: 0, w: 0.7071076}
+  m_LocalPosition: {x: 4.03, y: 6.96, z: -74.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 1771347610}
+  m_RootOrder: 1
+--- !u!114 &1085349578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1085349576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 1
 --- !u!1 &1100330396
 GameObject:
   m_ObjectHideFlags: 0
@@ -14539,10 +14565,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1458657569}
+  - 114: {fileID: 1458657570}
   m_Layer: 0
   m_Name: DanseSted
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Waypoint
+  m_Icon: {fileID: 1638116407661442457, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -14552,12 +14579,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1458657568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalRotation: {x: 0, y: 0.707106, z: 0, w: 0.7071076}
+  m_LocalPosition: {x: 4.03, y: 28.72, z: -93.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 1771347610}
+  m_RootOrder: 2
+--- !u!114 &1458657570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458657568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 4
 --- !u!1 &1463063184
 GameObject:
   m_ObjectHideFlags: 0
@@ -18265,7 +18304,11 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.707106, z: 0, w: 0.7071076}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 233053066}
+  - {fileID: 1085349577}
+  - {fileID: 1458657569}
+  - {fileID: 1913813304}
   m_Father: {fileID: 0}
   m_RootOrder: 16
 --- !u!4 &1778710312 stripped
@@ -19978,10 +20021,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1913813304}
+  - 114: {fileID: 1913813305}
   m_Layer: 0
   m_Name: Lyttested
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Waypoint
+  m_Icon: {fileID: 1638116407661442457, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -19991,12 +20035,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1913813303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalRotation: {x: 0, y: 0.707106, z: 0, w: 0.7071076}
+  m_LocalPosition: {x: -2.54, y: 23.14, z: -78.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 1771347610}
+  m_RootOrder: 3
+--- !u!114 &1913813305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1913813303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638598fce15a44543946022060474190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 3
 --- !u!1001 &1914928657
 Prefab:
   m_ObjectHideFlags: 0
