@@ -12,6 +12,16 @@ public class Innfallsystemet : MonoBehaviour {
 	public int actionCounter;
 	public string handlingGjennomført;
 
+
+	//Innfall blir triggered av dette.////						V Innfall her V
+	private bool scoreInnfall = false;
+	private bool strandInnfall = false;
+
+	//Innfallstriggers over.									^ Innfall her ^
+
+	bool setActionCounter = false;
+	bool innfallComplete = false;
+
 	private int innfallSum = 0;
 
 	void Start (){
@@ -36,20 +46,18 @@ public class Innfallsystemet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown("z")){
+			setActionCounter = false;
 			CheckInnfall();
 		}
 		if (target != null){
 			//For at den ikke skal freake ut
 		}
-		if (harInfall == true){
-			if (riktigPlass == true){
-				actionCounter--;
-			}
-			if (actionCounter < 0){
-				print (handlingGjennomført);
-				//Add happiness
-				harInfall = false;
-			}
+
+		if (scoreInnfall == true){
+			Score();
+		}
+		if (strandInnfall == true){
+			Strandtur();
 		}
 	}
 
@@ -77,12 +85,12 @@ public class Innfallsystemet : MonoBehaviour {
 		{
 		case Innfall.Score:
 			{
-				Score();
+				scoreInnfall = true;
 				break;
 			}
 		case Innfall.Strandtur:
 			{
-				Strandtur();
+				strandInnfall = true;
 				break;
 			}
 		case Innfall.Nothing:
@@ -93,14 +101,14 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 
-	//Bli drept av spilleren
+	//BLI DREPT AV SPILLEREN
 	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "Player" && Input.GetKeyDown("space")){
 			GetComponentInParent<BandMember>().Dying();
 		}
 	}
 
-	//Interruption
+	//INTERRUPTION
 	public void Interrupt(){
 		if (harInfall == true){
 			harInfall = false;
@@ -112,18 +120,36 @@ public class Innfallsystemet : MonoBehaviour {
 
 
 	//INNFALLSHANDLINGER
+	/// <summary>
+	/// Her er alle innfallshandlingene!/////////////////////////////////////////////////////////////////
+	/// </summary>
 	//Skal score
 	void Score (){
 		print ("I kveld scorer jeg!");
 		harInfall = true;
-		target = GameObject.Find("ScoreSted");
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		handlingGjennomført = "Jeg scorte!";
-		//Tid
-		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().scoreTid;
+		if (setActionCounter = false){
+			actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().scoreTid;
+			setActionCounter = true;
+		}
+		if (!riktigPlass){
+			target = GameObject.Find("ScoreSted");
+			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
+		}
+		else if (riktigPlass){
+			int reduceCounter = 1 * Time.deltaTime;
+			actionCounter = actionCounter - reduceCounter;
+			if (actionCounter <= 0){
+				print (handlingGjennomført);
+				innfallComplete = true;
+			}
+		}
+		if (handlingGjennomført == true){
+			handlingGjennomført = "Jeg scorte!";
+			WrapUp();
+		}
 	}
-
-	//Tur på stranden
+		
 	void Strandtur (){
 		print ("Jeg liker lange turer på stranden.");
 		harInfall = true;
@@ -133,8 +159,7 @@ public class Innfallsystemet : MonoBehaviour {
 		//Tid
 		actionCounter = GameObject.Find("CameControl").GetComponent<GameControl>().strandTid;
 	}
-
-	//Starte solokarriere
+		
 	void Solokarriere (){
 		print ("Jeg vil starte en solokarriere.");
 		harInfall = true;
@@ -218,5 +243,18 @@ public class Innfallsystemet : MonoBehaviour {
 	//Øve på spilling
 	//Krever spesifikk ordning pr. bandmedlem i forhold til instrument etc.
 
-	//
+
+	//Ordner opp i ting når et innfall er over. Ikke nødvendig?
+	//Må ordne at hvert innfall deaktiveres her.
+	/// <summary>
+	/// Ferdig med innfallshandlinger/////////////////////////////////////////////////////////////////////////
+	/// </summary>
+
+
+	void WrapUp(){
+		print (handlingGjennomført);
+		harInfall = false;
+		scoreInnfall = false;
+		strandInnfall = false;
+	}
 }
