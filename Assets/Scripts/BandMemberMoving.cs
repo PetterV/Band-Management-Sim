@@ -14,9 +14,11 @@ public class BandMemberMoving : MonoBehaviour {
 	private GameObject[] waypoints;
 	public GameObject[] stairs;
 	private float moveValue;
+	public int startFloor = 0;
 	private int currentFloor = 0;
 
 	void Start(){
+		currentFloor = startFloor;
 		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
 		this.waypoints = this.gameControl.waypoints;
 		this.stairs = this.gameControl.stairs;

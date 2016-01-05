@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class Innfallsystemet : MonoBehaviour {
 
-	public enum Innfall {Score, Strandtur, Nothing};
-	// Legg til enum: Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Øve,
+	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Ove, Nothing};
 	public Dictionary<Innfall, int> innfallsOversikt;
 	public int innfallsTall;
 	public bool harInfall = false;
@@ -12,7 +11,7 @@ public class Innfallsystemet : MonoBehaviour {
 	public bool riktigPlass = false;
 	public float actionCounter;
 	public bool success = false;
-	public string handlingGjennomført;
+	public string handlingGjennomfort;
 
 
 	//Innfall blir triggered av dette.////						V Innfall her V
@@ -45,15 +44,15 @@ public class Innfallsystemet : MonoBehaviour {
 		{
 			{Innfall.Score, 1 },
 			{Innfall.Strandtur, 2 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
-//			{Innfall.Solo, 1 },
-//			{Innfall.Lytte, 3 },
-//			{Innfall.SintTweet, 2 },
-//			{Innfall.GladTweet, 3 },
-//			{Innfall.Drikke, 5 },
-//			{Innfall.Spise, 6 },
-//			{Innfall.Dusje, 4 },
-//			{Innfall.Danse, 4 },
-//			{Innfall.Øve, 6 },
+			{Innfall.Solo, 1 },
+			{Innfall.Lytte, 3 },
+			{Innfall.SintTweet, 2 },
+			{Innfall.GladTweet, 3 },
+			{Innfall.Drikke, 5 },
+			{Innfall.Spise, 6 },
+			{Innfall.Dusje, 4 },
+			{Innfall.Danse, 4 },
+			{Innfall.Ove, 6 },
 			{Innfall.Nothing, 50 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
@@ -77,6 +76,9 @@ public class Innfallsystemet : MonoBehaviour {
 		if (Input.GetKeyDown("z")){
 			setActionCounter = false;
 			CheckInnfall();
+		}
+		if (target == null){
+			
 		}
 		if (scoreInnfall == true){
 			Score();
@@ -125,56 +127,51 @@ public class Innfallsystemet : MonoBehaviour {
 				strandInnfall = true;
 				break;
 			}
-//		case Innfall.Solo:
-//			{
-//				soloInnfall = true;
-//				break;
-//			}
-//		case Innfall.Score:
-//			{
-//				lytteInnfall = true;
-//				break;
-//			}
-//		case Innfall.Strandtur:
-//			{
-//				sintTweetInnfall = true;
-//				break;
-//			}
-//		case Innfall.Solo:
-//			{
-//				gladTweetInnfall = true;
-//				break;
-//			}
-//		case Innfall.Nothing:
-//			{
-//				drikkeInnfall = true;
-//				break;
-//			}
-//		case Innfall.Score:
-//			{
-//				scoreInnfall = true;
-//				break;
-//			}
-//		case Innfall.Strandtur:
-//			{
-//				dusjeInnfall = true;
-//				break;
-//			}
-//		case Innfall.Solo:
-//			{
-//				spiseInnfall = true;
-//				break;
-//			}
-//		case Innfall.Nothing:
-//			{
-//				danseInnfall = true;
-//				break;
-//			}
-//		case Innfall.Øve:
-//			{
-//				oveInnfall = true;
-//				break;
-//			}
+		case Innfall.Solo:
+			{
+				soloInnfall = true;
+				break;
+			}
+		case Innfall.Lytte:
+			{
+				lytteInnfall = true;
+				break;
+			}
+		case Innfall.SintTweet:
+			{
+				sintTweetInnfall = true;
+				break;
+			}
+		case Innfall.GladTweet:
+			{
+				gladTweetInnfall = true;
+				break;
+			}
+		case Innfall.Drikke:
+			{
+				drikkeInnfall = true;
+				break;
+			}
+		case Innfall.Dusje:
+			{
+				dusjeInnfall = true;
+				break;
+			}
+		case Innfall.Spise:
+			{
+				spiseInnfall = true;
+				break;
+			}
+		case Innfall.Danse:
+			{
+				danseInnfall = true;
+				break;
+			}
+		case Innfall.Ove:
+			{
+				oveInnfall = true;
+				break;
+			}
 		case Innfall.Nothing:
 			{
 				break;
@@ -235,7 +232,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Jeg scorte!";
+			handlingGjennomfort = "Jeg scorte!";
 			WrapUp();
 		}
 	}
@@ -260,7 +257,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Nå har jeg sand i skoene.";
+			handlingGjennomfort = "Nå har jeg sand i skoene.";
 			WrapUp();
 		}
 	}
@@ -285,7 +282,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "I'm outta here!";
+			handlingGjennomfort = "I'm outta here!";
 			WrapUp();
 		}
 	}
@@ -295,7 +292,7 @@ public class Innfallsystemet : MonoBehaviour {
 		harInfall = true;
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
 		if (setActionCounter = false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().høreTid;
+			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().lytteTid;
 			setActionCounter = true;
 		}
 		if (!riktigPlass){
@@ -310,7 +307,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Jeg hørte på litt muzak.";
+			handlingGjennomfort = "Jeg hørte på litt muzak.";
 			WrapUp();
 		}
 	}
@@ -335,7 +332,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Det var godt å få fram!";
+			handlingGjennomfort = "Det var godt å få fram!";
 			WrapUp();
 		}
 	}
@@ -360,7 +357,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Jeg elsker å bli satt pris på selv.";
+			handlingGjennomfort = "Jeg elsker å bli satt pris på selv.";
 			WrapUp();
 		}
 	}
@@ -385,7 +382,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Yay drekking! Livet betyr mer nå!";
+			handlingGjennomfort = "Yay drekking! Livet betyr mer nå!";
 			WrapUp();
 		}
 	}
@@ -410,7 +407,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Er dette sånn jeg egentlig lukter?";
+			handlingGjennomfort = "Er dette sånn jeg egentlig lukter?";
 			WrapUp();
 		}
 	}
@@ -435,7 +432,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Nå er jeg mett!";
+			handlingGjennomfort = "Nå er jeg mett!";
 			WrapUp();
 		}
 	}
@@ -460,7 +457,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomført = "Det var godt å få fram!";
+			handlingGjennomfort = "Det var godt å få fram!";
 			WrapUp();
 		}
 	}
@@ -478,7 +475,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 	void WrapUp(){
 		if (innfallComplete == true){
-			print (handlingGjennomført);
+			print (handlingGjennomfort);
 		}
 		harInfall = false;
 		scoreInnfall = false;

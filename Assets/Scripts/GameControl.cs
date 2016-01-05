@@ -10,8 +10,8 @@ public class GameControl : MonoBehaviour {
 	//Tid innfall tar
 	public float scoreTid = 3;
 	public float strandTid = 3;
-	public float øveTid = 3;
-	public float høreTid = 3;
+	public float oveTid = 3;
+	public float lytteTid = 3;
 	public float soloTid = 3;
 	public float tweeteTid = 3;
 	public float drikkeTid = 3;

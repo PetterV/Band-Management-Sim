@@ -1563,6 +1563,67 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124218560}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &134487124 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: fe32ce89f99911a478ea9e6736294382, type: 2}
+  m_PrefabInternal: {fileID: 1685011851}
+--- !u!114 &134487125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134487124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdeae736555446a18939a30ad25c0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  innfallsTall: 0
+  harInfall: 0
+  target: {fileID: 0}
+  riktigPlass: 0
+  actionCounter: 0
+  success: 0
+  handlingGjennomfort: 
+--- !u!114 &134487126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134487124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8910e668f80784c928e37dfa4320ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moving: 1
+  moveTiming: 300
+  moveTimingStartValue: 300
+  speed: 5
+  waypointToMoveTo: {fileID: 0}
+  stairs: []
+  startFloor: 0
+--- !u!114 &134487127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134487124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd8eafb6ec9ec4889032e69e037eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  role: 0
+  skill: 0
+  active: 0
+  dead: 0
+  GenMat1: {fileID: 0}
+  instantiatedGenMat: {fileID: 0}
+  "myMedgj\xF8rlighet": 0
+  fikkKjeft: 0
+  myHappiness: 0
+  happinessImprovementTimerStart: 0
 --- !u!1 &136462048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,18 +2239,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   stairs: []
-  scoreTid: 100
-  strandTid: 100
-  "\xF8veTid": 100
-  "h\xF8reTid": 100
-  soloTid: 100
-  tweeteTid: 100
-  drikkeTid: 100
-  dusjeTid: 100
-  bajsTid: 100
-  spiseTid: 100
-  danceTid: 100
-  oppkastTid: 100
+  scoreTid: 3
+  strandTid: 3
+  oveTid: 3
+  lytteTid: 3
+  soloTid: 3
+  tweeteTid: 3
+  drikkeTid: 3
+  dusjeTid: 3
+  bajsTid: 3
+  spiseTid: 3
+  danceTid: 3
+  oppkastTid: 3
 --- !u!4 &190257653
 Transform:
   m_ObjectHideFlags: 0
@@ -2539,6 +2600,33 @@ Transform:
   - {fileID: 1463063185}
   m_Father: {fileID: 582106678}
   m_RootOrder: 21
+--- !u!1 &233053065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 233053066}
+  m_Layer: 0
+  m_Name: ScoreSted
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &233053066
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233053065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
 --- !u!1001 &236507685
 Prefab:
   m_ObjectHideFlags: 0
@@ -6653,6 +6741,67 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 86bf69abb4de05c40853f0226d962f8f, type: 3}
   m_PrefabInternal: {fileID: 1075022220}
+--- !u!1 &725827699 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 3386efbe8e8a9664bbf5138fd2748628, type: 2}
+  m_PrefabInternal: {fileID: 1466646536}
+--- !u!114 &725827700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725827699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdeae736555446a18939a30ad25c0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  innfallsTall: 0
+  harInfall: 0
+  target: {fileID: 0}
+  riktigPlass: 0
+  actionCounter: 0
+  success: 0
+  handlingGjennomfort: 
+--- !u!114 &725827701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725827699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8910e668f80784c928e37dfa4320ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moving: 1
+  moveTiming: 300
+  moveTimingStartValue: 300
+  speed: 5
+  waypointToMoveTo: {fileID: 0}
+  stairs: []
+  startFloor: 0
+--- !u!114 &725827702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725827699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd8eafb6ec9ec4889032e69e037eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  role: 0
+  skill: 0
+  active: 0
+  dead: 0
+  GenMat1: {fileID: 0}
+  instantiatedGenMat: {fileID: 0}
+  "myMedgj\xF8rlighet": 0
+  fikkKjeft: 0
+  myHappiness: 0
+  happinessImprovementTimerStart: 0
 --- !u!1 &726270054
 GameObject:
   m_ObjectHideFlags: 0
@@ -6853,6 +7002,67 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733231706}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &733424109 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: 973da52f37faff44fbaa2270c9c5ea90, type: 2}
+  m_PrefabInternal: {fileID: 1107830899}
+--- !u!114 &733424110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733424109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdeae736555446a18939a30ad25c0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  innfallsTall: 0
+  harInfall: 0
+  target: {fileID: 0}
+  riktigPlass: 0
+  actionCounter: 0
+  success: 0
+  handlingGjennomfort: 
+--- !u!114 &733424111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733424109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8910e668f80784c928e37dfa4320ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moving: 1
+  moveTiming: 300
+  moveTimingStartValue: 300
+  speed: 5
+  waypointToMoveTo: {fileID: 0}
+  stairs: []
+  startFloor: 1
+--- !u!114 &733424112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733424109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd8eafb6ec9ec4889032e69e037eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  role: 0
+  skill: 0
+  active: 0
+  dead: 0
+  GenMat1: {fileID: 0}
+  instantiatedGenMat: {fileID: 0}
+  "myMedgj\xF8rlighet": 0
+  fikkKjeft: 0
+  myHappiness: 0
+  happinessImprovementTimerStart: 0
 --- !u!1 &738627756
 GameObject:
   m_ObjectHideFlags: 0
@@ -8003,6 +8213,67 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 801918709}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &805535044 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100066, guid: a55a5eaeb8f927a449967b5a27fd8e03, type: 2}
+  m_PrefabInternal: {fileID: 655181558}
+--- !u!114 &805535045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805535044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdeae736555446a18939a30ad25c0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  innfallsTall: 0
+  harInfall: 0
+  target: {fileID: 0}
+  riktigPlass: 0
+  actionCounter: 0
+  success: 0
+  handlingGjennomfort: 
+--- !u!114 &805535046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805535044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8910e668f80784c928e37dfa4320ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moving: 1
+  moveTiming: 300
+  moveTimingStartValue: 300
+  speed: 5
+  waypointToMoveTo: {fileID: 0}
+  stairs: []
+  startFloor: 4
+--- !u!114 &805535047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805535044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd8eafb6ec9ec4889032e69e037eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  role: 0
+  skill: 0
+  active: 0
+  dead: 0
+  GenMat1: {fileID: 0}
+  instantiatedGenMat: {fileID: 0}
+  "myMedgj\xF8rlighet": 0
+  fikkKjeft: 0
+  myHappiness: 0
+  happinessImprovementTimerStart: 0
 --- !u!1 &807078421
 GameObject:
   m_ObjectHideFlags: 0
@@ -10575,6 +10846,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 13314181}
   m_RootOrder: 7
+--- !u!1 &1085349576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1085349577}
+  m_Layer: 0
+  m_Name: StrandSted
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085349577
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1085349576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
 --- !u!1 &1100330396
 GameObject:
   m_ObjectHideFlags: 0
@@ -14233,6 +14531,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9dbe7c8fa056a04b955f20e29294b7c, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1458657568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1458657569}
+  m_Layer: 0
+  m_Name: DanseSted
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1458657569
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458657568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
 --- !u!1 &1463063184
 GameObject:
   m_ObjectHideFlags: 0
@@ -17916,6 +18241,33 @@ Transform:
   - {fileID: 945783298}
   m_Father: {fileID: 1789670323}
   m_RootOrder: 0
+--- !u!1 &1771347609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1771347610}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771347610
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1771347609}
+  m_LocalRotation: {x: 0, y: -0.707106, z: 0, w: 0.7071076}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
 --- !u!4 &1778710312 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 86bf69abb4de05c40853f0226d962f8f, type: 3}
@@ -19618,6 +19970,33 @@ Transform:
   - {fileID: 1583720367}
   m_Father: {fileID: 562519541}
   m_RootOrder: 1
+--- !u!1 &1913813303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1913813304}
+  m_Layer: 0
+  m_Name: Lyttested
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913813304
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1913813303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80.35449, y: 20.297852, z: 4.03125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
 --- !u!1001 &1914928657
 Prefab:
   m_ObjectHideFlags: 0
