@@ -11,6 +11,7 @@ TagManager:
   - Waypoint
   - CameraTarget
   - GeneticMaterial
+  - House 1
   layers:
   - Default
   - TransparentFX
