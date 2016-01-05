@@ -45,7 +45,7 @@ public class BandMemberMoving : MonoBehaviour {
 	void GoToFloor(int targetFloor){
 		float step = speed * Time.deltaTime;
 		Stairs nearestStair = GetNearestStair();
-		Vector3 stairLocation = nearestStair.gameObject.transform.position;
+		Vector3 stairLocation = Vector3(nearestStair.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
 		Vector3 stepTowardsStairs = Vector3.MoveTowards (this.transform.position, stairLocation, step);
 		if (stairLocation == stepTowardsStairs) {
 			TakeStairsTo (targetFloor, nearestStair);
@@ -57,7 +57,7 @@ public class BandMemberMoving : MonoBehaviour {
 
 	void WalkToWayPoint(Waypoint wp){
 		float step = speed * Time.deltaTime;
-		Vector3 wpLocation = wp.gameObject.transform.position;
+		Vector3 wpLocation = Vector3(wp.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
 		Vector3 stepTowardsWp = Vector3.MoveTowards (this.transform.position, wpLocation, step);
 		if (wpLocation == stepTowardsWp) {
 			this.waypointToMoveTo = null;
