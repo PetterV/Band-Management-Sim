@@ -15,7 +15,7 @@ public class BandMemberMoving : MonoBehaviour {
 	public GameObject[] stairs;
 	private float moveValue;
 	public int startFloor = 0;
-	private int currentFloor = 0;
+	public int currentFloor = 0;
 
 	void Start(){
 		currentFloor = startFloor;
@@ -26,6 +26,8 @@ public class BandMemberMoving : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(this.stairs.Length == 0)
+			this.stairs = this.gameControl.stairs;
 		if (moving == true) {
 			if (waypointToMoveTo == null) {
 				//x% sjanse for å bevege, x% for å stå stille - skal bli kontrollert av innfall
@@ -47,6 +49,10 @@ public class BandMemberMoving : MonoBehaviour {
 	void GoToFloor(int targetFloor){
 		float step = speed * Time.deltaTime;
 		Stairs nearestStair = GetNearestStair();
+		if(nearestStair == null){
+			print("En trapp er tagga 'Stairs' uten aa ha scriptet Stairs paa seg. Fiks!!!");
+			return;
+		}
 		Vector3 stairLocation = new Vector3(nearestStair.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
 		Vector3 stepTowardsStairs = Vector3.MoveTowards (this.transform.position, stairLocation, step);
 		if (stairLocation == stepTowardsStairs) {
@@ -75,6 +81,8 @@ public class BandMemberMoving : MonoBehaviour {
 		Stairs tempClosest = null;
 		foreach (GameObject go in this.stairs) {
 			Stairs possibleClosest = go.GetComponent<Stairs> ();
+			if(possibleClosest == null)
+				return null;
 			if (possibleClosest.floor == this.currentFloor) {
 				if (tempClosest == null)
 					tempClosest = possibleClosest;

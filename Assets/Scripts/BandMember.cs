@@ -11,6 +11,7 @@ public class BandMember : MonoBehaviour{
 	public int skill;
 	public bool active = true;
 	public bool dead = false;
+	public bool beingCarried = false;
 
 	//Genetic material
 	public GameObject GenMat1;
@@ -52,6 +53,9 @@ public class BandMember : MonoBehaviour{
 		if (active == true && Input.GetKeyDown("g")){
 			LeaveGenetics();
 		}
+		if (beingCarried == true){
+			this.transform.position = GameObject.Find("Player").transform.position;	
+		}
 	}
 
 
@@ -60,7 +64,8 @@ public class BandMember : MonoBehaviour{
 	public void Dying (){
 		print ("I'm dying!");
         dead = true;
-		Destroy(gameObject);
+		Vector3 deadRot = new Vector3(-90, 0, 0);
+		transform.Rotate(deadRot, Space.Self);
 	}
 
 	void LeaveGenetics (){

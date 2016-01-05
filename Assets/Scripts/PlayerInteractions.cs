@@ -19,9 +19,17 @@ public class PlayerInteractions : MonoBehaviour {
 	void Update () {
 		//Går nedover lista i prioritert rekkefølge for å interacte 
 		if (Input.GetKeyUp("e")){
-			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<BandMember>().active == true){
+			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<BandMember>().active == true && currentBandMember.GetComponent<BandMember>().dead == false){
 				print ("Don't do that!");
 				currentBandMember.GetComponent<BandMember>().Kjeft();
+			}
+			else if(bandCollision == true && currentBandMember.GetComponent<BandMember>().dead == true && currentBandMember.GetComponent<BandMember>().beingCarried == false ){
+				print ("Carrying dead body");
+				currentBandMember.GetComponent<BandMember>().beingCarried = true;
+			}
+			else if (bandCollision == true && currentBandMember.GetComponent<BandMember>().beingCarried == true){
+				print ("No longer carrying dead body");
+				currentBandMember.GetComponent<BandMember>().beingCarried = false;
 			}
 			else if(bandCollision == true && currentBandMember.GetComponent<BandMember>().active == false){
 				currentBandMember.GetComponent<BandMember>().active = true;
@@ -65,6 +73,17 @@ public class PlayerInteractions : MonoBehaviour {
 			currentCloneMachine = coll.gameObject;
 		}
 		print ("Hanging out with" + coll.gameObject.tag);
+	}
+
+	//Var lagd for BandMember
+	void OnTriggerStay(Collider coll){
+		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space")){
+			if (currentBandMember.GetComponent<BandMember>().dead == false){
+				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
+				currentBandMember.GetComponent<BandMember>().Dying();
+				GetComponent<AudioSource>().Play();
+			}
+		}
 	}
 
 	void OnTriggerExit (Collider coll){

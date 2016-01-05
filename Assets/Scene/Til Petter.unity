@@ -1603,6 +1603,7 @@ MonoBehaviour:
   waypointToMoveTo: {fileID: 0}
   stairs: []
   startFloor: 0
+  currentFloor: 0
 --- !u!114 &134487127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,12 +1619,25 @@ MonoBehaviour:
   skill: 0
   active: 0
   dead: 0
+  beingCarried: 0
   GenMat1: {fileID: 0}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 0
   fikkKjeft: 0
   myHappiness: 0
   happinessImprovementTimerStart: 0
+--- !u!65 &134487128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134487124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.2, y: 2.75, z: 1}
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!1 &136462048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,7 +2235,7 @@ GameObject:
   - 114: {fileID: 190257652}
   m_Layer: 0
   m_Name: GameControl
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4830,7 +4844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6dc72981a19224a84b5a9f6576d074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: 0.6
+  dampTime: 0.1
   target: {fileID: 10188600}
   speed: 1
   larget: {fileID: 10188599}
@@ -5200,6 +5214,92 @@ Rigidbody:
 Transform:
   m_PrefabParentObject: {fileID: 400066, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
   m_PrefabInternal: {fileID: 1878195970}
+--- !u!65 &492113377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492113371}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &492113378
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492113371}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d9fa94e4e40032e48b863cb94ace80a1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &497210118
 Prefab:
   m_ObjectHideFlags: 0
@@ -6548,6 +6648,10 @@ Prefab:
       propertyPath: m_Name
       value: Bassist
       objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: a55a5eaeb8f927a449967b5a27fd8e03, type: 2}
+      propertyPath: m_TagString
+      value: BandMember
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a55a5eaeb8f927a449967b5a27fd8e03, type: 2}
   m_IsPrefabParent: 0
@@ -6794,6 +6898,7 @@ MonoBehaviour:
   waypointToMoveTo: {fileID: 0}
   stairs: []
   startFloor: 0
+  currentFloor: 0
 --- !u!114 &725827702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6809,12 +6914,25 @@ MonoBehaviour:
   skill: 0
   active: 0
   dead: 0
+  beingCarried: 0
   GenMat1: {fileID: 0}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 0
   fikkKjeft: 0
   myHappiness: 0
   happinessImprovementTimerStart: 0
+--- !u!65 &725827703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725827699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.2, y: 2.75, z: 1}
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!1 &726270054
 GameObject:
   m_ObjectHideFlags: 0
@@ -7055,6 +7173,7 @@ MonoBehaviour:
   waypointToMoveTo: {fileID: 0}
   stairs: []
   startFloor: 1
+  currentFloor: 0
 --- !u!114 &733424112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7070,12 +7189,25 @@ MonoBehaviour:
   skill: 0
   active: 0
   dead: 0
+  beingCarried: 0
   GenMat1: {fileID: 0}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 0
   fikkKjeft: 0
   myHappiness: 0
   happinessImprovementTimerStart: 0
+--- !u!65 &733424113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733424109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.2, y: 2.75, z: 1}
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!1 &738627756
 GameObject:
   m_ObjectHideFlags: 0
@@ -8266,6 +8398,7 @@ MonoBehaviour:
   waypointToMoveTo: {fileID: 0}
   stairs: []
   startFloor: 4
+  currentFloor: 0
 --- !u!114 &805535047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8281,12 +8414,25 @@ MonoBehaviour:
   skill: 0
   active: 0
   dead: 0
+  beingCarried: 0
   GenMat1: {fileID: 0}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 0
   fikkKjeft: 0
   myHappiness: 0
   happinessImprovementTimerStart: 0
+--- !u!65 &805535048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805535044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.2, y: 2.75, z: 1}
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!1 &807078421
 GameObject:
   m_ObjectHideFlags: 0
@@ -8451,7 +8597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &813349293
 Transform:
   m_ObjectHideFlags: 0
@@ -10058,7 +10204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de00dc8821066814f9cd431b3583af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 0
+  floor: -1
   floorDifference: 0
   upExit: {fileID: 883837934}
   downExit: {fileID: 0}
@@ -11086,6 +11232,10 @@ Prefab:
     - target: {fileID: 400066, guid: 973da52f37faff44fbaa2270c9c5ea90, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: 973da52f37faff44fbaa2270c9c5ea90, type: 2}
+      propertyPath: m_TagString
+      value: BandMember
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973da52f37faff44fbaa2270c9c5ea90, type: 2}
@@ -14794,6 +14944,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3386efbe8e8a9664bbf5138fd2748628, type: 2}
+      propertyPath: m_TagString
+      value: BandMember
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3386efbe8e8a9664bbf5138fd2748628, type: 2}
   m_IsPrefabParent: 0
@@ -15255,6 +15409,7 @@ GameObject:
   - 33: {fileID: 1529253347}
   - 65: {fileID: 1529253346}
   - 23: {fileID: 1529253345}
+  - 82: {fileID: 1529253348}
   m_Layer: 0
   m_Name: Floors (6)
   m_TagString: Untagged
@@ -15319,6 +15474,80 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529253343}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &1529253348
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529253343}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1537502607
 GameObject:
   m_ObjectHideFlags: 0
@@ -17491,6 +17720,10 @@ Prefab:
       propertyPath: m_Name
       value: Gitarist
       objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: fe32ce89f99911a478ea9e6736294382, type: 2}
+      propertyPath: m_TagString
+      value: BandMember
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe32ce89f99911a478ea9e6736294382, type: 2}
   m_IsPrefabParent: 0
@@ -18132,7 +18365,7 @@ GameObject:
   - 23: {fileID: 1755533515}
   m_Layer: 8
   m_Name: "Kjellerd\xF8r"
-  m_TagString: Stairs
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18310,7 +18543,7 @@ Transform:
   - {fileID: 1458657569}
   - {fileID: 1913813304}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 9
 --- !u!4 &1778710312 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 86bf69abb4de05c40853f0226d962f8f, type: 3}
