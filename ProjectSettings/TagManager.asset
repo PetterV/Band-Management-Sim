@@ -12,6 +12,7 @@ TagManager:
   - CameraTarget
   - GeneticMaterial
   - House 1
+  - Wall
   layers:
   - Default
   - TransparentFX

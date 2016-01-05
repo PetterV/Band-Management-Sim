@@ -16,12 +16,14 @@ public class BandMemberMoving : MonoBehaviour {
 	private float moveValue;
 	public int startFloor = 0;
 	public int currentFloor = 0;
+	private Animator animator;
 
 	void Start(){
 		currentFloor = startFloor;
 		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
 		this.waypoints = this.gameControl.waypoints;
 		this.stairs = this.gameControl.stairs;
+		animator = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -33,6 +35,7 @@ public class BandMemberMoving : MonoBehaviour {
 				//x% sjanse for å bevege, x% for å stå stille - skal bli kontrollert av innfall
 			} else {
 				MoveToWayPoint (waypointToMoveTo);
+				animator.SetInteger("Walking", 1);
 			}
 		}
 	}
@@ -70,6 +73,7 @@ public class BandMemberMoving : MonoBehaviour {
 		if (wpLocation == stepTowardsWp) {
 			this.waypointToMoveTo = null;
 			print ("Arrived at waypoint!");
+			animator.SetInteger("Walking", 0);
 			//Lagt til innfall
 			GetComponentInParent<Innfallsystemet>().riktigPlass = true;
 		} else {

@@ -12,6 +12,7 @@ public class Innfallsystemet : MonoBehaviour {
 	public float actionCounter;
 	public bool success = false;
 	public string handlingGjennomfort;
+	private Animator animator;
 
 
 	//Innfall blir triggered av dette.////						V Innfall her V
@@ -40,6 +41,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 	void Start (){
 		InitializeInnfall();
+		animator = GetComponent<Animator>();
 	}
 
 	private void InitializeInnfall()
@@ -190,11 +192,13 @@ public class Innfallsystemet : MonoBehaviour {
 		case Innfall.GoRight:
 			{
 				innfallGoRight = true;
+				animator.SetInteger("Walking", 1);
 				break;
 			}
 		case Innfall.GoLeft:
 			{
 				innfallGoLeft = true;
+				animator.SetInteger("Walking", 1);
 				break;
 			}
 		case Innfall.Nothing:
@@ -242,7 +246,7 @@ public class Innfallsystemet : MonoBehaviour {
 			target = GameObject.Find("ScoreSted");
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
-		else if (riktigPlass = true){
+		else if (riktigPlass == true){
 			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			if (actionCounter <= 0){
@@ -480,34 +484,34 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void GoRight (){
-		if (goingThere = false){
-			float walkDistance = UnityEngine.Random.Range(1, 5);
-			moveTarget = this.transform.position.x + walkDistance;
-			moveThisStep = this.transform.position.x + 1;
+		if (goingThere == false){
+			float walkDistance = UnityEngine.Random.Range(0, 3);
+			moveTarget = transform.position.x + walkDistance;
 			goingThere = true;
 		}
-		if (this.transform.position.x < moveTarget){
-			print ("Going there!");
+		if (transform.position.x < moveTarget){
+			moveThisStep = transform.position.x + 0.1f;
+			print ("Going right!");
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
 		}
-		if (this.transform.position.x >= moveTarget){
+		if (transform.position.x >= moveTarget){
 			print ("Got there!");
 			WrapUp();
 		}
 	}
 
 	void GoLeft (){
-		if (goingThere = false){
-			float walkDistance = UnityEngine.Random.Range(1, 5);
-			moveTarget = this.transform.position.x - walkDistance;
-			moveThisStep = this.transform.position.x + 1;
+		if (goingThere == false){
+			float walkDistance = UnityEngine.Random.Range(0, 3);
+			moveTarget = transform.position.x - walkDistance;
 			goingThere = true;
 		}
-		if (this.transform.position.x > moveTarget){
-			print ("Going there!");
+		if (transform.position.x > moveTarget){
+			moveThisStep = transform.position.x - 0.1f;
+			print ("Going left!");
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
 		}
-		if (this.transform.position.x <= moveTarget){
+		if (transform.position.x <= moveTarget){
 			print ("Got there");
 			WrapUp();
 		}
@@ -523,8 +527,14 @@ public class Innfallsystemet : MonoBehaviour {
 	/// Ferdig med innfallshandlinger/////////////////////////////////////////////////////////////////////////
 	/// </summary>
 
+	void OnTriggerEnter (Collider coll){
+		if (coll.gameObject.tag == "Wall"){
+			WrapUp();
+		}
+	}
 
 	void WrapUp(){
+		print ("Wrapping up!");
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}
@@ -544,5 +554,6 @@ public class Innfallsystemet : MonoBehaviour {
 		goingThere = false;
 		innfallGoLeft = false;
 		innfallGoRight = false;
+		animator.SetInteger("Walking", 0);
 	}
 }
