@@ -70,8 +70,8 @@ public class BandMember : MonoBehaviour{
 
 	void LeaveGenetics (){
 		Vector3 spawnPosition = this.transform.position;
-		Quaternion spawnRotation = this.transform.rotation;
-		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, spawnRotation);
+		//Quaternion spawnRotation = this.transform.rotation;
+		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, GenMat1.transform.rotation);
 		int skillvariation = UnityEngine.Random.Range(-10, 10);
 		int skillTransfer = skill + skillvariation;
 		int medgjørligvariation = UnityEngine.Random.Range(-20, 40);
