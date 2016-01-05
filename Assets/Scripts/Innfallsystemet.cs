@@ -219,7 +219,7 @@ public class Innfallsystemet : MonoBehaviour {
 	void Score (){
 		harInfall = true;
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter = false){
+		if (setActionCounter == false){
 			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().scoreTid;
 			setActionCounter = true;
 		}
