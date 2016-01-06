@@ -7,10 +7,13 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool genMatCollision = false;
 	public bool cloneMachineCollision = false;
 	public bool happinessCollision = false;
+	public bool computerCollision = false;
 	public GameObject currentBandMember;
 	public GameObject currentGenMat;
 	public GameObject currentCloneMachine;
 	public GameObject currentHappinessObject;
+	public GameObject computer;
+	public GameObject computerCanvas;
 	public BandMember.Role bringingRole;
 	public int bringingSkill;
 	public int bringingMedgjørlighet;
@@ -18,9 +21,13 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool carryingHappiness = false;
 	public bool carryingBody = false;
 	public bool carryingAny = false;
+	public bool computerActive = false;
 	public int happinessToGive;
 
-	
+	void Start (){
+		computer = GameObject.Find("Computer");
+		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+	}
 	// Update is called once per frame
 	void Update () {
 		if (carryingGenMat == true || carryingBody == true || carryingHappiness == true){
@@ -38,7 +45,7 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 		//Går nedover lista i prioritert rekkefølge for å interacte 
 		if (Input.GetKeyDown("e")){
-			if (bandCollision == true){
+			if (bandCollision == true && happinessCollision == false){
 				if(currentBandMember.GetComponent<BandMember>().dead == true && currentBandMember.GetComponent<BandMember>().beingCarried == false && carryingAny == false ){
 					print ("Carrying dead body");
 					currentBandMember.GetComponent<BandMember>().beingCarried = true;
@@ -92,6 +99,22 @@ public class PlayerInteractions : MonoBehaviour {
 					carryingGenMat = false;
 				}
 			}
+			else if (computerCollision == true){
+				if (computerActive == false){
+					print ("Use computer");
+					computerActive = true;
+				}
+				else if (computerActive == true){
+					print ("No longer using computer");
+					computerActive = false;
+				}
+			}
+		}
+		if (computerActive == true){
+			computerCanvas.active = true;
+		}
+		if (computerActive == false){
+			computerCanvas.active = false;
 		}
 	}
 
@@ -111,6 +134,9 @@ public class PlayerInteractions : MonoBehaviour {
 		if (coll.gameObject.tag == "HappinessObject"){
 			happinessCollision = true;
 			currentHappinessObject = coll.gameObject;
+		}
+		if (coll.gameObject.tag == "Computer"){
+			computerCollision = true;
 		}
 		print ("Hanging out with" + coll.gameObject.tag);
 	}
@@ -135,6 +161,13 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 		if (coll.gameObject.tag == "CloneMachine"){
 			cloneMachineCollision = false;
+		}
+		if (coll.gameObject.tag == "HappinessObject"){
+			happinessCollision = false;
+		}
+		if (coll.gameObject.tag == "Computer"){
+			computerCollision = false;
+			computerActive = false;
 		}
 		print ("No longer hanging out with" + coll.gameObject.tag);
 	}

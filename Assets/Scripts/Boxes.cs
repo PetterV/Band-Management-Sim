@@ -42,7 +42,7 @@ public class Boxes : MonoBehaviour {
 		}
 		if (displayVokalistBoks == true){
 			screenPos = camera.WorldToScreenPoint(vokalist.transform.position);
-			GUI.Label(new Rect(screenPos.x - 50, screenPos.y + 190, Screen.width / 4, 40), vokalistTextToDisplay);
+			GUI.Label(new Rect(screenPos.x - 50, screenPos.y + 30, Screen.width / 4, 40), vokalistTextToDisplay);
 			print ("Boks boks boks boks");
 		}
 		if (displayBassistBoks == true){
