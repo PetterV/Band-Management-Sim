@@ -15,7 +15,7 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject computer;
 	public GameObject computerCanvas;
 	public BandMember.Role bringingRole;
-	public int bringingSkill;
+	public float bringingSkill;
 	public int bringingMedgjørlighet;
 	public bool carryingGenMat = false;
 	public bool carryingHappiness = false;
