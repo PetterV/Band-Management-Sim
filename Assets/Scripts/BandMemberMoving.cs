@@ -17,25 +17,18 @@ public class BandMemberMoving : MonoBehaviour {
 	private GameObject[] stairs;
 	private float moveValue;
 	public int startFloor = 0;
-<<<<<<< HEAD
-	public int currentFloor = 0;
 	private Animator animator;
-=======
 	public int startHouse = 0;
 	private int currentFloor;
 	private int currentHouse;
->>>>>>> origin/master
 
 	void Start(){
 		currentFloor = startFloor;
 		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
 		this.waypoints = this.gameControl.waypoints;
 		this.stairs = this.gameControl.stairs;
-<<<<<<< HEAD
 		animator = GetComponent<Animator>();
-=======
 		this.currentHouse = startHouse;
->>>>>>> origin/master
 	}
 
 	// Update is called once per frame

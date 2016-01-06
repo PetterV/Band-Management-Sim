@@ -6,37 +6,73 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool bandCollision = false;
 	public bool genMatCollision = false;
 	public bool cloneMachineCollision = false;
+	public bool happinessCollision = false;
 	public GameObject currentBandMember;
 	public GameObject currentGenMat;
 	public GameObject currentCloneMachine;
+	public GameObject currentHappinessObject;
 	public BandMember.Role bringingRole;
 	public int bringingSkill;
 	public int bringingMedgjørlighet;
 	public bool carryingGenMat = false;
+	public bool carryingHappiness = false;
+	public bool carryingBody = false;
+	public bool carryingAny = false;
+	public int happinessToGive;
 
 	
 	// Update is called once per frame
 	void Update () {
-		//Går nedover lista i prioritert rekkefølge for å interacte 
-		if (Input.GetKeyUp("e")){
+		if (carryingGenMat == true || carryingBody == true || carryingHappiness == true){
+			carryingAny = true;
+		}
+		if (carryingGenMat == false && carryingBody == false && carryingHappiness == false){
+			carryingAny = false;
+		}
+		//Gi kjeft med Q
+		if (Input.GetKeyUp("q")){
 			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<BandMember>().active == true && currentBandMember.GetComponent<BandMember>().dead == false){
 				print ("Don't do that!");
 				currentBandMember.GetComponent<BandMember>().Kjeft();
 			}
-			else if(bandCollision == true && currentBandMember.GetComponent<BandMember>().dead == true && currentBandMember.GetComponent<BandMember>().beingCarried == false ){
-				print ("Carrying dead body");
-				currentBandMember.GetComponent<BandMember>().beingCarried = true;
+		}
+		//Går nedover lista i prioritert rekkefølge for å interacte 
+		if (Input.GetKeyDown("e")){
+			if (bandCollision == true){
+				if(currentBandMember.GetComponent<BandMember>().dead == true && currentBandMember.GetComponent<BandMember>().beingCarried == false && carryingAny == false ){
+					print ("Carrying dead body");
+					currentBandMember.GetComponent<BandMember>().beingCarried = true;
+					carryingBody = true;
+				}
+				else if (currentBandMember.GetComponent<BandMember>().beingCarried == true){
+					print ("No longer carrying dead body");
+					currentBandMember.GetComponent<BandMember>().beingCarried = false;
+					carryingBody = false;
+				}
+				else if(currentBandMember.GetComponent<BandMember>().active == false){
+					currentBandMember.GetComponent<BandMember>().active = true;
+					print ("I'm active now!");
+				}
 			}
-			else if (bandCollision == true && currentBandMember.GetComponent<BandMember>().beingCarried == true){
-				print ("No longer carrying dead body");
-				currentBandMember.GetComponent<BandMember>().beingCarried = false;
-			}
-			else if(bandCollision == true && currentBandMember.GetComponent<BandMember>().active == false){
-				currentBandMember.GetComponent<BandMember>().active = true;
-				print ("I'm active now!");
+			else if (happinessCollision == true){
+				if (carryingAny == false){
+					print ("This will make someone happy");
+					happinessToGive = currentHappinessObject.GetComponent<HappinessObject>().happinessGained;
+					currentHappinessObject.GetComponent<HappinessObject>().happinessBeingCarried = true;
+				}
+				else if (carryingHappiness == true && bandCollision == false){
+					print ("Who needs to make someone happy.");
+					currentHappinessObject.GetComponent<HappinessObject>().happinessBeingCarried = false;
+					carryingHappiness = false;
+				}
+				else if (carryingHappiness == true && bandCollision == true){
+					currentBandMember.GetComponent<BandMember>().HappinessGain();
+					carryingHappiness = false;
+					Destroy(currentHappinessObject);
+				}
 			}
 			else if (genMatCollision == true){
-				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false){
+				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false && carryingBody == false && carryingHappiness == false && carryingGenMat == false){
 				print ("Yuck!");
 				currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = true;
 				bringingRole = currentGenMat.GetComponent<GenetiskMateriale>().roleForCloning;
@@ -72,10 +108,14 @@ public class PlayerInteractions : MonoBehaviour {
 			cloneMachineCollision = true;
 			currentCloneMachine = coll.gameObject;
 		}
+		if (coll.gameObject.tag == "HappinessObject"){
+			happinessCollision = true;
+			currentHappinessObject = coll.gameObject;
+		}
 		print ("Hanging out with" + coll.gameObject.tag);
 	}
 
-	//Var lagd for BandMember
+	//Var lagd for BandMember, er her nå. Håper ingenting har blitt ødelagt.
 	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space")){
 			if (currentBandMember.GetComponent<BandMember>().dead == false){

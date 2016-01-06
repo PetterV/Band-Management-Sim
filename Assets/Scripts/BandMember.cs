@@ -23,10 +23,11 @@ public class BandMember : MonoBehaviour{
 
 	//Happinessystem
 	public int myHappiness = 1;
-	private int happinessImprovementTimer = 3000;
+	private float happinessImprovementTimer = 60;
+	public int startHappinessTimer = 60;
+	public bool canImproveHappiness = true;
 	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
-	public int happinessImprovementTimerStart = 3000;
-	private int medgjørlighetReduksjon = 15;
+	public int medgjørlighetReduksjon = 15;
 
 	public BandMember (String name, int skill, Role role)
 	{
@@ -46,6 +47,7 @@ public class BandMember : MonoBehaviour{
     void Start ()
     {
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
+		happinessImprovementTimer = startHappinessTimer;
     }
 
 	// Update is called once per frame
@@ -55,6 +57,14 @@ public class BandMember : MonoBehaviour{
 		}
 		if (beingCarried == true){
 			this.transform.position = GameObject.Find("Player").transform.position;	
+		}
+
+		//Happiness - Vi har en greie som bare direkte feeder inn i myMedgjørlighet, og så har vi en separat greie som er nærmere det "ekte" systemet, som ikke brukes ennå
+		//Sørg for at man ikke kan øke Happiness ubegrenset:
+		float happinessTimerStep = 1f * Time.deltaTime;
+		happinessImprovementTimer = happinessImprovementTimer - happinessTimerStep;
+		if (happinessImprovementTimer < 0){
+			canImproveHappiness = true;
 		}
 	}
 
@@ -68,7 +78,13 @@ public class BandMember : MonoBehaviour{
 		transform.Rotate(deadRot, Space.Self);
 	}
 
-	void LeaveGenetics (){
+	public void HappinessGain (){
+		print ("Yay! Happiness!");
+		//Endre dette hvis man bruker "ordentlig" happiness
+		myMedgjørlighet = myMedgjørlighet + GameObject.Find("Player").GetComponent<PlayerInteractions>().happinessToGive;
+	} 
+
+	public void LeaveGenetics (){
 		Vector3 spawnPosition = this.transform.position;
 		//Quaternion spawnRotation = this.transform.rotation;
 		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, GenMat1.transform.rotation);

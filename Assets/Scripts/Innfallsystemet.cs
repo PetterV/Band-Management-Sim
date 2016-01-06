@@ -31,6 +31,9 @@ public class Innfallsystemet : MonoBehaviour {
 	private bool innfallGoLeft = false;
 	//Innfallstriggers over.									^ Innfall her ^
 
+	public string textToDisplay;
+
+
 	bool setActionCounter = false;
 	bool innfallComplete = false;
 	bool goingThere = false;
@@ -82,6 +85,9 @@ public class Innfallsystemet : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (harInfall == false){
+			textToDisplay = null;
+		}
 		if (Input.GetKeyDown("z")){
 			setActionCounter = false;
 			CheckInnfall();
@@ -94,6 +100,33 @@ public class Innfallsystemet : MonoBehaviour {
 		}
 		if (strandInnfall == true){
 			Strandtur();
+		}
+		if (soloInnfall == true){
+			Solokarriere();
+		}
+		if (lytteInnfall == true){
+			MusikkLytting();
+		}
+		if (sintTweetInnfall == true){
+			SintTweet();
+		}
+		if (gladTweetInnfall == true){
+			GladTweet();
+		}
+		if (drikkeInnfall == true){
+			Drikke();
+		}
+		if (dusjeInnfall == true){
+			Dusje();
+		}
+		if (spiseInnfall == true){
+			Spise();
+		}
+		if (danseInnfall == true){
+			SexyDance();
+		}
+		if (oveInnfall == true){
+			Ove();
 		}
 		if (innfallGoLeft == true){
 			GoLeft();
@@ -136,22 +169,26 @@ public class Innfallsystemet : MonoBehaviour {
 			{
 				scoreInnfall = true;
 				print ("I kveld scorer jeg!");
+				textToDisplay = "I kveld scorer jeg!";
 				break;
 			}
 		case Innfall.Strandtur:
 			{
 				strandInnfall = true;
 				print ("Jeg liker lange turer på stranden!");
+				textToDisplay = "I kveld scorer jeg!";
 				break;
 			}
 		case Innfall.Solo:
 			{
 				soloInnfall = true;
+				textToDisplay = "I kveld scorer jeg!";
 				break;
 			}
 		case Innfall.Lytte:
 			{
 				lytteInnfall = true;
+				textToDisplay = "I kveld scorer jeg!";
 				break;
 			}
 		case Innfall.SintTweet:
@@ -193,12 +230,14 @@ public class Innfallsystemet : MonoBehaviour {
 			{
 				innfallGoRight = true;
 				animator.SetInteger("Walking", 1);
+				textToDisplay = "Jeg går til høyre!";
 				break;
 			}
 		case Innfall.GoLeft:
 			{
 				innfallGoLeft = true;
 				animator.SetInteger("Walking", 1);
+				textToDisplay = "Jeg går til venstre!";
 				break;
 			}
 		case Innfall.Nothing:
@@ -483,6 +522,33 @@ public class Innfallsystemet : MonoBehaviour {
 		}
 	}
 
+	void Ove (){
+		print ("Nå skal jeg øve!");
+		harInfall = true;
+		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
+		if (setActionCounter == false){
+			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().oveTid;
+			setActionCounter = true;
+		}
+		if (!riktigPlass){
+			target = GameObject.Find("OveSted");
+			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
+		}
+		else if (riktigPlass){
+			float reduceCounter = 1f * Time.deltaTime;
+			actionCounter = actionCounter - reduceCounter;
+			if (actionCounter <= 0){
+				innfallComplete = true;
+			}
+		}
+		if (innfallComplete == true){
+			handlingGjennomfort = "Nå er jeg bedre!";
+			int skillIncrease = UnityEngine.Random.Range(1, 5);
+			GetComponentInParent<BandMember>().skill = GetComponentInParent<BandMember>().skill + skillIncrease; 
+			WrapUp();
+		}
+	}
+
 	void GoRight (){
 		if (goingThere == false){
 			float walkDistance = UnityEngine.Random.Range(0, 3);
@@ -526,12 +592,6 @@ public class Innfallsystemet : MonoBehaviour {
 	/// <summary>
 	/// Ferdig med innfallshandlinger/////////////////////////////////////////////////////////////////////////
 	/// </summary>
-
-	void OnTriggerEnter (Collider coll){
-		if (coll.gameObject.tag == "Wall"){
-			WrapUp();
-		}
-	}
 
 	void WrapUp(){
 		print ("Wrapping up!");
