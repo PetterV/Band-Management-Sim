@@ -353,9 +353,27 @@ GameObject:
   - 114: {fileID: 11444334}
   - 114: {fileID: 11402514}
   - 114: {fileID: 11448960}
+  - 114: {fileID: 11491134}
   m_Layer: 0
   m_Name: Bassist
   m_TagString: BandMember
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &173002
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22470802}
+  - 222: {fileID: 22292264}
+  - 114: {fileID: 11451244}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,6 +389,25 @@ GameObject:
   - 137: {fileID: 13773628}
   m_Layer: 0
   m_Name: mesh_Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &177378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22406246}
+  - 223: {fileID: 22325672}
+  - 114: {fileID: 11405572}
+  - 114: {fileID: 11473472}
+  - 114: {fileID: 11493342}
+  m_Layer: 0
+  m_Name: BassistCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -924,7 +961,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166260}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -0.30799866, y: 27.64, z: -2.475}
+  m_LocalPosition: {x: 72.4, y: 27.64, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 454440}
@@ -943,6 +980,7 @@ Transform:
   - {fileID: 429532}
   - {fileID: 429696}
   - {fileID: 449794}
+  - {fileID: 22406246}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &485688
@@ -1013,12 +1051,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving: 1
   moveTiming: 300
-  moveTimingStartValue: 300
   speed: 5
   waypointToMoveTo: {fileID: 0}
-  stairs: []
+  houseTransferFloors: 
   startFloor: 4
-  currentFloor: 0
+  startHouse: 0
+--- !u!114 &11405572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
 --- !u!114 &11444334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1037,6 +1095,7 @@ MonoBehaviour:
   actionCounter: 0
   success: 0
   handlingGjennomfort: 
+  textToDisplay: 
 --- !u!114 &11448960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,10 +1114,115 @@ MonoBehaviour:
   beingCarried: 0
   GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
   instantiatedGenMat: {fileID: 0}
-  "myMedgj\xF8rlighet": 0
+  "myMedgj\xF8rlighet": 99
   fikkKjeft: 0
   myHappiness: 0
-  happinessImprovementTimerStart: 0
+  startHappinessTimer: 0
+  canImproveHappiness: 0
+  "medgj\xF8rlighetReduksjon": 0
+--- !u!114 &11451244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &11473472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &11491134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7d4231f6ad54a6281b175c9f8d8571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1Threshold: 50
+  level2Threshold: 70
+  level3Threshold: 100
+  level1HappinessReduction: 0
+  level2HappinessReduction: 0
+  level3HappinessReduction: 0
+  level1SkillReduction: 0
+  level2SkillReduction: 0
+  level3SkillReduction: 0
+  addictionLevelBamse: 0
+  addictionLevelMedisin: 0
+  addictionLevelMat: 0
+  addictionLevelDrekke: 0
+  addictionCounterBamse: 0
+  addictionCounterMedisin: 0
+  addictionCounterMat: 0
+  addictionCounterDrekke: 0
+  addictionIncreaseBamse: 0
+  addictionIncreaseMedisin: 0
+  addictionIncreaseMat: 0
+  addictionIncreaseDrekke: 0
+  bamseCraving: 0
+  medisinCraving: 0
+  matCraving: 0
+  drekkeCraving: 0
+  bamseTimer1: 0
+  bamseTimer2: 0
+  bamseTimer3: 0
+  medisinTimer1: 0
+  medisinTimer2: 0
+  medisinTimer3: 0
+  matTimer1: 0
+  matTimer2: 0
+  matTimer3: 0
+  drekkeTimer1: 0
+  drekkeTimer2: 0
+  drekkeTimer3: 0
+  addictionReduction: 0
+--- !u!114 &11493342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f85577b74374e7dbb7e11ff3808ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &13709024
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1650,6 +1814,65 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.74465454, y: 0, z: 0.0019336343}
     m_Extent: {x: 0.037317872, y: 0.2772241, z: 0.30330455}
   m_DirtyAABB: 0
+--- !u!222 &22292264
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173002}
+--- !u!223 &22325672
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177378}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &22406246
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177378}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 22470802}
+  m_Father: {fileID: 485090}
+  m_RootOrder: 16
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.1, y: -0.1}
+  m_SizeDelta: {x: 9.68, y: 9.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &22470802
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22406246}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.91, y: 1.81}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
