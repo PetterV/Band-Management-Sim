@@ -661,8 +661,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133114}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.87545e-10, y: -0.000000010872221, z: -1.3322676e-17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.87545e-10, y: -0.5577, z: -1.3322676e-17}
+  m_LocalScale: {x: 1, y: 1.1952882, z: 1}
   m_Children: []
   m_Father: {fileID: 470670}
   m_RootOrder: 7
@@ -812,7 +812,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112732}
   m_LocalRotation: {x: 0, y: -0.7071063, z: 0, w: 0.70710725}
-  m_LocalPosition: {x: 95.9, y: 0.03999996, z: -2.5}
+  m_LocalPosition: {x: 22.319092, y: 0.00053596497, z: -2.5252078}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480000}
@@ -1155,6 +1155,8 @@ MonoBehaviour:
   houseTransferFloors: 
   startFloor: 0
   startHouse: 0
+  currentFloor: 0
+  currentHouse: 0
 --- !u!114 &11491938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1402,7 +1404,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 34c2d8b1b19253547badb55d82bb8103, type: 2}
+  - {fileID: 2100000, guid: 8363760121dc3ef45aea649c90101296, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

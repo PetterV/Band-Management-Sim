@@ -14,6 +14,9 @@ public class Innfallsystemet : MonoBehaviour {
 	public string handlingGjennomfort;
 	private Animator animator;
 
+	private bool tooCloseToLeftWall;
+	private bool tooCloseToRightWall;
+
 
 	//Innfall blir triggered av dette.////						V Innfall her V
 	private bool scoreInnfall = false;
@@ -43,6 +46,8 @@ public class Innfallsystemet : MonoBehaviour {
 	private int innfallSum = 0;
 
 	void Start (){
+		tooCloseToLeftWall = false;
+		tooCloseToRightWall = false;
 		InitializeInnfall();
 		animator = GetComponent<Animator>();
 	}
@@ -63,8 +68,8 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Dusje, 0 },
 			{Innfall.Danse, 0 },
 			{Innfall.Ove, 0 },
-			{Innfall.GoLeft, 1 },
-			{Innfall.GoRight, 1 },
+			{Innfall.GoLeft, 0 },
+			{Innfall.GoRight, 5 },
 			{Innfall.Nothing, 0 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
@@ -72,11 +77,7 @@ public class Innfallsystemet : MonoBehaviour {
 			innfallSum += entry.Value;
 		}
 	}
-
-
-
-
-
+		
 	//UPDATE LIGGGER HER
 	/// <summary>
 	/// 
@@ -89,9 +90,10 @@ public class Innfallsystemet : MonoBehaviour {
 			textToDisplay = null;
 		}
 		if (Input.GetKeyDown("z")){
-			setActionCounter = false;
-			CheckInnfall();
+			
 		}
+		setActionCounter = false;
+		CheckInnfall();
 		if (target == null){
 			
 		}
@@ -128,17 +130,37 @@ public class Innfallsystemet : MonoBehaviour {
 		if (oveInnfall == true){
 			Ove();
 		}
-		if (innfallGoLeft == true){
+		if (innfallGoLeft == true && !tooCloseToLeftWall){
 			GoLeft();
 		}
-		if (innfallGoRight == true){
+		if (innfallGoRight == true && !tooCloseToRightWall){
 			GoRight();
 		}
 	}
 
+	void OnTriggerStay(Collider colli)
+	{
+		if (colli.gameObject.tag == "Wall") {
+			if (innfallGoRight || innfallGoLeft) {
+				if (NextToLeftWall (colli)) {
+					this.tooCloseToLeftWall = true;
+				} else {
+					this.tooCloseToRightWall = true;
+				}
+			}
+		}
+	}
 
+	void OnTriggerExit(Collider coll){
+		if (coll.gameObject.tag == "Wall") {
+			this.tooCloseToLeftWall = false;
+			this.tooCloseToRightWall = false;
+		}
+	}
 
-
+	bool NextToLeftWall(Collider colli){
+		return colli.transform.position.x < this.transform.position.x;
+	}
 
 	/// <summary>
 	/// CHECK OG PERFORM INNFALL LIGGER HER	/////////////////////////
@@ -158,7 +180,6 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 
 		}
-		print (innfallsTall);
 	}
 
 	void performInnfall(Innfall inn)
@@ -258,8 +279,7 @@ public class Innfallsystemet : MonoBehaviour {
 	public void Interrupt(){
 		if (harInfall == true){
 			WrapUp();
-			//Stopper ikke faktisk noe her
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = null;
+			this.gameObject.GetComponent<BandMemberMoving>().waypointToMoveTo = null;
 			target = null;
 		}
 	}
@@ -551,34 +571,38 @@ public class Innfallsystemet : MonoBehaviour {
 
 	void GoRight (){
 		if (goingThere == false){
+			moveThisStep = this.transform.position.x + 1;
 			float walkDistance = UnityEngine.Random.Range(0, 3);
 			moveTarget = transform.position.x + walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x < moveTarget){
 			moveThisStep = transform.position.x + 0.1f;
-			print ("Going right!");
+			//print ("Going right!");
+			this.gameObject.GetComponent<BandMemberMoving>().HeadRight();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
 		}
 		if (transform.position.x >= moveTarget){
-			print ("Got there!");
+			//print ("Got there!");
 			WrapUp();
 		}
 	}
 
 	void GoLeft (){
 		if (goingThere == false){
+			moveThisStep = this.transform.position.x + 1;
 			float walkDistance = UnityEngine.Random.Range(0, 3);
 			moveTarget = transform.position.x - walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x > moveTarget){
 			moveThisStep = transform.position.x - 0.1f;
-			print ("Going left!");
+			//print ("Going left!");
+			this.gameObject.GetComponent<BandMemberMoving>().HeadLeft();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
 		}
 		if (transform.position.x <= moveTarget){
-			print ("Got there");
+			//print ("Got there");
 			WrapUp();
 		}
 	}
@@ -594,7 +618,7 @@ public class Innfallsystemet : MonoBehaviour {
 	/// </summary>
 
 	void WrapUp(){
-		print ("Wrapping up!");
+		//print ("Wrapping up!");
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}

@@ -12,6 +12,8 @@ TagManager:
   - CameraTarget
   - GeneticMaterial
   - House 1
+  - House 2
+  - TransferCenter
   - Wall
   - Computer
   - ComputerCanvas

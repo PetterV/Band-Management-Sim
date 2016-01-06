@@ -56,33 +56,31 @@ public class BandMember : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Tab)){
-			myCanvas.active = true;
+		if (Input.GetKey (KeyCode.Tab)) {
+			myCanvas.SetActive (true);
 		}
-		if (!Input.GetKey(KeyCode.Tab)){
-			myCanvas.active = false;
+		if (!Input.GetKey (KeyCode.Tab)) {
+			myCanvas.SetActive (false);
 		}
 
-		if (active == true && Input.GetKeyDown("g")){
-			LeaveGenetics();
+		if (active == true && Input.GetKeyDown ("g")) {
+			LeaveGenetics ();
 		}
-		if (beingCarried == true){
-			this.transform.position = GameObject.Find("Player").transform.position;	
+		if (beingCarried == true) {
+			this.transform.position = GameObject.Find ("Player").transform.position;	
 		}
 
 		//Happiness - Vi har en greie som bare direkte feeder inn i myMedgjørlighet, og så har vi en separat greie som er nærmere det "ekte" systemet, som ikke brukes ennå
 		//Sørg for at man ikke kan øke Happiness ubegrenset:
 		float happinessTimerStep = 1f * Time.deltaTime;
 		happinessImprovementTimer = happinessImprovementTimer - happinessTimerStep;
-		if (happinessImprovementTimer < 0){
+		if (happinessImprovementTimer < 0) {
 			canImproveHappiness = true;
 		}
 	}
 
-
-
-	//Blir bonka av spilleren
-	public void Dying (){
+    //Blir bonka av spilleren
+    public void Dying (){
 		print ("I'm dying!");
         dead = true;
 		Vector3 deadRot = new Vector3(-90, 0, 0);
