@@ -56,10 +56,10 @@ public class BandMember : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.Tab)){
-			myCanvas.active = true;
+			myCanvas.SetActive (true);
 		}
 		if (!Input.GetKey(KeyCode.Tab)){
-			myCanvas.active = false;
+			myCanvas.SetActive(false);
 		}
 
 		if (active == true && Input.GetKeyDown("g")){
@@ -78,14 +78,21 @@ public class BandMember : MonoBehaviour{
 		}
 	}
 
-    void OnTriggerEnter(Collider colli)
+    void OnCollisionStay(Collider colli)
     {
         if(colli.gameObject.tag == "Wall")
             print(colli);
     }
 
-	//Blir bonka av spilleren
-	public void Dying (){
+    void OnTriggerStay(Collider colli)
+    {
+        if (colli.gameObject.tag == "Wall")
+            print(colli);
+        print("trigg");
+    }
+
+    //Blir bonka av spilleren
+    public void Dying (){
 		print ("I'm dying!");
         dead = true;
 		Vector3 deadRot = new Vector3(-90, 0, 0);
