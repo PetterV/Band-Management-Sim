@@ -29,6 +29,7 @@ public class BandMember : MonoBehaviour{
 	public int startHappinessTimer = 60;
 	public bool canImproveHappiness = true;
 	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
+	//Funker ikke?????
 	public int medgjørlighetReduksjon = 15;
 
 	public BandMember (String name, float skill, Role role)
@@ -129,7 +130,8 @@ public class BandMember : MonoBehaviour{
 				print ("Jeg gjør det jeg vil!");
 			}
 			//Gjør det mindre sannsynlig at de gjør som du sier neste gang
-			myMedgjørlighet = myMedgjørlighet - medgjørlighetReduksjon;
+			myMedgjørlighet = myMedgjørlighet - 15;
+			print(myMedgjørlighet);
 			//Legg inn avbrudd av innfall her.
 		}
 	}

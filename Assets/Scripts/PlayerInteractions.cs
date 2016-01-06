@@ -30,6 +30,8 @@ public class PlayerInteractions : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
+
+
 		if (carryingGenMat == true || carryingBody == true || carryingHappiness == true){
 			carryingAny = true;
 		}
@@ -65,10 +67,11 @@ public class PlayerInteractions : MonoBehaviour {
 				if (carryingAny == false){
 					print ("This will make someone happy");
 					happinessToGive = currentHappinessObject.GetComponent<HappinessObject>().happinessGained;
+					carryingHappiness = true;
 					currentHappinessObject.GetComponent<HappinessObject>().happinessBeingCarried = true;
 				}
 				else if (carryingHappiness == true && bandCollision == false){
-					print ("Who needs to make someone happy.");
+					print ("Who needs to make anyone happy?");
 					currentHappinessObject.GetComponent<HappinessObject>().happinessBeingCarried = false;
 					carryingHappiness = false;
 				}

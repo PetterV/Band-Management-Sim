@@ -615,5 +615,6 @@ public class Innfallsystemet : MonoBehaviour {
 		innfallGoLeft = false;
 		innfallGoRight = false;
 		animator.SetInteger("Walking", 0);
+		GetComponent<BandMember>().fikkKjeft = false;
 	}
 }

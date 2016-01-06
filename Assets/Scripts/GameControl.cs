@@ -13,6 +13,8 @@ public class GameControl : MonoBehaviour {
 	public float popularitet = 1000000;
 	public float popularitetsfaktor = 100;
 
+	public float caymanKonto = 0f;
+
 
 	//Tid innfall tar
 	public float scoreTid = 3;
