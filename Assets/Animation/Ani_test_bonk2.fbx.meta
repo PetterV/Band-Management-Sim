@@ -1,15 +1,59 @@
 fileFormatVersion: 2
-guid: 0ebaab17eb0334a46a7520606a01b322
-timeCreated: 1451913980
+guid: 542f4a3e5411012408454ddae47cdb82
+timeCreated: 1452081860
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Body_jnt
+    100004: Foot_Left_jnt
+    100006: Foot_Right_jnt
+    100008: Hand_Left_jnt
+    100010: Hand_Right_jnt
+    100012: Hat_jnt
+    100014: Head_jnt
+    100016: Hips_jnt
+    100018: LowerArm_Left_jnt
+    100020: LowerArm_Right_jnt
+    100022: LowerLeg_Left_jnt
+    100024: LowerLeg_Right_jnt
+    100026: mesh_Base
+    100028: Root_jnt
+    100030: Spine_jnt
+    100032: UpperArm_Left_jnt
+    100034: UpperArm_Right_jnt
+    100036: UpperLeg_Left_jnt
+    100038: UpperLeg_Right_jnt
+    100040: Weapon
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Null
+    400002: Body_jnt
+    400004: Foot_Left_jnt
+    400006: Foot_Right_jnt
+    400008: Hand_Left_jnt
+    400010: Hand_Right_jnt
+    400012: Hat_jnt
+    400014: Head_jnt
+    400016: Hips_jnt
+    400018: LowerArm_Left_jnt
+    400020: LowerArm_Right_jnt
+    400022: LowerLeg_Left_jnt
+    400024: LowerLeg_Right_jnt
+    400026: mesh_Base
+    400028: Root_jnt
+    400030: Spine_jnt
+    400032: UpperArm_Left_jnt
+    400034: UpperArm_Right_jnt
+    400036: UpperLeg_Left_jnt
+    400038: UpperLeg_Right_jnt
+    400040: Weapon
+    2300000: Weapon
+    3300000: Weapon
+    4300000: Weapon
+    4300002: mesh_Base
+    7400000: Main
+    9500000: //RootNode
+    13700000: mesh_Base
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,8 +94,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
@@ -68,7 +112,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

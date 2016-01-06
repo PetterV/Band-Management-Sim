@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0ebaab17eb0334a46a7520606a01b322
-timeCreated: 1451913980
+guid: c3ba42dabd539c542961f5e11f508736
+timeCreated: 1452094504
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Null
+    4300000: Landscape_1
   materials:
     importMaterials: 1
     materialName: 0

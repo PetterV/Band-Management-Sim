@@ -480,7 +480,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void GoRight (){
-		if (goingThere = false){
+		if (goingThere == false){
 			float walkDistance = UnityEngine.Random.Range(1, 5);
 			moveTarget = this.transform.position.x + walkDistance;
 			moveThisStep = this.transform.position.x + 1;
@@ -497,7 +497,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void GoLeft (){
-		if (goingThere = false){
+		if (goingThere == false){
 			float walkDistance = UnityEngine.Random.Range(1, 5);
 			moveTarget = this.transform.position.x - walkDistance;
 			moveThisStep = this.transform.position.x + 1;

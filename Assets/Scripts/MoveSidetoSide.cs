@@ -40,14 +40,16 @@ public class MoveSidetoSide : MonoBehaviour {
                 transform.Rotate(0, 180, 0);
             }
             
-            //animator.SetInteger("WalkMaybe", 1);
+            animator.SetInteger("WalkMaybe", 1);
         }
 
         if (!Input.GetKey("right") && !Input.GetKey("left"))
         {
-            //animator.SetInteger("WalkMaybe", 0);
+            animator.SetInteger("WalkMaybe", 0);
             
         }
+
+        
 
 		timeSinceLastStairUse += Time.deltaTime;
 	}

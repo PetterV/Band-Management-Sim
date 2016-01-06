@@ -58,7 +58,11 @@ public class BandMember : MonoBehaviour{
 		}
 	}
 
-
+    void OnTriggerEnter(Collider colli)
+    {
+        if(colli.gameObject.tag == "Wall")
+            print(colli);
+    }
 
 	//Blir bonka av spilleren
 	public void Dying (){

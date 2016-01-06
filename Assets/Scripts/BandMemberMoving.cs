@@ -18,8 +18,8 @@ public class BandMemberMoving : MonoBehaviour {
 	private float moveValue;
 	public int startFloor = 0;
 	public int startHouse = 0;
-	private int currentFloor;
-	private int currentHouse;
+	public int currentFloor;
+	public int currentHouse;
 
 	void Start(){
 		currentFloor = startFloor;
@@ -31,7 +31,7 @@ public class BandMemberMoving : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(this.stairs.Length == 0)
+		if(this.stairs == null || this.stairs.Length == 0)
 			this.stairs = this.gameControl.stairs;
 		if (moving == true) {
 			if (waypointToMoveTo == null) {
@@ -47,10 +47,13 @@ public class BandMemberMoving : MonoBehaviour {
 		int wpHouse = GetHouseOfObject (wp.transform.parent.tag);
 		if (this.currentHouse != wpHouse) {
 			GoToOtherHouse ();
+            print("Going to the other house!");
 		}
 		else if (this.currentFloor != wp.floor) {
 			GoToFloor (wp.floor);
+            print("Right house, but going to right floor!");
 		} else {
+            print("Right floor, and walking to wp!");
 			WalkToWayPoint (wp);
 		}
 	}
@@ -117,14 +120,20 @@ public class BandMemberMoving : MonoBehaviour {
 		Vector3 wpLocation = new Vector3(wp.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
 		Vector3 stepTowardsWp = Vector3.MoveTowards (this.transform.position, wpLocation, step);
 		if (wpLocation == stepTowardsWp) {
-			this.waypointToMoveTo = null;
-			if (wp.gameObject.tag == "TransferCenter")
-				switchHouses ();
-			print ("Arrived at waypoint!");
+            if (wp.gameObject.tag == "TransferCenter")
+            {
+                switchHouses();
+            }
+            else
+            {
+                this.waypointToMoveTo = null;
+                GetComponentInParent<Innfallsystemet>().riktigPlass = true;
+                print("Arrived at waypoint!");
+            }
 			//Lagt til innfall
 			/*TODO: DET KAN VÆRE BUG HER: "Parent" sikter til direkte parent (tror jeg),
 			som kan gjøre at dersom band members er barn av flere objekter, vil ikke neste linje funke.*/
-			GetComponentInParent<Innfallsystemet>().riktigPlass = true;
+			
 		} else {
 			this.transform.position = stepTowardsWp;
 		}
@@ -139,8 +148,12 @@ public class BandMemberMoving : MonoBehaviour {
 			if (possibleClosest.floor == this.currentFloor) {
 				bool possibleClosestHasExitInWrongDirection = (possibleClosest.upExit == null && goingUp) || (possibleClosest.downExit == null && !goingUp);
 				bool possibleClosestIsInWrongHouse = GetHouseOfObject (possibleClosest.gameObject.transform.parent.tag) != this.currentHouse;
-				if (possibleClosestHasExitInWrongDirection && possibleClosestIsInWrongHouse)
-					continue;
+				if (possibleClosestHasExitInWrongDirection || possibleClosestIsInWrongHouse)
+                {
+                    print("YO!");
+                    print(possibleClosest);
+                    continue;
+                }
 				if (tempClosest == null)
 					tempClosest = possibleClosest;
 				else if(possibleClosest.transform.position.x < tempClosest.transform.position.x) {
@@ -148,7 +161,8 @@ public class BandMemberMoving : MonoBehaviour {
 				}
 			}
 		}
-		return tempClosest;
+        print(tempClosest + ", " + GetHouseOfObject(tempClosest.gameObject.transform.parent.tag));
+        return tempClosest;
 	}
 
 	void TakeStairsTo (bool goingUp, Stairs nearestStair)
@@ -169,6 +183,15 @@ public class BandMemberMoving : MonoBehaviour {
 
 	int GetHouseOfObject (String tag)
 	{
-		return tag == "House 1" ? 0 : 1;
+        if (tag == "House 1")
+        {
+            return 0;
+        }
+            
+        if (tag == "House 2")
+        {
+            return 1;
+        }
+        return -1;
 	}
 }

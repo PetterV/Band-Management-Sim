@@ -13,6 +13,8 @@ public class PlayerInteractions : MonoBehaviour {
 	public int bringingSkill;
 	public int bringingMedgjørlighet;
 	public bool carryingGenMat = false;
+    private Animator animator;
+     
 
 	
 	// Update is called once per frame
@@ -82,6 +84,7 @@ public class PlayerInteractions : MonoBehaviour {
 				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
 				currentBandMember.GetComponent<BandMember>().Dying();
 				GetComponent<AudioSource>().Play();
+                animator.SetInteger("Punch", 1);
 			}
 		}
 	}
