@@ -114,6 +114,7 @@ public class BandMemberMoving : MonoBehaviour {
 			TakeStairsTo (goingUp, nearestStair);
 		}
 		else{
+			HeadCorrectDirection (transform.position, stepTowardsStairs);
 			transform.position = stepTowardsStairs;
 		}
 	}
@@ -146,6 +147,7 @@ public class BandMemberMoving : MonoBehaviour {
 			som kan gjøre at dersom band members er barn av flere objekter, vil ikke neste linje funke.*/
 			
 		} else {
+			HeadCorrectDirection(transform.position, stepTowardsWp);
 			this.transform.position = stepTowardsWp;
 		}
 	}
@@ -190,6 +192,25 @@ public class BandMemberMoving : MonoBehaviour {
 
 	void switchHouses(){
 		this.currentHouse = this.currentHouse == 0 ? 1 : 0;
+	}
+
+	public void HeadCorrectDirection(Vector3 currentPos, Vector3 headedTo){
+		if (IsHeadedRight (transform.position, headedTo))
+			HeadRight ();
+		else
+			HeadLeft ();
+	}
+
+	bool IsHeadedRight(Vector3 currentPos, Vector3 headedTo){
+		return headedTo.x > currentPos.x;
+	}
+
+	public void HeadLeft(){
+		this.gameObject.transform.eulerAngles = new Vector3 (0, 270.0f, 0);
+	}
+
+	public void HeadRight(){
+		this.gameObject.transform.eulerAngles = new Vector3 (0, 90.0f, 0);
 	}
 
 	int GetHouseOfObject (String tag)

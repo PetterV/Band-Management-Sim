@@ -55,41 +55,28 @@ public class BandMember : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Tab)){
+		if (Input.GetKey (KeyCode.Tab)) {
 			myCanvas.SetActive (true);
 		}
-		if (!Input.GetKey(KeyCode.Tab)){
-			myCanvas.SetActive(false);
+		if (!Input.GetKey (KeyCode.Tab)) {
+			myCanvas.SetActive (false);
 		}
 
-		if (active == true && Input.GetKeyDown("g")){
-			LeaveGenetics();
+		if (active == true && Input.GetKeyDown ("g")) {
+			LeaveGenetics ();
 		}
-		if (beingCarried == true){
-			this.transform.position = GameObject.Find("Player").transform.position;	
+		if (beingCarried == true) {
+			this.transform.position = GameObject.Find ("Player").transform.position;	
 		}
 
 		//Happiness - Vi har en greie som bare direkte feeder inn i myMedgjørlighet, og så har vi en separat greie som er nærmere det "ekte" systemet, som ikke brukes ennå
 		//Sørg for at man ikke kan øke Happiness ubegrenset:
 		float happinessTimerStep = 1f * Time.deltaTime;
 		happinessImprovementTimer = happinessImprovementTimer - happinessTimerStep;
-		if (happinessImprovementTimer < 0){
+		if (happinessImprovementTimer < 0) {
 			canImproveHappiness = true;
 		}
 	}
-
-    void OnCollisionStay(Collider colli)
-    {
-        if(colli.gameObject.tag == "Wall")
-            print(colli);
-    }
-
-    void OnTriggerStay(Collider colli)
-    {
-        if (colli.gameObject.tag == "Wall")
-            print(colli);
-        print("trigg");
-    }
 
     //Blir bonka av spilleren
     public void Dying (){
