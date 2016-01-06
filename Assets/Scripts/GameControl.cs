@@ -8,6 +8,12 @@ public class GameControl : MonoBehaviour {
 	public GameObject[] houseTransfers;
 
 
+	// Penger og popularitet
+	public float penger = 100000;
+	public float popularitet = 1000000;
+	public float popularitetsfaktor = 100;
+
+
 	//Tid innfall tar
 	public float scoreTid = 3;
 	public float strandTid = 3;
@@ -31,6 +37,13 @@ public class GameControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		float popularitetOppNed = popularitetsfaktor * Time.deltaTime;
+		popularitet = popularitet + popularitetOppNed;
+		if (popularitet < 1000000){
+			penger = penger - 10;
+		}
+		if (popularitet > 1000000){
+			penger = penger + 10;
+		}
 	}
 }

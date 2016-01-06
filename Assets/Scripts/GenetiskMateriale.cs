@@ -4,7 +4,7 @@ using System.Collections;
 public class GenetiskMateriale : MonoBehaviour {
 
 	public bool beingCarried = false;
-	public int skillForCloning = 0;
+	public float skillForCloning = 0;
 	public int medgjørlighetForCloning = 0;
 	public BandMember.Role roleForCloning;
 

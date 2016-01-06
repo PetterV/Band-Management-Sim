@@ -17,6 +17,7 @@ public class BandMemberMoving : MonoBehaviour {
 	private GameObject[] stairs;
 	private float moveValue;
 	public int startFloor = 0;
+	private Animator animator;
 	public int startHouse = 0;
 	public int currentFloor;
 	public int currentHouse;
@@ -26,6 +27,7 @@ public class BandMemberMoving : MonoBehaviour {
 		this.gameControl = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameControl>();
 		this.waypoints = this.gameControl.waypoints;
 		this.stairs = this.gameControl.stairs;
+		animator = GetComponent<Animator>();
 		this.currentHouse = startHouse;
 	}
 
@@ -38,6 +40,7 @@ public class BandMemberMoving : MonoBehaviour {
 				//x% sjanse for å bevege, x% for å stå stille - skal bli kontrollert av innfall
 			} else {
 				MoveToWayPoint (waypointToMoveTo);
+				animator.SetInteger("Walking", 1);
 			}
 		}
 	}
@@ -120,6 +123,7 @@ public class BandMemberMoving : MonoBehaviour {
 		Vector3 wpLocation = new Vector3(wp.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
 		Vector3 stepTowardsWp = Vector3.MoveTowards (this.transform.position, wpLocation, step);
 		if (wpLocation == stepTowardsWp) {
+
             if (wp.gameObject.tag == "TransferCenter")
             {
                 switchHouses();
@@ -130,6 +134,13 @@ public class BandMemberMoving : MonoBehaviour {
                 GetComponentInParent<Innfallsystemet>().riktigPlass = true;
                 print("Arrived at waypoint!");
             }
+
+			this.waypointToMoveTo = null;
+			if (wp.gameObject.tag == "TransferCenter")
+				switchHouses ();
+			print ("Arrived at waypoint!");
+			animator.SetInteger("Walking", 0);
+
 			//Lagt til innfall
 			/*TODO: DET KAN VÆRE BUG HER: "Parent" sikter til direkte parent (tror jeg),
 			som kan gjøre at dersom band members er barn av flere objekter, vil ikke neste linje funke.*/

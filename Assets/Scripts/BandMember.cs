@@ -8,10 +8,12 @@ public class BandMember : MonoBehaviour{
 
 	public Role role;
 	public Stats stats;
-	public int skill;
+	public float skill;
 	public bool active = true;
 	public bool dead = false;
 	public bool beingCarried = false;
+
+	GameObject myCanvas;
 
 	//Genetic material
 	public GameObject GenMat1;
@@ -22,20 +24,21 @@ public class BandMember : MonoBehaviour{
 	public bool fikkKjeft = false;
 
 	//Happinessystem
-	public int myHappiness = 1;
-	private int happinessImprovementTimer = 3000;
+	public float myHappiness = 1f;
+	private float happinessImprovementTimer = 60;
+	public int startHappinessTimer = 60;
+	public bool canImproveHappiness = true;
 	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
-	public int happinessImprovementTimerStart = 3000;
-	private int medgjørlighetReduksjon = 15;
+	public int medgjørlighetReduksjon = 15;
 
-	public BandMember (String name, int skill, Role role)
+	public BandMember (String name, float skill, Role role)
 	{
 		this.name = name;
 		this.stats = new Stats(skill);
 		this.role = role;
 	}
 
-	public void InitializeBandMember(String name, int skill, int myMedgjørlighet, Role role)
+	public void InitializeBandMember(String name, float skill, int myMedgjørlighet, Role role)
     {
         this.name = name;
         this.skill = skill;
@@ -46,15 +49,32 @@ public class BandMember : MonoBehaviour{
     void Start ()
     {
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
+		happinessImprovementTimer = startHappinessTimer;
+		myCanvas = GetComponentInChildren<Canvas>().gameObject;
     }
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKey(KeyCode.Tab)){
+			myCanvas.active = true;
+		}
+		if (!Input.GetKey(KeyCode.Tab)){
+			myCanvas.active = false;
+		}
+
 		if (active == true && Input.GetKeyDown("g")){
 			LeaveGenetics();
 		}
 		if (beingCarried == true){
 			this.transform.position = GameObject.Find("Player").transform.position;	
+		}
+
+		//Happiness - Vi har en greie som bare direkte feeder inn i myMedgjørlighet, og så har vi en separat greie som er nærmere det "ekte" systemet, som ikke brukes ennå
+		//Sørg for at man ikke kan øke Happiness ubegrenset:
+		float happinessTimerStep = 1f * Time.deltaTime;
+		happinessImprovementTimer = happinessImprovementTimer - happinessTimerStep;
+		if (happinessImprovementTimer < 0){
+			canImproveHappiness = true;
 		}
 	}
 
@@ -72,12 +92,18 @@ public class BandMember : MonoBehaviour{
 		transform.Rotate(deadRot, Space.Self);
 	}
 
-	void LeaveGenetics (){
+	public void HappinessGain (){
+		print ("Yay! Happiness!");
+		//Endre dette hvis man bruker "ordentlig" happiness
+		myMedgjørlighet = myMedgjørlighet + GameObject.Find("Player").GetComponent<PlayerInteractions>().happinessToGive;
+	} 
+
+	public void LeaveGenetics (){
 		Vector3 spawnPosition = this.transform.position;
 		//Quaternion spawnRotation = this.transform.rotation;
 		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, GenMat1.transform.rotation);
-		int skillvariation = UnityEngine.Random.Range(-10, 10);
-		int skillTransfer = skill + skillvariation;
+		float skillvariation = UnityEngine.Random.Range(-10, 10);
+		float skillTransfer = skill + skillvariation;
 		int medgjørligvariation = UnityEngine.Random.Range(-20, 40);
 		int medgjørligTransfer = myMedgjørlighet + medgjørligvariation;
 		if (medgjørligTransfer > 99){

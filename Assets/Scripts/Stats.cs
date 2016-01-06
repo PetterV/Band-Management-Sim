@@ -3,10 +3,10 @@ using System;
 
 public class Stats
 {
-	private int skill;
+	private float skill;
 	//insert other stats here... i.e private int newStat;
 
-	public Stats (int skill /*, and add new stats here as well*/)
+	public Stats (float skill /*, and add new stats here as well*/)
 	{
 		this.skill = skill;
 		//and here!
