@@ -10,14 +10,22 @@ public class CloneMachine : MonoBehaviour {
 	public GameObject bassist;
 	public GameObject trommis;
 	public BandMember.Role roleImminentClone;
+
+	//Sett spawn point
+	public GameObject cloneSpawnPoint;
+	Vector3 spawnPos;
+	Quaternion spawnRot;
+	//
+
 	public float cloneSkill;
 	public int cloneMedgjørlighet;
 	public string cloneName;
 
 
-	// Update is called once per frame
-	void Update () {
-		
+	void Start () {
+		cloneSpawnPoint = GameObject.FindWithTag("CloneSpawn");
+		spawnPos = cloneSpawnPoint.transform.position;
+		spawnRot = cloneSpawnPoint.transform.rotation;
 	}
 
 	public void Cloning(){
@@ -48,12 +56,14 @@ public class CloneMachine : MonoBehaviour {
 		}
         
 		GameObject clone = MakeNewBandMemberClone(cloneName, cloneSkill, cloneMedgjørlighet, roleImminentClone);
-		clone.GetComponent<BandMember>().active = false;
+		clone.GetComponent<CloneActivation>().active = false;
+		clone.GetComponent<BandMember>().enabled = false;
+		clone.GetComponent<Innfallsystemet>().enabled = false;
 	}
 
     private GameObject MakeNewBandMemberClone(string name, float skill, int myMedgjørlighet, BandMember.Role role)
     {
-        GameObject clone = Instantiate(bandMemberToBeCloned);
+		GameObject clone = (GameObject)Instantiate(bandMemberToBeCloned, spawnPos, spawnRot);
         BandMember clonedBandMember = clone.GetComponent<BandMember>();
         clonedBandMember.InitializeBandMember(name, skill, myMedgjørlighet, role);
 

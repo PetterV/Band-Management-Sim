@@ -18,6 +18,7 @@ TagManager:
   - Computer
   - ComputerCanvas
   - Weapon
+  - CloneSpawn
   layers:
   - Default
   - TransparentFX
