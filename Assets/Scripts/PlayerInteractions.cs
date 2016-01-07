@@ -23,10 +23,12 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool carryingAny = false;
 	public bool computerActive = false;
 	public int happinessToGive;
+    private Animator animator;
 
 	void Start (){
 		computer = GameObject.Find("Computer");
 		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+        animator = GetComponent<Animator>();
 	}
 	// Update is called once per frame
 	void Update () {
@@ -152,6 +154,7 @@ public class PlayerInteractions : MonoBehaviour {
 				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
 				currentBandMember.GetComponent<BandMember>().Dying();
 				GetComponent<AudioSource>().Play();
+                animator.SetInteger("Punch", 1);                
 			}
 		}
 	}
