@@ -47,6 +47,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 	private int innfallSum = 0;
 
+
 	void Start (){
 		tooCloseToLeftWall = false;
 		tooCloseToRightWall = false;
@@ -96,8 +97,8 @@ public class Innfallsystemet : MonoBehaviour {
 			
 		}
 		if (harInfall == false){
-		setActionCounter = false;
-		CheckInnfall();
+			setActionCounter = false;
+			CheckInnfall();
 		}
 		if (target == null){
 			
@@ -183,7 +184,6 @@ public class Innfallsystemet : MonoBehaviour {
 				performInnfall(entry.Key);
 				break;
 			}
-
 		}
 	}
 
@@ -633,7 +633,9 @@ public class Innfallsystemet : MonoBehaviour {
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}
+		target = null;
 		harInfall = false;
+		riktigPlass = false;
 		scoreInnfall = false;
 		strandInnfall = false;
 		soloInnfall = false;

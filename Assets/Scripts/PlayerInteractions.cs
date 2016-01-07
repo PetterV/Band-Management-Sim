@@ -188,7 +188,9 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 
 		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
-			isHitting = true;    
+			isHitting = true;
+			currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
+			currentBandMember.GetComponent<BandMemberMoving>().enabled = false;
 			animator.SetInteger("Punch", 1);
         }
 	}
@@ -210,7 +212,6 @@ public class PlayerInteractions : MonoBehaviour {
 		if (hitTimer >= soundEffectTarget && playedSound == false){
 		}
 		if (hitTimer >= animationStopTarget && stoppedAnimation == false){
-			currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
 			currentBandMember.GetComponent<BandMember>().Dying();
 			animator.SetInteger("Punch", 0);
 			stoppedAnimation = true;

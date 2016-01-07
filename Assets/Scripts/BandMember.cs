@@ -67,10 +67,10 @@ public class BandMember : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Tab)) {
-			//myCanvas.SetActive (true);
+			myCanvas.SetActive (true);
 		}
 		if (!Input.GetKey (KeyCode.Tab)) {
-			//myCanvas.SetActive (false);
+			myCanvas.SetActive (false);
 		}
 
 		if (Input.GetKeyDown ("g")) {
