@@ -19,6 +19,8 @@ TagManager:
   - ComputerCanvas
   - DeliveryPoint
   - HappinessObject
+  - GoodSound
+  - FailSound
   layers:
   - Default
   - TransparentFX

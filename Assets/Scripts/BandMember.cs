@@ -13,7 +13,7 @@ public class BandMember : MonoBehaviour{
 	public bool dead = false;
 	public bool beingCarried = false;
 
-	GameObject myCanvas;
+	public GameObject myCanvas;
 
 	//Genetic material
 	public GameObject GenMat1;
@@ -51,7 +51,6 @@ public class BandMember : MonoBehaviour{
     {
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
 		happinessImprovementTimer = startHappinessTimer;
-		myCanvas = GetComponentInChildren<Canvas>().gameObject;
     }
 
 	// Update is called once per frame
