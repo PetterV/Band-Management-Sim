@@ -23,6 +23,7 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool carryingAny = false;
 	public bool computerActive = false;
 	public int happinessToGive;
+	public bool suspiciousAction = false;
 
 	void Start (){
 		computer = GameObject.Find("Computer");
@@ -38,9 +39,17 @@ public class PlayerInteractions : MonoBehaviour {
 		if (carryingGenMat == false && carryingBody == false && carryingHappiness == false){
 			carryingAny = false;
 		}
+
+		if (carryingBody == true){
+			suspiciousAction = true;
+		}
+		if (carryingBody == false){
+			suspiciousAction = false;
+		}
+
 		//Gi kjeft med Q
 		if (Input.GetKeyUp("q")){
-			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<BandMember>().active == true && currentBandMember.GetComponent<BandMember>().dead == false){
+			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<CloneActivation>().active == true && currentBandMember.GetComponent<BandMember>().dead == false){
 				print ("Don't do that!");
 				currentBandMember.GetComponent<BandMember>().Kjeft();
 			}
@@ -58,8 +67,9 @@ public class PlayerInteractions : MonoBehaviour {
 					currentBandMember.GetComponent<BandMember>().beingCarried = false;
 					carryingBody = false;
 				}
-				else if(currentBandMember.GetComponent<BandMember>().active == false){
-					currentBandMember.GetComponent<BandMember>().active = true;
+				else if(currentBandMember.GetComponent<CloneActivation>().active == false){
+					currentBandMember.GetComponent<CloneActivation>().active = true;
+					currentBandMember.GetComponent<CloneActivation>().Activation();
 					print ("I'm active now!");
 				}
 			}

@@ -3458,6 +3458,13 @@ MonoBehaviour:
   waypoints: []
   stairs: []
   houseTransfers: []
+  gameOver: 0
+  penger: 100000
+  popularitet: 1000000
+  popularitetsfaktor: 100
+  caymanKonto: 0
+  publicSuspicion: 0
+  maxPublicSuspicion: 1000
   scoreTid: 100
   strandTid: 100
   oveTid: 3
@@ -7857,13 +7864,23 @@ MonoBehaviour:
   bandCollision: 0
   genMatCollision: 0
   cloneMachineCollision: 0
+  happinessCollision: 0
+  computerCollision: 0
   currentBandMember: {fileID: 0}
   currentGenMat: {fileID: 0}
   currentCloneMachine: {fileID: 0}
+  currentHappinessObject: {fileID: 0}
+  computer: {fileID: 0}
+  computerCanvas: {fileID: 0}
   bringingRole: 0
   bringingSkill: 0
   "bringingMedgj\xF8rlighet": 0
   carryingGenMat: 0
+  carryingHappiness: 0
+  carryingBody: 0
+  carryingAny: 0
+  computerActive: 0
+  happinessToGive: 0
 --- !u!54 &492113374
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12270,6 +12287,7 @@ MonoBehaviour:
   actionCounter: 0
   success: 0
   handlingGjennomfort: 
+  textToDisplay: 
 --- !u!114 &837134655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12306,12 +12324,15 @@ MonoBehaviour:
   active: 1
   dead: 0
   beingCarried: 0
+  myCanvas: {fileID: 0}
   GenMat1: {fileID: 0}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 0
   fikkKjeft: 0
   myHappiness: 0
-  happinessImprovementTimerStart: 0
+  startHappinessTimer: 0
+  canImproveHappiness: 0
+  "medgj\xF8rlighetReduksjon": 0
 --- !u!1001 &838208490
 Prefab:
   m_ObjectHideFlags: 0
@@ -22182,7 +22203,7 @@ Transform:
   - {fileID: 1121803814}
   - {fileID: 1485129563}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!1 &1547751566
 GameObject:
   m_ObjectHideFlags: 0
@@ -25506,7 +25527,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1757398332}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1757398336
 Behaviour:
   m_ObjectHideFlags: 0

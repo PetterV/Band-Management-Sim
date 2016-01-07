@@ -24,6 +24,8 @@ TagManager:
   - EventOverskrift
   - EventBilde
   - EventKnapp
+  - CloneSpawn
+
   layers:
   - Default
   - TransparentFX

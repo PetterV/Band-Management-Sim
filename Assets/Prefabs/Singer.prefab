@@ -545,6 +545,8 @@ GameObject:
   - 114: {fileID: 11432928}
   - 114: {fileID: 11435426}
   - 114: {fileID: 11404336}
+  - 54: {fileID: 5494522}
+  - 114: {fileID: 11469312}
   m_Layer: 0
   m_Name: Singer
   m_TagString: BandMember
@@ -697,8 +699,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197710}
-  m_LocalRotation: {x: 0, y: -0.707106, z: 0, w: 0.7071076}
-  m_LocalPosition: {x: 93.9, y: 6.94, z: -2.6}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 20.380547, y: 6.901537, z: -2.5807593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 468848}
@@ -1010,6 +1012,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 428492}
   m_RootOrder: 12
+--- !u!54 &5494522
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197710}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6571428
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1020,7 +1037,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2, y: 2.75, z: 1}
+  m_Size: {x: 2.5, y: 2.75, z: 5}
   m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!95 &9579912
 Animator:
@@ -1101,9 +1118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   role: 0
   skill: 0
-  active: 1
   dead: 0
   beingCarried: 0
+  myCanvas: {fileID: 175786}
   GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 99
@@ -1112,6 +1129,9 @@ MonoBehaviour:
   startHappinessTimer: 0
   canImproveHappiness: 0
   "medgj\xF8rlighetReduksjon": 0
+  mySuspicion: 0
+  increaseSuspicion: 0
+  decreaseSuspicion: 0
 --- !u!114 &11435426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1123,7 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525d30b77e71a48359681b9c9c4673c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingLeft: 1
+  facingLeft: 0
 --- !u!114 &11440610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1161,6 +1181,8 @@ MonoBehaviour:
   houseTransferFloors: 
   startFloor: 1
   startHouse: 0
+  currentFloor: 0
+  currentHouse: 0
 --- !u!114 &11461892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1188,6 +1210,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11469312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583f4db790af6430793b169eb00fd622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
 --- !u!114 &11485748
 MonoBehaviour:
   m_ObjectHideFlags: 1
