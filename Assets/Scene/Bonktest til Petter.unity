@@ -9674,7 +9674,13 @@ MonoBehaviour:
   computerActive: 0
   happinessToGive: 0
   suspiciousAction: 0
-  startHitTimer: 2
+  eventSpeed: 1
+  musicStopTarget: 0.1
+  soundEffectTarget: 0.4
+  animationStopTarget: 0.4
+  startMusicTarget: 1
+  doneTarget: 1.1
+  mainCam: {fileID: 0}
 --- !u!54 &492113374
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9700,7 +9706,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6e210edb7eebf42339ae6813bc80d850, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

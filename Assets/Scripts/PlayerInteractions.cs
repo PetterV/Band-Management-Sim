@@ -23,30 +23,26 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool carryingAny = false;
 	public bool computerActive = false;
 	public int happinessToGive;
-    	private Animator animator;
+    private Animator animator;
 	public bool suspiciousAction = false;
 
 
-<<<<<<< HEAD
 	//Stuff til whacking
 	private bool isHitting = false;
 	private bool madeHit = false;
 	private bool playedSound = false;
-	public float startHitTimer = 2f;
+	private bool stoppedMusic = false;
+	private bool stoppedAnimation = false;
+	private bool startedMusic = false;
+	public float eventSpeed = 1f;
 	private float hitTimerStep;
 	private float hitTimer;
-	public float musicStopTarget = 1.5f;
-	public float soundEffectTarget = 0.5f;
-	public float animationStopTarget = 0.3f;
+	public float musicStopTarget = 0.1f;
+	public float soundEffectTarget = 0.4f;
+	public float animationStopTarget = 0.4f;
+	public float startMusicTarget = 1f;
+	public float doneTarget = 1.1f;
 	//
-=======
->>>>>>> origin/master
-
-	void Start (){
-		computer = GameObject.Find("Computer");
-		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
-        animator = GetComponent<Animator>();
-	}
 
     public GameObject mainCam;
 
@@ -54,6 +50,7 @@ public class PlayerInteractions : MonoBehaviour {
 		computer = GameObject.Find("Computer");
 		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
         mainCam = GameObject.FindWithTag("MainCamera");
+		animator = GetComponent<Animator>();
     }
 
 	// Update is called once per frame
@@ -159,7 +156,7 @@ public class PlayerInteractions : MonoBehaviour {
 
 		//Whacking bandmembers
 		if (isHitting == true){
-			
+			HittingBandMember();
 		}
 	}
 
@@ -190,31 +187,46 @@ public class PlayerInteractions : MonoBehaviour {
 			computerCollision = true;
 		}
 
-		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space")){
-			if (currentBandMember.GetComponent<BandMember>().dead == false){
-<<<<<<< HEAD
-				isHitting = true;
-				hitTimer = startHitTimer;
-
-=======
-				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
-				currentBandMember.GetComponent<BandMember>().Dying();
-				GetComponent<AudioSource>().Play();
-
-                animator.SetInteger("Punch", 1);                
->>>>>>> origin/master
-			}
-
-                mainCam.GetComponent<PauseMusic>().Pause();
-            }
-
-		}
+		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
+			isHitting = true;    
+			animator.SetInteger("Punch", 1);
+        }
 	}
 
 	void HittingBandMember (){
-		currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
-		currentBandMember.GetComponent<BandMember>().Dying();
-		GetComponent<AudioSource>().Play();
+		//Timing the hit
+		if (isHitting == true){
+			hitTimerStep = eventSpeed * Time.deltaTime;
+			hitTimer = hitTimer + hitTimerStep;
+		}
+		if (hitTimer > soundEffectTarget && playedSound == false){
+			GetComponent<AudioSource>().Play();
+			playedSound = true;
+		}
+		if (hitTimer >= musicStopTarget && stoppedMusic == false){
+			stoppedMusic = true;
+			mainCam.GetComponent<PauseMusic>().Pause();
+		}
+		if (hitTimer >= soundEffectTarget && playedSound == false){
+		}
+		if (hitTimer >= animationStopTarget && stoppedAnimation == false){
+			currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
+			currentBandMember.GetComponent<BandMember>().Dying();
+			animator.SetInteger("Punch", 0);
+			stoppedAnimation = true;
+		}
+		if (hitTimer >= startMusicTarget && startedMusic == true){
+			//mainCam.GetComponent<PauseMusic>().UnPause();
+			startedMusic = true;
+		}
+		if (hitTimer >= doneTarget){
+			isHitting = false;
+			stoppedMusic = false;
+			playedSound = false;
+			stoppedAnimation = false;
+			startedMusic = false;
+			hitTimer = 0f;
+		}
 	}
 
 	void OnTriggerExit (Collider coll){
