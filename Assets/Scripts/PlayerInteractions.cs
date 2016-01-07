@@ -25,10 +25,18 @@ public class PlayerInteractions : MonoBehaviour {
 	public int happinessToGive;
 	public bool suspiciousAction = false;
 
+
+	//Stuff til whacking
+	private bool isHitting = false;
 	private bool madeHit = false;
+	private bool playedSound = false;
 	public float startHitTimer = 2f;
 	private float hitTimerStep;
 	private float hitTimer;
+	public float musicStopTarget = 1.5f;
+	public float soundEffectTarget = 0.5f;
+	public float animationStopTarget = 0.3f;
+	//
 
 	void Start (){
 		computer = GameObject.Find("Computer");
@@ -134,13 +142,19 @@ public class PlayerInteractions : MonoBehaviour {
 		if (computerActive == false){
 			//computerCanvas.SetActive(false);
 		}
+
+		//Whacking bandmembers
+		if (isHitting == true){
+			
+		}
 	}
+
 
 	void OnTriggerEnter(Collider coll){
 		print ("Hanging out with" + coll.gameObject.tag);
 	}
+		
 
-	//Var lagd for BandMember, er her nå. Håper ingenting har blitt ødelagt.
 	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "BandMember"){
 			bandCollision = true;
@@ -164,11 +178,17 @@ public class PlayerInteractions : MonoBehaviour {
 
 		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space")){
 			if (currentBandMember.GetComponent<BandMember>().dead == false){
-				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
-				currentBandMember.GetComponent<BandMember>().Dying();
-				GetComponent<AudioSource>().Play();
+				isHitting = true;
+				hitTimer = startHitTimer;
+
 			}
 		}
+	}
+
+	void HittingBandMember (){
+		currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
+		currentBandMember.GetComponent<BandMember>().Dying();
+		GetComponent<AudioSource>().Play();
 	}
 
 	void OnTriggerExit (Collider coll){

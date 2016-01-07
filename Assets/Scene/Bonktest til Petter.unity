@@ -4800,8 +4800,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 238502121}
   m_Layer: 0
-  m_Name: HandAttachment
-  m_TagString: HandAttachement
+  m_Name: Hand
+  m_TagString: HandAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9674,6 +9674,7 @@ MonoBehaviour:
   computerActive: 0
   happinessToGive: 0
   suspiciousAction: 0
+  startHitTimer: 2
 --- !u!54 &492113374
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9698,7 +9699,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6e210edb7eebf42339ae6813bc80d850, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10357,7 +10358,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22492416, guid: 4889cb7aa766540aea1a5de44a28b511, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22492416, guid: 4889cb7aa766540aea1a5de44a28b511, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -21716,6 +21717,7 @@ MonoBehaviour:
   actionCounter: 0
   success: 0
   handlingGjennomfort: 
+  gameControl: {fileID: 0}
   textToDisplay: 
 --- !u!65 &1264892605
 BoxCollider:
