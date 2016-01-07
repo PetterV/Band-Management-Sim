@@ -37,17 +37,11 @@ public class GameControl : MonoBehaviour {
 	public float danceTid = 3;
 	public float oppkastTid = 3;
 
-	AudioSource goodSound;
-	AudioSource failSound;
-
 	// Use this for initialization
 	void Start () {
 		this.waypoints = GameObject.FindGameObjectsWithTag ("Waypoint");
 		this.stairs = GameObject.FindGameObjectsWithTag ("Stairs");
 		this.houseTransfers = GameObject.FindGameObjectsWithTag ("TransferCenter");
-
-		goodSound = GameObject.FindWithTag("GoodSound").GetComponent<AudioSource>();
-		failSound = GameObject.FindWithTag("FailSound").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

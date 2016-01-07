@@ -290,8 +290,6 @@ public class Innfallsystemet : MonoBehaviour {
 	public void Interrupt(){
 		if (harInfall == true){
 			WrapUp();
-			this.gameObject.GetComponent<BandMemberMoving>().waypointToMoveTo = null;
-			target = null;
 		}
 	}
 

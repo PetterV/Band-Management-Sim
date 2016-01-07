@@ -10,7 +10,6 @@ TagManager:
   - GeneticMaterial
   - Waypoint
   - CameraTarget
-  - GeneticMaterial
   - House 1
   - House 2
   - TransferCenter
@@ -19,17 +18,14 @@ TagManager:
   - ComputerCanvas
   - Weapon
   - HappinessObject
-  - DeliveryPoint
   - EventCanvas
   - EventOverskrift
   - EventBilde
   - EventKnapp
   - CloneSpawn
-  - HappinessObject
   - DeliveryPoint
-  - HandAttachement
-  - Weapon
   - EventText
+  - HandAttachment
   layers:
   - Default
   - TransparentFX
