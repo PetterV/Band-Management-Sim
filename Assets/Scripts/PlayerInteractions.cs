@@ -25,6 +25,11 @@ public class PlayerInteractions : MonoBehaviour {
 	public int happinessToGive;
 	public bool suspiciousAction = false;
 
+	private bool madeHit = false;
+	public float startHitTimer = 2f;
+	private float hitTimerStep;
+	private float hitTimer;
+
 	void Start (){
 		computer = GameObject.Find("Computer");
 		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");

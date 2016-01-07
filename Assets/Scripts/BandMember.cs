@@ -18,6 +18,13 @@ public class BandMember : MonoBehaviour{
 	public GameObject GenMat1;
 	public GameObject instantiatedGenMat;
 
+	private float genDropTimer;
+	private float genDropStep;
+	public float startGenDropTimer = 20f;
+	public float genDropRarity = 0.5f;
+	//
+
+
 	//Kjeftesystem
 	public int myMedgjørlighet = 70;
 	public bool fikkKjeft = false;
@@ -54,6 +61,7 @@ public class BandMember : MonoBehaviour{
     {
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
 		happinessImprovementTimer = startHappinessTimer;
+		genDropTimer = startGenDropTimer;
     }
 
 	// Update is called once per frame
@@ -80,6 +88,17 @@ public class BandMember : MonoBehaviour{
 			canImproveHappiness = true;
 		}
 
+
+		//Reduser timer for genetic droppings
+		genDropStep = 1f * Time.deltaTime;
+		genDropTimer = genDropTimer - genDropStep;
+		if (genDropTimer < 0 && dead == false){
+			float genDropChance = UnityEngine.Random.Range(0, 100);
+			if (genDropRarity > genDropChance){
+				LeaveGenetics();
+			}
+		}
+		//
 
 		//Reduser suspicion over tid
 		mySuspicion = mySuspicion - decreaseSuspicion;
@@ -113,6 +132,7 @@ public class BandMember : MonoBehaviour{
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().skillForCloning = skillTransfer;
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().medgjørlighetForCloning = medgjørligTransfer;
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().roleForCloning = role;
+		genDropTimer = startGenDropTimer;
 	}
 
 	//Bli kjefta på

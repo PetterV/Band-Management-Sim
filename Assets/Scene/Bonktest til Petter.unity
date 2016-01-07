@@ -4496,7 +4496,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2d737899ce16d64438b139e056bed721, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 2d737899ce16d64438b139e056bed721, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4791,6 +4791,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238146546}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &238502120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 238502121}
+  m_Layer: 0
+  m_Name: HandAttachment
+  m_TagString: HandAttachement
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &238502121
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238502120}
+  m_LocalRotation: {x: 0.0046575894, y: -0.7070915, z: 0.0046575884, w: 0.7070914}
+  m_LocalPosition: {x: 0.563, y: 0.86, z: 0.007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2126710426}
+  m_RootOrder: 0
 --- !u!1 &245262349
 GameObject:
   m_ObjectHideFlags: 0
@@ -8080,6 +8107,14 @@ Prefab:
     - target: {fileID: 11474070, guid: 1b287a8966e0e044b8115e0f1c09e4d3, type: 2}
       propertyPath: "medgj\xF8rlighetReduksjon"
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474070, guid: 1b287a8966e0e044b8115e0f1c09e4d3, type: 2}
+      propertyPath: startGenDropTimer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474070, guid: 1b287a8966e0e044b8115e0f1c09e4d3, type: 2}
+      propertyPath: genDropRarity
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b287a8966e0e044b8115e0f1c09e4d3, type: 2}
@@ -21630,6 +21665,8 @@ MonoBehaviour:
   myCanvas: {fileID: 357800182}
   GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
   instantiatedGenMat: {fileID: 0}
+  startGenDropTimer: 20
+  genDropRarity: 0.5
   "myMedgj\xF8rlighet": 99
   fikkKjeft: 0
   myHappiness: 0
@@ -27131,6 +27168,14 @@ Prefab:
       propertyPath: myCanvas
       value: 
       objectReference: {fileID: 1091176386}
+    - target: {fileID: 11438820, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: genDropRarity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438820, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+      propertyPath: startGenDropTimer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
   m_IsPrefabParent: 0
@@ -28409,6 +28454,14 @@ Prefab:
     - target: {fileID: 177378, guid: fd2aef9c75091e940a3f2571d040f2aa, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448960, guid: fd2aef9c75091e940a3f2571d040f2aa, type: 2}
+      propertyPath: startGenDropTimer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448960, guid: fd2aef9c75091e940a3f2571d040f2aa, type: 2}
+      propertyPath: genDropRarity
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd2aef9c75091e940a3f2571d040f2aa, type: 2}
@@ -33494,6 +33547,70 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b197fbfac6013a54e96abbe9ce56eafe, type: 2}
+    - target: {fileID: 400064, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400016, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400022, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400024, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400026, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400028, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 2}
   m_IsPrefabParent: 0

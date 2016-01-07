@@ -19,6 +19,10 @@ TagManager:
   - ComputerCanvas
   - Weapon
   - CloneSpawn
+  - HappinessObject
+  - DeliveryPoint
+  - HandAttachement
+  - Weapon
   layers:
   - Default
   - TransparentFX
