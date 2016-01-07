@@ -17,6 +17,8 @@ public class Innfallsystemet : MonoBehaviour {
 	private bool tooCloseToLeftWall;
 	private bool tooCloseToRightWall;
 
+    public GameObject gameControl;
+
 
 	//Innfall blir triggered av dette.////						V Innfall her V
 	private bool scoreInnfall = false;
@@ -50,6 +52,7 @@ public class Innfallsystemet : MonoBehaviour {
 		tooCloseToRightWall = false;
 		InitializeInnfall();
 		animator = GetComponent<Animator>();
+        gameControl = GameObject.FindWithTag("GameController");
 	}
 
 	private void InitializeInnfall()
@@ -58,7 +61,7 @@ public class Innfallsystemet : MonoBehaviour {
 		this.innfallsOversikt = new Dictionary<Innfall, int>()
 		{
 			{Innfall.Score, 0 },
-			{Innfall.Strandtur, 0 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
+			{Innfall.Strandtur, 1 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
 			{Innfall.Solo, 0 },
 			{Innfall.Lytte, 0 },
 			{Innfall.SintTweet, 0 },
@@ -70,7 +73,7 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Ove, 0 },
 			{Innfall.GoLeft, 0 },
 			{Innfall.GoRight, 0 },
-			{Innfall.Nothing, 1 } //Sannsynligheten for Nothing er sju ganger større enn Score
+			{Innfall.Nothing, 10000 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
 		{
@@ -183,8 +186,14 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void performInnfall(Innfall inn)
-	{
-		switch (inn)
+    {
+        ///spiller av innfallslyd
+        if (inn != Innfall.Nothing)
+        {
+            gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+        }
+
+        switch (inn)
 		{
 		case Innfall.Score:
 			{

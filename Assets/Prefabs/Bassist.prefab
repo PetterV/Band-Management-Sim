@@ -355,6 +355,7 @@ GameObject:
   - 114: {fileID: 11448960}
   - 114: {fileID: 11491134}
   - 54: {fileID: 5496660}
+  - 114: {fileID: 11425198}
   m_Layer: 0
   m_Name: Bassist
   m_TagString: BandMember
@@ -1095,6 +1096,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11425198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583f4db790af6430793b169eb00fd622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
 --- !u!114 &11444334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1127,7 +1140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   role: 0
   skill: 0
-  active: 1
   dead: 0
   beingCarried: 0
   myCanvas: {fileID: 177378}
@@ -1139,6 +1151,9 @@ MonoBehaviour:
   startHappinessTimer: 0
   canImproveHappiness: 0
   "medgj\xF8rlighetReduksjon": 0
+  mySuspicion: 0
+  increaseSuspicion: 0
+  decreaseSuspicion: 0
 --- !u!114 &11451244
 MonoBehaviour:
   m_ObjectHideFlags: 1

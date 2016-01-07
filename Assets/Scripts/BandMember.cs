@@ -9,7 +9,6 @@ public class BandMember : MonoBehaviour{
 	public Role role;
 	public Stats stats;
 	public float skill;
-	public bool active = true;
 	public bool dead = false;
 	public bool beingCarried = false;
 
@@ -29,8 +28,12 @@ public class BandMember : MonoBehaviour{
 	public int startHappinessTimer = 60;
 	public bool canImproveHappiness = true;
 	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
-	//Funker ikke?????
 	public int medgjørlighetReduksjon = 15;
+
+	//Mistenkelighet
+	public float mySuspicion = 0f;
+	public float increaseSuspicion = 0.01f;
+	public float decreaseSuspicion = 0.0005f;
 
 	public BandMember (String name, float skill, Role role)
 	{
@@ -56,13 +59,13 @@ public class BandMember : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Tab)) {
-			myCanvas.SetActive (true);
+			//myCanvas.SetActive (true);
 		}
 		if (!Input.GetKey (KeyCode.Tab)) {
-			myCanvas.SetActive (false);
+			//myCanvas.SetActive (false);
 		}
 
-		if (active == true && Input.GetKeyDown ("g")) {
+		if (Input.GetKeyDown ("g")) {
 			LeaveGenetics ();
 		}
 		if (beingCarried == true) {
@@ -76,6 +79,10 @@ public class BandMember : MonoBehaviour{
 		if (happinessImprovementTimer < 0) {
 			canImproveHappiness = true;
 		}
+
+
+		//Reduser suspicion over tid
+		mySuspicion = mySuspicion - decreaseSuspicion;
 	}
 
     //Blir bonka av spilleren
@@ -127,10 +134,16 @@ public class BandMember : MonoBehaviour{
 				print ("Jeg gjør det jeg vil!");
 			}
 			//Gjør det mindre sannsynlig at de gjør som du sier neste gang
-			myMedgjørlighet = myMedgjørlighet - 15;
+			myMedgjørlighet = myMedgjørlighet - medgjørlighetReduksjon;
 			print(myMedgjørlighet);
 			//Legg inn avbrudd av innfall her.
 		}
+	}
+
+
+	//Ser noe suspicious
+	public void SuspicionIncrease (){
+		mySuspicion = mySuspicion + increaseSuspicion;
 	}
 }
 
