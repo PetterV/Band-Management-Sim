@@ -317,7 +317,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-		
+		//Strandturinnfall
 	void Strandtur (){
 		harInfall = true;
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
@@ -337,11 +337,11 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomfort = "Nå har jeg sand i skoene.";
+			handlingGjennomfort = "Nå har jeg strand i skoene.";
 			WrapUp();
 		}
 	}
-		
+		//solokarriæreinnfall
 	void Solokarriere (){
 		print ("Jeg vil starte solokarriere!");
 		harInfall = true;
@@ -366,7 +366,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+    //Musikklytteinnfal
 	void MusikkLytting (){
 		print ("Jeg vil høre på musikk.");
 		harInfall = true;
@@ -391,7 +391,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+        //SintTweetInnfal
 	void SintTweet (){
 		print ("Jeg er pissed og vil at hele verden skal vite det!");
 		harInfall = true;
@@ -416,7 +416,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+        //Glad Tweet Innfall
 	void GladTweet (){
 		print ("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!");
 		harInfall = true;
@@ -441,7 +441,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+       //Drikkeinnfall
 	void Drikke (){
 		print ("Nå skarre drekkes!");
 		harInfall = true;
@@ -466,7 +466,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+        //Dusjeinnfall
 	void Dusje (){
 		print ("Oh boy, jeg trenger en dusj!");
 		harInfall = true;
@@ -491,7 +491,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+        //Spiseinnfall
 	void Spise (){
 		print ("Nå er jeg sulten!");
 		harInfall = true;
@@ -516,7 +516,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+        //SexyDanceinnfall
 	void SexyDance (){
 		print ("Nå trenger jeg litt alenetid!");
 		harInfall = true;
@@ -541,7 +541,7 @@ public class Innfallsystemet : MonoBehaviour {
 			WrapUp();
 		}
 	}
-
+        //Practiceinnfall
 	void Ove (){
 		print ("Nå skal jeg øve!");
 		harInfall = true;
