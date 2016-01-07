@@ -122,6 +122,11 @@ public class PlayerInteractions : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider coll){
+		print ("Hanging out with" + coll.gameObject.tag);
+	}
+
+	//Var lagd for BandMember, er her nå. Håper ingenting har blitt ødelagt.
+	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "BandMember"){
 			bandCollision = true;
 			currentBandMember = coll.gameObject;
@@ -141,11 +146,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (coll.gameObject.tag == "Computer"){
 			computerCollision = true;
 		}
-		print ("Hanging out with" + coll.gameObject.tag);
-	}
 
-	//Var lagd for BandMember, er her nå. Håper ingenting har blitt ødelagt.
-	void OnTriggerStay(Collider coll){
 		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space")){
 			if (currentBandMember.GetComponent<BandMember>().dead == false){
 				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
