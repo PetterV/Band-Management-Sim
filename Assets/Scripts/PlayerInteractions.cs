@@ -69,6 +69,7 @@ public class PlayerInteractions : MonoBehaviour {
 				}
 				else if(currentBandMember.GetComponent<CloneActivation>().active == false){
 					currentBandMember.GetComponent<CloneActivation>().active = true;
+					currentBandMember.GetComponent<CloneActivation>().Activation();
 					print ("I'm active now!");
 				}
 			}

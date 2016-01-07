@@ -8946,7 +8946,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442686933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
   m_Name: 
@@ -8969,7 +8969,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442686933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
@@ -14535,7 +14535,7 @@ GameObject:
   - 65: {fileID: 803988431}
   m_Layer: 8
   m_Name: CloneMachine
-  m_TagString: Untagged
+  m_TagString: CloneMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14592,10 +14592,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bandMemberToBeCloned: {fileID: 0}
-  vokalist: {fileID: 0}
-  gitarist: {fileID: 0}
-  bassist: {fileID: 0}
-  trommis: {fileID: 0}
+  vokalist: {fileID: 197710, guid: c9261d4e2a5f342f4b3321271d6dd122, type: 2}
+  gitarist: {fileID: 112732, guid: abbe835c46ed56141ad433d9295c6d19, type: 2}
+  bassist: {fileID: 166260, guid: fd2aef9c75091e940a3f2571d040f2aa, type: 2}
+  trommis: {fileID: 100076, guid: 1b287a8966e0e044b8115e0f1c09e4d3, type: 2}
   roleImminentClone: 0
   cloneSpawnPoint: {fileID: 0}
   cloneSkill: 0

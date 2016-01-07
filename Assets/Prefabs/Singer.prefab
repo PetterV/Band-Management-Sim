@@ -546,6 +546,7 @@ GameObject:
   - 114: {fileID: 11435426}
   - 114: {fileID: 11404336}
   - 54: {fileID: 5494522}
+  - 114: {fileID: 11469312}
   m_Layer: 0
   m_Name: Singer
   m_TagString: BandMember
@@ -1117,7 +1118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   role: 0
   skill: 0
-  active: 1
   dead: 0
   beingCarried: 0
   myCanvas: {fileID: 175786}
@@ -1129,6 +1129,9 @@ MonoBehaviour:
   startHappinessTimer: 0
   canImproveHappiness: 0
   "medgj\xF8rlighetReduksjon": 0
+  mySuspicion: 0
+  increaseSuspicion: 0
+  decreaseSuspicion: 0
 --- !u!114 &11435426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1207,6 +1210,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11469312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583f4db790af6430793b169eb00fd622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
 --- !u!114 &11485748
 MonoBehaviour:
   m_ObjectHideFlags: 1
