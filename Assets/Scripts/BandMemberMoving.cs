@@ -40,7 +40,7 @@ public class BandMemberMoving : MonoBehaviour {
 				//x% sjanse for å bevege, x% for å stå stille - skal bli kontrollert av innfall
 			} else {
 				MoveToWayPoint (waypointToMoveTo);
-				animator.SetInteger("Walking", 1);
+				
 			}
 		}
 	}
@@ -116,7 +116,8 @@ public class BandMemberMoving : MonoBehaviour {
 		else{
 			HeadCorrectDirection (transform.position, stepTowardsStairs);
 			transform.position = stepTowardsStairs;
-		}
+            animator.SetInteger("Walking", 1);
+        }
 	}
 
 	void WalkToWayPoint(Waypoint wp){
@@ -141,7 +142,7 @@ public class BandMemberMoving : MonoBehaviour {
 				switchHouses ();
 			print ("Arrived at waypoint!");
 			animator.SetInteger("Walking", 0);
-
+            HeadTowardsCamera();
 			//Lagt til innfall
 			/*TODO: DET KAN VÆRE BUG HER: "Parent" sikter til direkte parent (tror jeg),
 			som kan gjøre at dersom band members er barn av flere objekter, vil ikke neste linje funke.*/
@@ -149,7 +150,8 @@ public class BandMemberMoving : MonoBehaviour {
 		} else {
 			HeadCorrectDirection(transform.position, stepTowardsWp);
 			this.transform.position = stepTowardsWp;
-		}
+            animator.SetInteger("Walking", 1);
+        }
 	}
 
 	Stairs GetNearestStair(bool goingUp){
@@ -213,7 +215,17 @@ public class BandMemberMoving : MonoBehaviour {
 		this.gameObject.transform.eulerAngles = new Vector3 (0, 90.0f, 0);
 	}
 
-	int GetHouseOfObject (String tag)
+    public void HeadTowardsCamera()
+    {
+        this.gameObject.transform.eulerAngles = new Vector3(0, 180.0f, 0);
+    }
+
+    public void HeadAwayFromCamera()
+    {
+        this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    int GetHouseOfObject (String tag)
 	{
         if (tag == "House 1")
         {

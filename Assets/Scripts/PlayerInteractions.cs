@@ -23,9 +23,11 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool carryingAny = false;
 	public bool computerActive = false;
 	public int happinessToGive;
+    	private Animator animator;
 	public bool suspiciousAction = false;
 
 
+<<<<<<< HEAD
 	//Stuff til whacking
 	private bool isHitting = false;
 	private bool madeHit = false;
@@ -37,11 +39,23 @@ public class PlayerInteractions : MonoBehaviour {
 	public float soundEffectTarget = 0.5f;
 	public float animationStopTarget = 0.3f;
 	//
+=======
+>>>>>>> origin/master
 
 	void Start (){
 		computer = GameObject.Find("Computer");
 		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+        animator = GetComponent<Animator>();
 	}
+
+    public GameObject mainCam;
+
+    void Start (){
+		computer = GameObject.Find("Computer");
+		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+        mainCam = GameObject.FindWithTag("MainCamera");
+    }
+
 	// Update is called once per frame
 	void Update () {
 
@@ -178,10 +192,22 @@ public class PlayerInteractions : MonoBehaviour {
 
 		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space")){
 			if (currentBandMember.GetComponent<BandMember>().dead == false){
+<<<<<<< HEAD
 				isHitting = true;
 				hitTimer = startHitTimer;
 
+=======
+				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
+				currentBandMember.GetComponent<BandMember>().Dying();
+				GetComponent<AudioSource>().Play();
+
+                animator.SetInteger("Punch", 1);                
+>>>>>>> origin/master
 			}
+
+                mainCam.GetComponent<PauseMusic>().Pause();
+            }
+
 		}
 	}
 
