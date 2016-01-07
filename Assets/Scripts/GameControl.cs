@@ -7,12 +7,21 @@ public class GameControl : MonoBehaviour {
 	public GameObject[] stairs;
 	public GameObject[] houseTransfers;
 
+	public bool gameOver = false;
+
 
 	// Penger og popularitet
 	public float penger = 100000;
 	public float popularitet = 1000000;
 	public float popularitetsfaktor = 100;
 
+	public float caymanKonto = 0f;
+
+
+	//Suspicion
+	public float publicSuspicion = 0f;
+	public float maxPublicSuspicion = 1000f;
+	//
 
 	//Tid innfall tar
 	public float scoreTid = 3;
@@ -28,11 +37,16 @@ public class GameControl : MonoBehaviour {
 	public float danceTid = 3;
 	public float oppkastTid = 3;
 
+	AudioSource goodSound;
+	AudioSource failSound;
+
 	// Use this for initialization
 	void Start () {
 		this.waypoints = GameObject.FindGameObjectsWithTag ("Waypoint");
 		this.stairs = GameObject.FindGameObjectsWithTag ("Stairs");
 		this.houseTransfers = GameObject.FindGameObjectsWithTag ("TransferCenter");
+		goodSound = GameObject.FindWithTag("GoodSound").GetComponent<AudioSource>();
+		failSound = GameObject.FindWithTag("FailSound").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -45,5 +59,29 @@ public class GameControl : MonoBehaviour {
 		if (popularitet > 1000000){
 			penger = penger + 10;
 		}
+
+
+
+		if (publicSuspicion > maxPublicSuspicion){
+			gameOver = true;
+			print ("You got found out!");
+		}
+
+		if (gameOver == true){
+			print ("Game over!");
+		}
+
+//		if (Input.GetKeyDown("p")){
+//			playGood();
+//		}
 	}
+
+
+
+//	public void playGood (){
+//		goodSound.PlayOneShot(vellykket_utfall, 1);
+//	}
+//	public void playBad (){
+//		failSound.PlayOneShot(mislykket_utfall, 1);
+//	}
 }

@@ -13,7 +13,7 @@ public class BandMember : MonoBehaviour{
 	public bool dead = false;
 	public bool beingCarried = false;
 
-	GameObject myCanvas;
+	public GameObject myCanvas;
 
 	//Genetic material
 	public GameObject GenMat1;
@@ -29,6 +29,7 @@ public class BandMember : MonoBehaviour{
 	public int startHappinessTimer = 60;
 	public bool canImproveHappiness = true;
 	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
+	//Funker ikke?????
 	public int medgjørlighetReduksjon = 15;
 
 	public BandMember (String name, float skill, Role role)
@@ -50,7 +51,6 @@ public class BandMember : MonoBehaviour{
     {
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
 		happinessImprovementTimer = startHappinessTimer;
-		myCanvas = GetComponentInChildren<Canvas>().gameObject;
     }
 
 	// Update is called once per frame
@@ -127,7 +127,8 @@ public class BandMember : MonoBehaviour{
 				print ("Jeg gjør det jeg vil!");
 			}
 			//Gjør det mindre sannsynlig at de gjør som du sier neste gang
-			myMedgjørlighet = myMedgjørlighet - medgjørlighetReduksjon;
+			myMedgjørlighet = myMedgjørlighet - 15;
+			print(myMedgjørlighet);
 			//Legg inn avbrudd av innfall her.
 		}
 	}
