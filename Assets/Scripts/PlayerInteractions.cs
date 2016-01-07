@@ -27,11 +27,21 @@ public class PlayerInteractions : MonoBehaviour {
 	public bool suspiciousAction = false;
 
 
+
 	void Start (){
 		computer = GameObject.Find("Computer");
 		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
         animator = GetComponent<Animator>();
 	}
+
+    public GameObject mainCam;
+
+    void Start (){
+		computer = GameObject.Find("Computer");
+		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+        mainCam = GameObject.FindWithTag("MainCamera");
+    }
+
 	// Update is called once per frame
 	void Update () {
 
@@ -165,8 +175,13 @@ public class PlayerInteractions : MonoBehaviour {
 				currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
 				currentBandMember.GetComponent<BandMember>().Dying();
 				GetComponent<AudioSource>().Play();
+
                 animator.SetInteger("Punch", 1);                
 			}
+
+                mainCam.GetComponent<PauseMusic>().Pause();
+            }
+
 		}
 	}
 
