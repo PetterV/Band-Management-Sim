@@ -45,6 +45,7 @@ public class GameControl : MonoBehaviour {
 		this.waypoints = GameObject.FindGameObjectsWithTag ("Waypoint");
 		this.stairs = GameObject.FindGameObjectsWithTag ("Stairs");
 		this.houseTransfers = GameObject.FindGameObjectsWithTag ("TransferCenter");
+
 		goodSound = GameObject.FindWithTag("GoodSound").GetComponent<AudioSource>();
 		failSound = GameObject.FindWithTag("FailSound").GetComponent<AudioSource>();
 	}

@@ -114,10 +114,10 @@ public class PlayerInteractions : MonoBehaviour {
 			}
 		}
 		if (computerActive == true){
-			computerCanvas.SetActive(true);
+			//computerCanvas.SetActive(true);
 		}
 		if (computerActive == false){
-			computerCanvas.SetActive(false);
+			//computerCanvas.SetActive(false);
 		}
 	}
 

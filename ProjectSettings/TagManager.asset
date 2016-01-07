@@ -18,6 +18,12 @@ TagManager:
   - Computer
   - ComputerCanvas
   - Weapon
+  - HappinessObject
+  - DeliveryPoint
+  - EventCanvas
+  - EventOverskrift
+  - EventBilde
+  - EventKnapp
   layers:
   - Default
   - TransparentFX
