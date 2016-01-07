@@ -9,7 +9,7 @@ public class Innfallsystemet : MonoBehaviour {
 	public bool harInfall = false;
 	public GameObject target;
 	public bool riktigPlass = false;
-	public float actionCounter;
+	private float actionCounter;
 	public bool success = false;
 	public string handlingGjennomfort;
 	private Animator animator;
@@ -60,20 +60,20 @@ public class Innfallsystemet : MonoBehaviour {
 		//Dette er Innfalls-oversikten. Hvis du vil legge til flere, gjør du det på samme måte som her.
 		this.innfallsOversikt = new Dictionary<Innfall, int>()
 		{
-			{Innfall.Score, 0 },
+			{Innfall.Score, 1 },
 			{Innfall.Strandtur, 1 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
-			{Innfall.Solo, 0 },
-			{Innfall.Lytte, 0 },
-			{Innfall.SintTweet, 0 },
-			{Innfall.GladTweet, 0 },
-			{Innfall.Drikke, 0 },
-			{Innfall.Spise, 0 },
-			{Innfall.Dusje, 0 },
-			{Innfall.Danse, 0 },
-			{Innfall.Ove, 0 },
-			{Innfall.GoLeft, 0 },
-			{Innfall.GoRight, 0 },
-			{Innfall.Nothing, 10000 } //Sannsynligheten for Nothing er sju ganger større enn Score
+			{Innfall.Solo, 1 },
+			{Innfall.Lytte, 1 },
+			{Innfall.SintTweet, 1 },
+			{Innfall.GladTweet, 1 },
+			{Innfall.Drikke, 1 },
+			{Innfall.Spise, 1 },
+			{Innfall.Dusje, 1 },
+			{Innfall.Danse, 1 },
+			{Innfall.Ove, 1 },
+			{Innfall.GoLeft, 1 },
+			{Innfall.GoRight, 1 },
+			{Innfall.Nothing, 1 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
 		{
@@ -95,8 +95,10 @@ public class Innfallsystemet : MonoBehaviour {
 		if (Input.GetKeyDown("z")){
 			
 		}
+		if (harInfall == false){
 		setActionCounter = false;
 		CheckInnfall();
+		}
 		if (target == null){
 			
 		}
