@@ -28,7 +28,8 @@ public class PlayerInteractions : MonoBehaviour {
 
 
 	//Stuff til whacking
-	private bool isHitting = false;
+	float animationTimer;
+	public bool isHitting = false;
 	private bool madeHit = false;
 	private bool playedSound = false;
 	private bool stoppedMusic = false;
@@ -42,6 +43,8 @@ public class PlayerInteractions : MonoBehaviour {
 	public float animationStopTarget = 0.4f;
 	public float startMusicTarget = 1f;
 	public float doneTarget = 1.1f;
+	public GameObject weapon;
+	public CapsuleCollider weaponColl;
 	//
 
     public GameObject mainCam;
@@ -51,6 +54,9 @@ public class PlayerInteractions : MonoBehaviour {
 		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
         mainCam = GameObject.FindWithTag("MainCamera");
 		animator = GetComponent<Animator>();
+		weapon = GameObject.FindWithTag("Weapon");
+		weaponColl = weapon.GetComponent<CapsuleCollider>();
+		weaponColl.enabled = false;
     }
 
 	// Update is called once per frame
@@ -155,6 +161,17 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 
 		//Whacking bandmembers
+		if (Input.GetKeyDown("space")){
+			animator.SetInteger("Punch", 1);
+			animationTimer = 0;
+			weaponColl.enabled = true;
+		}
+		float animationTimerStep = 1f * Time.deltaTime;
+		animationTimer = animationTimer + animationTimerStep;
+		if (!Input.GetKey("space") && animationTimer > 1f){
+			animator.SetInteger("Punch", 0);
+			weaponColl.enabled = false;
+		}
 		if (isHitting == true){
 			HittingBandMember();
 		}
@@ -167,7 +184,7 @@ public class PlayerInteractions : MonoBehaviour {
 		
 
 	void OnTriggerStay(Collider coll){
-		if (coll.gameObject.tag == "BandMember"){
+		if (coll.gameObject.tag == "BandMember" && isHitting == false){
 			bandCollision = true;
 			currentBandMember = coll.gameObject;
 		}
@@ -191,7 +208,6 @@ public class PlayerInteractions : MonoBehaviour {
 			isHitting = true;
 			currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
 			currentBandMember.GetComponent<BandMemberMoving>().enabled = false;
-			animator.SetInteger("Punch", 1);
         }
 	}
 
@@ -213,7 +229,6 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 		if (hitTimer >= animationStopTarget && stoppedAnimation == false){
 			currentBandMember.GetComponent<BandMember>().Dying();
-			animator.SetInteger("Punch", 0);
 			stoppedAnimation = true;
 		}
 		if (hitTimer >= startMusicTarget && startedMusic == true){
