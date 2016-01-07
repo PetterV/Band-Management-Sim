@@ -354,6 +354,7 @@ GameObject:
   - 114: {fileID: 11402514}
   - 114: {fileID: 11448960}
   - 114: {fileID: 11491134}
+  - 54: {fileID: 5496660}
   m_Layer: 0
   m_Name: Bassist
   m_TagString: BandMember
@@ -961,7 +962,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166260}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 72.4, y: 27.64, z: -2.5}
+  m_LocalPosition: {x: 1.2675781, y: 27.589535, z: -2.5008178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 454440}
@@ -1009,6 +1010,21 @@ Transform:
   - {fileID: 431376}
   m_Father: {fileID: 429070}
   m_RootOrder: 1
+--- !u!54 &5496660
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166260}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6528840
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1019,7 +1035,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2, y: 2.75, z: 1}
+  m_Size: {x: 2.5, y: 2.75, z: 5}
   m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!95 &9574930
 Animator:
@@ -1056,6 +1072,8 @@ MonoBehaviour:
   houseTransferFloors: 
   startFloor: 4
   startHouse: 0
+  currentFloor: 0
+  currentHouse: 0
 --- !u!114 &11405572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1112,6 +1130,7 @@ MonoBehaviour:
   active: 1
   dead: 0
   beingCarried: 0
+  myCanvas: {fileID: 177378}
   GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
   instantiatedGenMat: {fileID: 0}
   "myMedgj\xF8rlighet": 99
