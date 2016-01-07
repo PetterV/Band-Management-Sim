@@ -73,7 +73,7 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Ove, 0 },
 			{Innfall.GoLeft, 0 },
 			{Innfall.GoRight, 0 },
-			{Innfall.Nothing, 100 } //Sannsynligheten for Nothing er sju ganger større enn Score
+			{Innfall.Nothing, 10000 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
 		{
