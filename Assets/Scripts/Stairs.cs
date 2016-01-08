@@ -18,10 +18,12 @@ public class Stairs : MonoBehaviour {
 	}
 
 	public void MoveDown(GameObject toMove){
-		toMove.transform.position = downExit.gameObject.transform.position;
+        if(downExit != null)
+		    toMove.transform.position = downExit.gameObject.transform.position;
 	}
 
 	public void MoveUp(GameObject toMove){
-		toMove.transform.position = upExit.gameObject.transform.position;
+        if(upExit != null)
+		    toMove.transform.position = upExit.gameObject.transform.position;
 	}
 }

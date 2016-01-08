@@ -18,7 +18,7 @@ public class EventSystemet : MonoBehaviour {
 	MyDelegate solveFunction;
 	MyDelegate hoverFunction;
 	public GameObject EventCanvas;
-	private bool playerChoosing = false;
+	public bool playerChoosing = false;
 	private bool eventRunning = false;
 
 	private GameObject[] buttons;
@@ -332,7 +332,7 @@ public class EventSystemet : MonoBehaviour {
 	public void UpdateHoverBoxPosition(){
 		Vector3 rectPosition = Input.mousePosition;
 		RectTransform hoverRect = hoverBox.GetComponent<RectTransform> ();
-		rectPosition.y += (hoverRect.rect.height/4.0f)+1.0f;
+		rectPosition.y += (hoverRect.rect.height/3.0f)+1.0f;
 		hoverBox.transform.position = rectPosition;
 	}
 
