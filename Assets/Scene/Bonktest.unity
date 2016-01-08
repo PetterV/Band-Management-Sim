@@ -13553,7 +13553,7 @@ GameObject:
   - 65: {fileID: 673446142}
   - 114: {fileID: 673446141}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CLONE MACHINE INTERACT
   m_TagString: CloneMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13588,7 +13588,7 @@ MonoBehaviour:
   bassist: {fileID: 2074542248}
   trommis: {fileID: 242668019}
   roleImminentClone: 0
-  cloneSpawnPoint: {fileID: 0}
+  cloneSpawnPoint: {fileID: 1237617345}
   cloneSkill: 0
   "cloneMedgj\xF8rlighet": 0
   cloneName: 
@@ -23763,6 +23763,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86bf69abb4de05c40853f0226d962f8f, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1237617345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1237617346}
+  m_Layer: 0
+  m_Name: CloneSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2270504221434485236, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237617346
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237617345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.21, y: -4.38, z: 3.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2092258822}
+  m_RootOrder: 0
 --- !u!4 &1240385973
 Transform:
   m_ObjectHideFlags: 0
