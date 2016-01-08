@@ -205,11 +205,11 @@ public class PlayerInteractions : MonoBehaviour {
 			computerCollision = true;
 		}
 
-		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
-			isHitting = true;
-			bandMemberToKill.GetComponent<Innfallsystemet>().Interrupt();
-			bandMemberToKill.GetComponent<BandMemberMoving>().enabled = false;
-        }
+//		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
+//			isHitting = true;
+//			bandMemberToKill.GetComponent<Innfallsystemet>().Interrupt();
+//			bandMemberToKill.GetComponent<BandMemberMoving>().enabled = false;
+//        }
 	}
 
 	void HittingBandMember (){

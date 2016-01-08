@@ -1037,7 +1037,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.75, z: 5}
+  m_Size: {x: 1.5, y: 3.1, z: 1.5}
   m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!95 &9579912
 Animator:
@@ -1123,6 +1123,8 @@ MonoBehaviour:
   myCanvas: {fileID: 175786}
   GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
   instantiatedGenMat: {fileID: 0}
+  startGenDropTimer: 0
+  genDropRarity: 0
   "myMedgj\xF8rlighet": 99
   fikkKjeft: 0
   myHappiness: 0
@@ -1156,12 +1158,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   innfallsTall: 0
-  harInfall: 0
+  harInnfall: 0
   target: {fileID: 0}
   riktigPlass: 0
-  actionCounter: 0
   success: 0
   handlingGjennomfort: 
+  gameControl: {fileID: 0}
   textToDisplay: 
 --- !u!114 &11447548
 MonoBehaviour:
@@ -1221,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583f4db790af6430793b169eb00fd622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
 --- !u!114 &11485748
 MonoBehaviour:
   m_ObjectHideFlags: 1
