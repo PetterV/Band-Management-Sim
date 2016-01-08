@@ -442,7 +442,7 @@ public class Innfallsystemet : MonoBehaviour {
 			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			float progToBeFilled = actionCounter / maxActionCounter;
-			progressBar.fillAmount = 1 - progToBeFilled;
+			//progressBar.fillAmount = 1 - progToBeFilled;
 			//Send beskjed til tekstbobler
 			//ERSTATT DISSE MED EN TREDJE STRING!!!
 			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){

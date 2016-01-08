@@ -17,13 +17,13 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject bandMemberToKill;
 	public BandMember.Role bringingRole;
 	public float bringingSkill;
-	public int bringingMedgjørlighet;
+	public float bringingMedgjørlighet;
 	public bool carryingGenMat = false;
 	public bool carryingHappiness = false;
 	public bool carryingBody = false;
 	public bool carryingAny = false;
 	public bool computerActive = false;
-	public int happinessToGive;
+	public float happinessToGive;
     private Animator animator;
 	public bool suspiciousAction = false;
 
@@ -43,6 +43,10 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject weapon;
 	//
 
+	//Sensor for kjefting
+	CapsuleCollider kjefteSensor;
+	//
+
     public GameObject mainCam;
 
     void Start (){
@@ -51,6 +55,8 @@ public class PlayerInteractions : MonoBehaviour {
         mainCam = GameObject.FindWithTag("MainCamera");
 		animator = GetComponent<Animator>();
 		weapon = GameObject.FindWithTag("Weapon");
+		kjefteSensor = GetComponent<CapsuleCollider>();
+		kjefteSensor.enabled = false;
 		//weapon.SetActive(false);
     }
 
@@ -73,11 +79,15 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 
 		//Gi kjeft med Q
-		if (Input.GetKeyUp("q")){
+		if (Input.GetKeyDown("q")){
+			kjefteSensor.enabled = true;
 			if(bandCollision == true && currentBandMember.GetComponent<BandMember>().fikkKjeft == false && currentBandMember.GetComponent<CloneActivation>().active == true && currentBandMember.GetComponent<BandMember>().dead == false){
 				print ("Don't do that!");
 				currentBandMember.GetComponent<BandMember>().Kjeft();
 			}
+		}
+		if (Input.GetKeyUp("q")){
+			kjefteSensor.enabled = false;
 		}
 		//Går nedover lista i prioritert rekkefølge for å interacte 
 		if (Input.GetKeyDown("e")){
@@ -92,7 +102,7 @@ public class PlayerInteractions : MonoBehaviour {
 					currentBandMember.GetComponent<BandMember>().beingCarried = false;
 					carryingBody = false;
 				}
-				else if(currentBandMember.GetComponent<CloneActivation>().active == false){
+				else if(currentBandMember.GetComponent<CloneActivation>().active == false && currentBandMember.GetComponent<BandMember>().dead == false){
 					currentBandMember.GetComponent<CloneActivation>().active = true;
 					currentBandMember.GetComponent<CloneActivation>().Activation();
 					print ("I'm active now!");
