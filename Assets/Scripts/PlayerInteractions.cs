@@ -180,7 +180,7 @@ public class PlayerInteractions : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider coll){
-		print ("Hanging out with" + coll.gameObject.tag);
+		//print ("Hanging out with" + coll.gameObject.tag);
 	}
 		
 
@@ -249,6 +249,6 @@ public class PlayerInteractions : MonoBehaviour {
 			computerCollision = false;
 			computerActive = false;
 		}
-		print ("No longer hanging out with" + coll.gameObject.tag);
+		//print ("No longer hanging out with" + coll.gameObject.tag);
 	}
 }
