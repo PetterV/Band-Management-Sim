@@ -11,6 +11,7 @@ public class BandMember : MonoBehaviour{
 	public float skill;
 	public bool dead = false;
 	public bool beingCarried = false;
+	public bool active = true;
 
 	public GameObject myCanvas;
 

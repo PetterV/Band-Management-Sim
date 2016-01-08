@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fd8eafb6ec9ec4889032e69e037eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  role: 0
+  role: 1
   skill: 0
   dead: 0
   beingCarried: 0
@@ -1224,6 +1224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  startWalkTarget: {fileID: 0}
 --- !u!114 &11485748
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -54,6 +54,8 @@ public class PlayerInteractions : MonoBehaviour {
 		weapon = GameObject.FindWithTag("Weapon");
 		weaponColl = weapon.GetComponent<CapsuleCollider>();
 		weaponColl.enabled = false;
+		weapon.SetActive(false);
+
     }
 
 	// Update is called once per frame
@@ -161,6 +163,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (Input.GetKeyDown("space")){
 			animator.SetInteger("Punch", 1);
 			animationTimer = 0;
+			weapon.SetActive(true);
 			weaponColl.enabled = true;
 		}
 		float animationTimerStep = 1f * Time.deltaTime;
@@ -168,6 +171,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (!Input.GetKey("space") && animationTimer > 1f){
 			animator.SetInteger("Punch", 0);
 			weaponColl.enabled = false;
+			weapon.SetActive(false);
 		}
 		if (isHitting == true){
 			HittingBandMember();

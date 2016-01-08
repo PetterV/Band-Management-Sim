@@ -812,7 +812,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100076}
   m_LocalRotation: {x: 0, y: 0.7071092, z: 0, w: -0.7071043}
-  m_LocalPosition: {x: 11.818237, y: 0.00053596497, z: -2.4224584}
+  m_LocalPosition: {x: 9.03, y: 0, z: -2.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479340}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   speed: 5
   waypointToMoveTo: {fileID: 0}
   houseTransferFloors: 
-  startFloor: -1
+  startFloor: 0
   startHouse: 0
   currentFloor: 0
   currentHouse: 0
@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  startWalkTarget: {fileID: 0}
 --- !u!114 &11443338
 MonoBehaviour:
   m_ObjectHideFlags: 1
