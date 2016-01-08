@@ -28,6 +28,7 @@ TagManager:
   - HandAttachment
   - popBar
   - susBar
+  - MoneyDisplay
   layers:
   - Default
   - TransparentFX
