@@ -9,10 +9,10 @@ public class Innfallsprinting : MonoBehaviour {
 	public GameObject keithBoble;
 	public GameObject hannahBoble;
 
-	private Text crossText;
-	private Text ronnyText;
-	private Text keithText;
-	private Text hannahText;
+	public Text crossText;
+	public Text ronnyText;
+	public Text keithText;
+	public Text hannahText;
 
 	public string crossSier;
 	public string ronnySier;
@@ -26,14 +26,19 @@ public class Innfallsprinting : MonoBehaviour {
 		keithBoble = GameObject.Find("Boble_Keith");
 		hannahBoble = GameObject.Find("Boble_Hannah");
 
-		crossText = crossBoble.GetComponentInChildren<Text>();
-		ronnyText = ronnyBoble.GetComponentInChildren<Text>();
-		keithText = keithBoble.GetComponentInChildren<Text>();
-		hannahText = hannahBoble.GetComponentInChildren<Text>();
+		crossText = GameObject.FindWithTag("CrossText").GetComponent<Text>();
+		ronnyText = GameObject.FindWithTag("RonnyText").GetComponent<Text>();
+		keithText = GameObject.FindWithTag("KeithText").GetComponent<Text>();
+		hannahText = GameObject.FindWithTag("HannahText").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		crossText.text = crossSier;
+		ronnyText.text = ronnySier;
+		keithText.text = keithSier;
+		hannahText.text = hannahSier;
+
 		if (crossText.text != null){
 			crossBoble.SetActive(true);
 		}

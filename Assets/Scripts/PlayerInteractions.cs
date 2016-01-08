@@ -41,7 +41,6 @@ public class PlayerInteractions : MonoBehaviour {
 	public float killTarget = 0.4f;
 	public float doneTarget = 0.5f;
 	public GameObject weapon;
-	public CapsuleCollider weaponColl;
 	//
 
     public GameObject mainCam;
@@ -52,8 +51,6 @@ public class PlayerInteractions : MonoBehaviour {
         mainCam = GameObject.FindWithTag("MainCamera");
 		animator = GetComponent<Animator>();
 		weapon = GameObject.FindWithTag("Weapon");
-		weaponColl = weapon.GetComponent<CapsuleCollider>();
-		weaponColl.enabled = false;
 		weapon.SetActive(false);
 
     }
@@ -164,13 +161,11 @@ public class PlayerInteractions : MonoBehaviour {
 			animator.SetInteger("Punch", 1);
 			animationTimer = 0;
 			weapon.SetActive(true);
-			weaponColl.enabled = true;
 		}
 		float animationTimerStep = 1f * Time.deltaTime;
 		animationTimer = animationTimer + animationTimerStep;
 		if (!Input.GetKey("space") && animationTimer > 1f){
 			animator.SetInteger("Punch", 0);
-			weaponColl.enabled = false;
 			weapon.SetActive(false);
 		}
 		if (isHitting == true){

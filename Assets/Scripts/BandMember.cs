@@ -129,7 +129,8 @@ public class BandMember : MonoBehaviour{
 	} 
 
 	public void LeaveGenetics (){
-		Vector3 spawnPosition = this.transform.position;
+		float spawnY = this.transform.position.y + 0.7f; 
+		Vector3 spawnPosition = new Vector3(this.transform.position.x, spawnY, this.transform.position.z);
 		//Quaternion spawnRotation = this.transform.rotation;
 		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, GenMat1.transform.rotation);
 		float skillvariation = UnityEngine.Random.Range(-10, 10);
@@ -139,6 +140,7 @@ public class BandMember : MonoBehaviour{
 		if (medgjørligTransfer > 99){
 			medgjørligTransfer = 99;
 		}
+		instantiatedGenMat.GetComponent<GenetiskMateriale>().enabled = true;
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().skillForCloning = skillTransfer;
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().medgjørlighetForCloning = medgjørligTransfer;
 		instantiatedGenMat.GetComponent<GenetiskMateriale>().roleForCloning = role;

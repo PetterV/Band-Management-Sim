@@ -16,6 +16,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 	private bool tooCloseToLeftWall;
 	private bool tooCloseToRightWall;
+	 
 
     public GameObject gameControl;
 
@@ -36,6 +37,10 @@ public class Innfallsystemet : MonoBehaviour {
 	private bool innfallGoLeft = false;
 	//Innfallstriggers over.									^ Innfall her ^
 
+	public string crossDisplay;
+	public string ronnyDisplay;
+	public string keithDisplay;
+	public string hannahDisplay;
 	public string textToDisplay;
 
 
@@ -335,16 +340,62 @@ public class Innfallsystemet : MonoBehaviour {
 			if (target == null)
 				print ("ERROR ERROR ERROR, COULD NOT FIND " + placeToWalkTo);
 			GetComponent<BandMemberMoving>().waypointToMoveTo = target;
+
+			//Send beskjed til tekstbobler
+			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){
+				gameControl.GetComponent<Innfallsprinting>().crossSier = statement;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.Drummer){
+				gameControl.GetComponent<Innfallsprinting>().ronnySier = statement;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.Singer){
+				gameControl.GetComponent<Innfallsprinting>().keithSier = statement;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.BassPlayer){
+				gameControl.GetComponent<Innfallsprinting>().hannahSier = statement;
+			}
+
 		}
 		else if (riktigPlass){
 			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
+
+			//Send beskjed til tekstbobler
+			//ERSTATT DISSE MED EN TREDJE STRING!!!
+			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){
+				gameControl.GetComponent<Innfallsprinting>().crossSier = statement;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.Drummer){
+				gameControl.GetComponent<Innfallsprinting>().ronnySier = statement;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.Singer){
+				gameControl.GetComponent<Innfallsprinting>().keithSier = statement;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.BassPlayer){
+				gameControl.GetComponent<Innfallsprinting>().hannahSier = statement;
+			}
 			if (actionCounter <= 0){
 				innfallComplete = true;
 			}
+
 		}
 		if (innfallComplete == true){
 			handlingGjennomfort = handlingGjennomfort;
+
+			//Si ifra til snakkebobla
+			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){
+				gameControl.GetComponent<Innfallsprinting>().crossSier = handlingGjennomfort;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.Drummer){
+				gameControl.GetComponent<Innfallsprinting>().ronnySier = handlingGjennomfort;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.Singer){
+				gameControl.GetComponent<Innfallsprinting>().keithSier = handlingGjennomfort;
+			}
+			if (GetComponent<BandMember>().role == BandMember.Role.BassPlayer){
+				gameControl.GetComponent<Innfallsprinting>().hannahSier = handlingGjennomfort;
+			}
+
 			if(increaseSkill){
 				int skillIncrease = UnityEngine.Random.Range(1, 5);
 				GetComponent<BandMember>().skill = GetComponent<BandMember>().skill + skillIncrease; 

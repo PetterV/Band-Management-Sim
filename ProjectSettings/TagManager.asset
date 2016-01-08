@@ -29,6 +29,11 @@ TagManager:
   - popBar
   - susBar
   - MoneyDisplay
+  - EventHover
+  - CrossText
+  - RonnyText
+  - KeithText
+  - HannahText
   layers:
   - Default
   - TransparentFX
