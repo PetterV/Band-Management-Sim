@@ -133,7 +133,7 @@ public class PlayerInteractions : MonoBehaviour {
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true && cloneMachineCollision == true){
 					//print ("Destroy me - GenMat");
-					GameObject.Find("CloneMachine").GetComponent<CloneMachine>().Cloning();
+					GameObject.FindWithTag("CloneMachine").GetComponent<CloneMachine>().Cloning();
 					Destroy(currentGenMat);
 					carryingGenMat = false;
 				}

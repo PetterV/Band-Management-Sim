@@ -1099,7 +1099,7 @@ MonoBehaviour:
   speed: 5
   waypointToMoveTo: {fileID: 0}
   houseTransferFloors: 
-  startFloor: 0
+  startFloor: -1
   startHouse: 0
   currentFloor: 0
   currentHouse: 0
@@ -1928,7 +1928,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: startFloor
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100076}
