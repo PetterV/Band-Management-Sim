@@ -7,11 +7,16 @@ public class EventSystemet : MonoBehaviour {
 	public enum Event {Rasisme, DickPicLeak, Nothing};
 	delegate void MyDelegate(int choice);
 
+	public Image rasismeBilde;
+	public Image dickPicBilde;
+	public Image[] personBilder;
+
 	private Dictionary<Event, int> eventOversikt;
 	private int probabilitySum = 0;
 	public int minimumSecondDelayBetweenEvents = 120;
 	public float timeSinceLastEvent = 0;
 	MyDelegate eventFunction;
+	MyDelegate hoverFunction;
 	public GameObject EventCanvas;
 	private bool playerChoosing = false;
 	private bool eventRunning = false;
@@ -19,21 +24,20 @@ public class EventSystemet : MonoBehaviour {
 	private GameObject[] buttons;
 	private Text text;
 	private Text headline;
-	private RawImage img;
+	private Image flavourImage;
+	private Image personImage;
+	private GameObject hoverBox;
 
 	// Use this for initialization
 	void Start () {
 		InitializeEvents ();
-		eventFunction = PrintNum;
-		eventFunction(50);
-
-		eventFunction = DoubleNum;
-		eventFunction(50);
 		this.EventCanvas = GameObject.FindGameObjectWithTag ("EventCanvas");
 		headline = GameObject.FindGameObjectWithTag ("EventOverskrift").GetComponent<Text>();
-		img = GameObject.FindGameObjectWithTag ("EventBilde").GetComponent<RawImage>();
+		flavourImage = GameObject.FindGameObjectsWithTag ("EventBilde")[0].GetComponent<Image>();
+		personImage = GameObject.FindGameObjectsWithTag ("EventBilde")[1].GetComponent<Image>();
 		text = GameObject.FindGameObjectWithTag ("EventText").GetComponent<Text>();
 		buttons = GameObject.FindGameObjectsWithTag ("EventKnapp");
+		hoverBox = GameObject.FindGameObjectWithTag ("EventHover");
 		this.EventCanvas.SetActive (false);
 
 	}
@@ -42,6 +46,8 @@ public class EventSystemet : MonoBehaviour {
 	void Update () {
 		if(!eventRunning)
 			FireEventsOrNothing ();
+		if (hoverBox.activeSelf)
+			UpdateHoverBoxPosition ();
 	}
 
 	private void InitializeEvents()
@@ -104,9 +110,10 @@ public class EventSystemet : MonoBehaviour {
 	private void Rasisme(){
 		string overskrift = "Hey, that's racist!";
 		string text = "Something racist has happened!";
-		string img = "yellow";
-		SetUpCanvas (overskrift, img, text, "I guess I am racist :(");
+		Image personenSomVarRasistisk = GetRandomPerson (); 
+		SetUpCanvas (overskrift, rasismeBilde, personenSomVarRasistisk, text, "I guess I am racist :(");
 		this.eventFunction = SolveRasisme;	
+		this.hoverFunction = hoverRasisme;
 	}
 
 	private void SolveRasisme(int alt){
@@ -116,49 +123,26 @@ public class EventSystemet : MonoBehaviour {
 				print ("rasisme0");
 				break;
 			}
-		case 1:
+		}
+	}
+	private void hoverRasisme(int alt){
+		string hoverText = "";
+		switch (alt) {
+		case 0:
 			{
-				print ("rasisme1");
-				break;
-			}
-		case 2:
-			{
-				print ("rasisme2");
-				break;
-			}
-		case 3:
-			{
-				print ("rasisme3");
+				hoverText = "hoverRasisme0";
 				break;
 			}
 		}
+		SetHoverText(hoverText);
 	}
 
 	private void DickPicLeak(){
 		string flavour = "A fan claims that they have a dick pic from one of your band members. If this is true, it will alienate your fans from the Christian Right. What do you want to do?";
-		SetUpCanvas ("DICK PIC LEAKED!", "pink", flavour, "One dick", "Two dicks", "Three dicks", "ALL THE DICKS");
+		Image personenSomLeakaDick = GetRandomPerson ();
+		SetUpCanvas ("DICK PIC LEAKED!", dickPicBilde, personenSomLeakaDick, flavour, "One dick", "Two dicks", "Three dicks", "ALL THE DICKS");
 		this.eventFunction = SolveDickPicLeak;
-	}
-		
-
-	private void SetUpCanvas(string overskrift, string image, string tekst, params string[] test){
-		this.EventCanvas.SetActive (true);
-
-		for (int i = 0; i < test.Length; i++) {
-			buttons [i].SetActive (true);
-			Text buttonText = buttons [i].GetComponent<Button> ().GetComponentInChildren<Text> ();
-			buttonText.text = test [i];
-		}
-		for (int i = test.Length; i < buttons.Length; i++) {
-			buttons [i].SetActive (false);
-		}
-
-		headline.text = overskrift;
-		text.text = tekst;
-		img.color = image == "yellow" ? Color.yellow : Color.magenta;
-
-		this.playerChoosing = true;
-
+		this.hoverFunction = hoverDickPicLeak;
 	}
 
 	private void SolveDickPicLeak(int alt){
@@ -186,6 +170,33 @@ public class EventSystemet : MonoBehaviour {
 		}
 	}
 
+	private void hoverDickPicLeak(int alt){
+		string hovertext = "";
+		switch (alt) {
+		case 0:
+			{
+				hovertext = "dickpicHover0";
+				break;
+			}
+		case 1:
+			{
+				hovertext = "dickpicHover1";
+				break;
+			}
+		case 2:
+			{
+				hovertext = "dickpiHover2";
+				break;
+			}
+		case 3:
+			{
+				hovertext = "dickpicHover3";
+				break;
+			}
+		}
+		SetHoverText (hovertext);
+	}
+
 	void EventFinished(){
 		this.timeSinceLastEvent = 0f;
 		this.playerChoosing = false;
@@ -193,19 +204,56 @@ public class EventSystemet : MonoBehaviour {
 		this.EventCanvas.SetActive (false);
 	}
 
-	void PrintNum(int num)
-	{
-		print ("Print Num: " + num);
+	void SetHoverText(string hoverText){
+		Text hoverBoxText = hoverBox.GetComponentInChildren<Text> ();
+		hoverBoxText.text =  hoverText;
 	}
 
-	void DoubleNum(int num)
-	{
-		print ("Double Num: " + num * 2);
+	private void SetUpCanvas(string overskrift, Image flavourImage, Image personImage, string tekst, params string[] test){
+		this.EventCanvas.SetActive (true);
+
+		for (int i = 0; i < test.Length; i++) {
+			buttons [i].SetActive (true);
+			Text buttonText = buttons [i].GetComponent<Button> ().GetComponentInChildren<Text> ();
+			buttonText.text = test [i];
+		}
+		for (int i = test.Length; i < buttons.Length; i++) {
+			buttons [i].SetActive (false);
+		}
+
+		headline.text = overskrift;
+		text.text = tekst;
+		this.flavourImage = flavourImage;
+		this.personImage = personImage;
+		hoverBox.SetActive (false);
+
+		this.playerChoosing = true;
+	}
+
+	Image GetRandomPerson(){
+		int randomIndex = Random.Range (0, 5);
+		return this.personBilder [randomIndex];
 	}
 
 	public void ChooseAlternative(int alternative){
 		eventFunction (alternative);
 		EventFinished ();
+	}
+
+	public void HoverAlternative(int alternative){
+		hoverBox.SetActive (true);
+		hoverFunction (alternative);
+	}
+
+	public void hoverExit(int alternative){
+		hoverBox.SetActive (false);
+	}
+
+	public void UpdateHoverBoxPosition(){
+		Vector3 rectPosition = Input.mousePosition;
+		RectTransform hoverRect = hoverBox.GetComponent<RectTransform> ();
+		rectPosition.y += (hoverRect.rect.height/4.0f)+1.0f;
+		hoverBox.transform.position = rectPosition;
 	}
 
 }

@@ -164,7 +164,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 	void CheckInnfall () {
 		//Generer innfallstall og sjekk mot innfallsoversikten.
-		this.innfallsTall = UnityEngine.Random.Range(0, innfallSum);
+		this.innfallsTall = UnityEngine.Random.Range(0, innfallSum+1);
 		int tempUpperBound = 0;
 		foreach(KeyValuePair<Innfall, int> entry in this.innfallsOversikt)
 		{
