@@ -72,8 +72,8 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Dusje, 1 },
 			{Innfall.Danse, 1 },
 			{Innfall.Ove, 1 },
-			{Innfall.GoLeft, 1 },
-			{Innfall.GoRight, 1 },
+			{Innfall.GoLeft, 5 },
+			{Innfall.GoRight, 5 },
 			{Innfall.Nothing, 100 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
@@ -103,6 +103,7 @@ public class Innfallsystemet : MonoBehaviour {
 		if (target == null){
 			
 		}
+		if (harInfall == true){
 		if (scoreInnfall == true){
 			Score();
 		}
@@ -141,6 +142,7 @@ public class Innfallsystemet : MonoBehaviour {
 		}
 		if (innfallGoRight == true && !tooCloseToRightWall){
 			GoRight();
+		}
 		}
 	}
 
@@ -181,6 +183,7 @@ public class Innfallsystemet : MonoBehaviour {
 			tempUpperBound += entry.Value;
 			if (innfallsTall < tempUpperBound)
 			{
+				harInfall = true;
 				performInnfall(entry.Key);
 				break;
 			}
@@ -274,6 +277,7 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		case Innfall.Nothing:
 			{
+				WrapUp();
 				break;
 			}
 		}
@@ -304,255 +308,47 @@ public class Innfallsystemet : MonoBehaviour {
 	/// </summary>
 	//Skal score
 	void Score (){
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().scoreTid;
-			setActionCounter = true;
-		}
-		if (riktigPlass == false){
-			target = GameObject.Find("ScoreSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass == true){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Jeg scorte!";
-			WrapUp();
-		}
+		ActuallyDoInfall("", "ScoreSted", "Jeg scorte", false);
 	}
 		//Strandturinnfall
 	void Strandtur (){
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().strandTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("StrandSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Nå har jeg strand i skoene.";
-			WrapUp();
-		}
+		ActuallyDoInfall("", "StrandSted", "Nå har jeg strand i skoene.", false);
 	}
 		//solokarriæreinnfall
 	void Solokarriere (){
-		print ("Jeg vil starte solokarriere!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().soloTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("SoloSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "I'm outta here!";
-			WrapUp();
-		}
+		ActuallyDoInfall("Jeg vil starte solokarriere!", "SoloSted", "I'm outta here!", false);
 	}
     //Musikklytteinnfal
 	void MusikkLytting (){
-		print ("Jeg vil høre på musikk.");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().lytteTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("LytteSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Jeg hørte på litt muzak.";
-			WrapUp();
-		}
+		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Jeg hørte på litt muzak.", false);
 	}
         //SintTweetInnfal
 	void SintTweet (){
-		print ("Jeg er pissed og vil at hele verden skal vite det!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().tweeteTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("TweeteSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Det var godt å få fram!";
-			WrapUp();
-		}
+		ActuallyDoInfall("Jeg er pissed of vil at hele verden skal vite det!", "TweeteSted", "Det var godt å få fram!", false);
 	}
         //Glad Tweet Innfall
 	void GladTweet (){
-		print ("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().tweeteTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("TweeteSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Jeg elsker å bli satt pris på selv.";
-			WrapUp();
-		}
+		ActuallyDoInfall("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!", "TweeteSted", "Jeg elsker å bli satt pris på.", false);
 	}
        //Drikkeinnfall
 	void Drikke (){
-		print ("Nå skarre drekkes!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().drikkeTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("DrikkeSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Yay drekking! Livet betyr mer nå!";
-			WrapUp();
-		}
+		ActuallyDoInfall("Nå skarre drekkes", "DrikkeSted", "Yay drekking! Livet betyr mer nå!", false);
 	}
         //Dusjeinnfall
 	void Dusje (){
-		print ("Oh boy, jeg trenger en dusj!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().dusjeTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("DusjeSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Er dette sånn jeg egentlig lukter?";
-			WrapUp();
-		}
+		ActuallyDoInfall("Oh boy, jeg trenger en dusj.", "DusjeSted", "Er dette sånn jeg egentlig lukter?", false);
 	}
         //Spiseinnfall
 	void Spise (){
-		print ("Nå er jeg sulten!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().spiseTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("SpiseSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Nå er jeg mett!";
-			WrapUp();
-		}
+		ActuallyDoInfall("Nå er jeg sulten!", "SpiseSted", "Nå er jeg mett!", false);
 	}
         //SexyDanceinnfall
 	void SexyDance (){
-		print ("Nå trenger jeg litt alenetid!");
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
-		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().danceTid;
-			setActionCounter = true;
-		}
-		if (!riktigPlass){
-			target = GameObject.Find("DanseSted");
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
-		}
-		else if (riktigPlass){
-			float reduceCounter = 1f * Time.deltaTime;
-			actionCounter = actionCounter - reduceCounter;
-			if (actionCounter <= 0){
-				innfallComplete = true;
-			}
-		}
-		if (innfallComplete == true){
-			handlingGjennomfort = "Det var godt å få fram!";
-			WrapUp();
-		}
+		ActuallyDoInfall("Nå trenger jeg litt alenetid!", "DanseSted", "Det var godt å få fram.", false);
 	}
-        //Practiceinnfall
-	void Ove (){
-		print ("Nå skal jeg øve!");
+
+	void ActuallyDoInfall(string statement, string placeToWalkTo, string handlingGjennomfort, bool increaseSkill){
+		print (statement);
 		harInfall = true;
 		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
 		if (setActionCounter == false){
@@ -560,7 +356,7 @@ public class Innfallsystemet : MonoBehaviour {
 			setActionCounter = true;
 		}
 		if (!riktigPlass){
-			target = GameObject.Find("OveSted");
+			target = GameObject.Find(placeToWalkTo);
 			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
 		}
 		else if (riktigPlass){
@@ -571,14 +367,21 @@ public class Innfallsystemet : MonoBehaviour {
 			}
 		}
 		if (innfallComplete == true){
-			handlingGjennomfort = "Nå er jeg bedre!";
-			int skillIncrease = UnityEngine.Random.Range(1, 5);
-			GetComponentInParent<BandMember>().skill = GetComponentInParent<BandMember>().skill + skillIncrease; 
+			handlingGjennomfort = handlingGjennomfort;
+			if(increaseSkill){
+				int skillIncrease = UnityEngine.Random.Range(1, 5);
+				GetComponentInParent<BandMember>().skill = GetComponentInParent<BandMember>().skill + skillIncrease; 
+			}
 			WrapUp();
 		}
 	}
+        //Practiceinnfall
+	void Ove (){
+		ActuallyDoInfall("Nå skal jeg øve.", "OveSted", "Nå er jeg bedre!", true);
+	}
 
 	void GoRight (){
+		harInfall = true;
 		if (goingThere == false){
 			moveThisStep = this.transform.position.x + 1;
 			float walkDistance = UnityEngine.Random.Range(0, 3);
@@ -598,6 +401,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void GoLeft (){
+		harInfall = true;
 		if (goingThere == false){
 			moveThisStep = this.transform.position.x + 1;
 			float walkDistance = UnityEngine.Random.Range(0, 3);
@@ -631,8 +435,8 @@ public class Innfallsystemet : MonoBehaviour {
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}
-		target = null;
 		harInfall = false;
+		target = null;
 		riktigPlass = false;
 		scoreInnfall = false;
 		strandInnfall = false;

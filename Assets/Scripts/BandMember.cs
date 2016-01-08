@@ -42,6 +42,10 @@ public class BandMember : MonoBehaviour{
 	public float increaseSuspicion = 0.01f;
 	public float decreaseSuspicion = 0.0005f;
 
+
+	Animator animator;
+
+
 	public BandMember (String name, float skill, Role role)
 	{
 		this.name = name;
@@ -62,6 +66,7 @@ public class BandMember : MonoBehaviour{
         print("DEBUG - CLONE WAS MADE - CLICK ON THIS MESSAGE FOR MORE INFO:\n " + "Name: " + this.name + "\nSkill: " + this.skill + "\nRole: " + this.role);
 		happinessImprovementTimer = startHappinessTimer;
 		genDropTimer = startGenDropTimer;
+		animator = GetComponent<Animator>();
     }
 
 	// Update is called once per frame
@@ -108,8 +113,12 @@ public class BandMember : MonoBehaviour{
     public void Dying (){
 		print ("I'm dying!");
         dead = true;
+		animator.SetInteger("Walking", 0);
+		GetComponent<Innfallsystemet>().enabled = false;
+		GetComponent<BandMemberMoving>().enabled = false;
 		Vector3 deadRot = new Vector3(-90, 0, 0);
 		transform.Rotate(deadRot, Space.Self);
+		GetComponent<CloneActivation>().active = false;
 	}
 
 	public void HappinessGain (){

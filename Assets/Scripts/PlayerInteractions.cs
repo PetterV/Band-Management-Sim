@@ -14,6 +14,7 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject currentHappinessObject;
 	public GameObject computer;
 	public GameObject computerCanvas;
+	public GameObject bandMemberToKill;
 	public BandMember.Role bringingRole;
 	public float bringingSkill;
 	public int bringingMedgjørlighet;
@@ -206,8 +207,8 @@ public class PlayerInteractions : MonoBehaviour {
 
 		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
 			isHitting = true;
-			currentBandMember.GetComponent<Innfallsystemet>().Interrupt();
-			currentBandMember.GetComponent<BandMemberMoving>().enabled = false;
+			bandMemberToKill.GetComponent<Innfallsystemet>().Interrupt();
+			bandMemberToKill.GetComponent<BandMemberMoving>().enabled = false;
         }
 	}
 
@@ -228,7 +229,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (hitTimer >= soundEffectTarget && playedSound == false){
 		}
 		if (hitTimer >= animationStopTarget && stoppedAnimation == false){
-			currentBandMember.GetComponent<BandMember>().Dying();
+			bandMemberToKill.GetComponent<BandMember>().Dying();
 			stoppedAnimation = true;
 		}
 		if (hitTimer >= startMusicTarget && startedMusic == true){

@@ -12,7 +12,7 @@ public class HitBandMember : MonoBehaviour {
 	void OnTriggerEnter (Collider coll){
 		if (coll.gameObject.tag == "BandMember"){
 			player.GetComponent<PlayerInteractions>().isHitting = true;
-			player.GetComponent<PlayerInteractions>().currentBandMember = coll.gameObject;
+			player.GetComponent<PlayerInteractions>().bandMemberToKill = coll.gameObject;
 		}
 	}
 }

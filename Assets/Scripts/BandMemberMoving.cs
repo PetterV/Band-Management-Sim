@@ -133,16 +133,12 @@ public class BandMemberMoving : MonoBehaviour {
             else
             {
                 this.waypointToMoveTo = null;
-                GetComponentInParent<Innfallsystemet>().riktigPlass = true;
+                GetComponent<Innfallsystemet>().riktigPlass = true;
+				animator.SetInteger("Walking", 0);
+				HeadTowardsCamera();
                 print("Arrived at waypoint!");
             }
 
-			this.waypointToMoveTo = null;
-			if (wp.gameObject.tag == "TransferCenter")
-				switchHouses ();
-			print ("Arrived at waypoint!");
-			animator.SetInteger("Walking", 0);
-            HeadTowardsCamera();
 			//Lagt til innfall
 			/*TODO: DET KAN VÆRE BUG HER: "Parent" sikter til direkte parent (tror jeg),
 			som kan gjøre at dersom band members er barn av flere objekter, vil ikke neste linje funke.*/
