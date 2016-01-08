@@ -30,6 +30,11 @@ public class Innfallsprinting : MonoBehaviour {
 		ronnyText = GameObject.FindWithTag("RonnyText").GetComponent<Text>();
 		keithText = GameObject.FindWithTag("KeithText").GetComponent<Text>();
 		hannahText = GameObject.FindWithTag("HannahText").GetComponent<Text>();
+
+		crossSier = null;
+		ronnySier = null;
+		keithSier = null;
+		hannahSier = null;
 	}
 	
 	// Update is called once per frame
@@ -39,37 +44,37 @@ public class Innfallsprinting : MonoBehaviour {
 		keithText.text = keithSier;
 		hannahText.text = hannahSier;
 
-		if (crossText.text != null){
+		if (crossSier != null){
 			crossBoble.SetActive(true);
 		}
-		if (crossText.text == null){
+		if (crossSier == null){
 			crossBoble.SetActive(false);
 		}
 
 
 
-		if (ronnyText.text != null){
+		if (ronnySier != null){
 			ronnyBoble.SetActive(true);
 		}
-		if (ronnyText.text == null){
+		if (ronnySier == null){
 			ronnyBoble.SetActive(false);
 		}
 
 
 
-		if (keithText.text != null){
+		if (keithSier != null){
 			keithBoble.SetActive(true);
 		}
-		if (keithText.text == null){
+		if (keithSier == null){
 			keithBoble.SetActive(false);
 		}
 
 
 
-		if (hannahText.text != null){
+		if (hannahSier != null){
 			hannahBoble.SetActive(true);
 		}
-		if (hannahText.text == null){
+		if (hannahSier == null){
 			hannahBoble.SetActive(false);
 		}
 	}
