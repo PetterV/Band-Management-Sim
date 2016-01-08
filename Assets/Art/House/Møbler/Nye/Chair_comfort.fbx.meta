@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e99af1e8f27afd8488df124ceb697bd6
-timeCreated: 1452286644
+guid: cd67ed48368da8e4d83d4bcadffe7f95
+timeCreated: 1452295720
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cylinder_5
+    4300000: Cube_11
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,8 +50,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
