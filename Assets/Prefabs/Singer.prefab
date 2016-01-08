@@ -1288,7 +1288,7 @@ MonoBehaviour:
   beingCarried: 0
   active: 0
   myCanvas: {fileID: 163562}
-  GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
+  GenMat1: {fileID: 0}
   instantiatedGenMat: {fileID: 0}
   startGenDropTimer: 0
   genDropRarity: 0
@@ -1301,6 +1301,9 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  medgjorlighetsBar: {fileID: 0}
+  skillBar: {fileID: 0}
+  suspicionBar: {fileID: 0}
 --- !u!114 &11435426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1346,7 +1349,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcdeae736555446a18939a30ad25c0a6, type: 3}
   m_Name: 
@@ -1358,6 +1361,11 @@ MonoBehaviour:
   success: 0
   handlingGjennomfort: 
   gameControl: {fileID: 0}
+  progressBar: {fileID: 0}
+  crossDisplay: 
+  ronnyDisplay: 
+  keithDisplay: 
+  hannahDisplay: 
   textToDisplay: 
 --- !u!114 &11447548
 MonoBehaviour:
@@ -1365,7 +1373,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa8910e668f80784c928e37dfa4320ec, type: 3}
   m_Name: 
@@ -2270,7 +2278,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 197710}

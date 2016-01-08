@@ -5,7 +5,7 @@ public class GenetiskMateriale : MonoBehaviour {
 
 	public bool beingCarried = false;
 	public float skillForCloning = 0;
-	public int medgjørlighetForCloning = 0;
+	public float medgjørlighetForCloning = 0;
 	public BandMember.Role roleForCloning;
 	public GameObject hand;
 	public float timerIncrease = 1f;

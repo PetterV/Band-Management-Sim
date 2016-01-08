@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HappinessObject : MonoBehaviour {
 
-	public int happinessGained = 15;
+	public float happinessGained = 15;
 	public bool happinessBeingCarried = false;
 	// Use this for initialization
 	void Start () {

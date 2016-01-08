@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 
@@ -12,6 +13,7 @@ public class BandMember : MonoBehaviour{
 	public bool dead = false;
 	public bool beingCarried = false;
 	public bool active = true;
+	public Rigidbody rb;
 
 	public GameObject myCanvas;
 
@@ -27,7 +29,7 @@ public class BandMember : MonoBehaviour{
 
 
 	//Kjeftesystem
-	public int myMedgjørlighet = 70;
+	public float myMedgjørlighet = 70;
 	public bool fikkKjeft = false;
 
 	//Happinessystem
@@ -36,15 +38,20 @@ public class BandMember : MonoBehaviour{
 	public int startHappinessTimer = 60;
 	public bool canImproveHappiness = true;
 	//Erstatt happinessImprovementTimerStart og medgjørlighetsReduksjon med én public int i et Game Control-objekt.
-	public int medgjørlighetReduksjon = 15;
+	public float medgjørlighetReduksjon = 15;
 
 	//Mistenkelighet
-	public float mySuspicion = 0f;
+	public float mySuspicion = 90f;
 	public float increaseSuspicion = 0.01f;
 	public float decreaseSuspicion = 0.0005f;
 
 
 	Animator animator;
+
+	//Bars på canvaset!
+	public Image medgjorlighetsBar;
+	public Image skillBar;
+	public Image suspicionBar;
 
 
 	public BandMember (String name, float skill, Role role)
@@ -54,7 +61,7 @@ public class BandMember : MonoBehaviour{
 		this.role = role;
 	}
 
-	public void InitializeBandMember(String name, float skill, int myMedgjørlighet, Role role)
+	public void InitializeBandMember(String name, float skill, float myMedgjørlighet, Role role)
     {
         this.name = name;
         this.skill = skill;
@@ -68,10 +75,27 @@ public class BandMember : MonoBehaviour{
 		happinessImprovementTimer = startHappinessTimer;
 		genDropTimer = startGenDropTimer;
 		animator = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody>();
     }
 
 	// Update is called once per frame
 	void Update () {
+		//Stuff til canvas!
+		float maxMedgjørlighet = 100;
+		float maxSkill = 50;
+		float maxSuspicion = 100;
+
+		medgjorlighetsBar.fillAmount = myMedgjørlighet / maxMedgjørlighet;
+		skillBar.fillAmount = skill / maxSkill;
+		float suspicionToBeFilled = mySuspicion / maxSuspicion;
+		suspicionBar.fillAmount = suspicionToBeFilled;
+
+		float greenAndBlueLevel = 1 - suspicionToBeFilled;
+
+		suspicionBar.color = new Color (1, greenAndBlueLevel, greenAndBlueLevel);
+		//Woop woop!
+
+
 		if (Input.GetKey (KeyCode.Tab)) {
 			myCanvas.SetActive (true);
 		}
@@ -117,7 +141,11 @@ public class BandMember : MonoBehaviour{
 		animator.SetInteger("Walking", 0);
 		GetComponent<Innfallsystemet>().enabled = false;
 		GetComponent<BandMemberMoving>().enabled = false;
-		Vector3 deadRot = new Vector3(-90, 0, 0);
+		float rotX = UnityEngine.Random.Range(50, 500);
+		float rotY = UnityEngine.Random.Range(50, 500);
+		float rotZ = UnityEngine.Random.Range(50, 500);
+		Vector3 deadRot = new Vector3(rotX, rotY, rotZ);
+		rb.AddTorque(deadRot, ForceMode.Force);
 		transform.Rotate(deadRot, Space.Self);
 		GetComponent<CloneActivation>().active = false;
 	}
@@ -135,8 +163,8 @@ public class BandMember : MonoBehaviour{
 		instantiatedGenMat = (GameObject)Instantiate(GenMat1, spawnPosition, GenMat1.transform.rotation);
 		float skillvariation = UnityEngine.Random.Range(-10, 10);
 		float skillTransfer = skill + skillvariation;
-		int medgjørligvariation = UnityEngine.Random.Range(-20, 40);
-		int medgjørligTransfer = myMedgjørlighet + medgjørligvariation;
+		float medgjørligvariation = UnityEngine.Random.Range(-20, 40);
+		float medgjørligTransfer = myMedgjørlighet + medgjørligvariation;
 		if (medgjørligTransfer > 99){
 			medgjørligTransfer = 99;
 		}
@@ -157,7 +185,7 @@ public class BandMember : MonoBehaviour{
 			print ("Jeg fikk kjeft!");
 			//Kan bare få kjeft én gang i løpet av et innfall
 			fikkKjeft = true;
-			int medgjørlig = UnityEngine.Random.Range (0, 99);
+			float medgjørlig = UnityEngine.Random.Range (0, 99);
 			if (medgjørlig <= myMedgjørlighet){
 				print ("Tror ikke jeg gjør det, jeg.");
 				GetComponentInParent<Innfallsystemet>().Interrupt();

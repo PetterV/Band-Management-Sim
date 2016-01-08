@@ -18,7 +18,7 @@ public class CloneMachine : MonoBehaviour {
 	//
 
 	public float cloneSkill;
-	public int cloneMedgjørlighet;
+	public float cloneMedgjørlighet;
 	public string cloneName;
 
 
@@ -61,7 +61,7 @@ public class CloneMachine : MonoBehaviour {
 		clone.GetComponent<Innfallsystemet>().enabled = false;
 	}
 
-    private GameObject MakeNewBandMemberClone(string name, float skill, int myMedgjørlighet, BandMember.Role role)
+    private GameObject MakeNewBandMemberClone(string name, float skill, float myMedgjørlighet, BandMember.Role role)
     {
 		GameObject clone = (GameObject)Instantiate(bandMemberToBeCloned, spawnPos, spawnRot);
         BandMember clonedBandMember = clone.GetComponent<BandMember>();
