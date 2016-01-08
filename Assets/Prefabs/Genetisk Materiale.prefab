@@ -8,27 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430894}
-  - 114: {fileID: 11462338}
+  - 33: {fileID: 3322182}
+  - 23: {fileID: 2334980}
   - 65: {fileID: 6561364}
-  m_Layer: 0
-  m_Name: Genetisk Materiale
-  m_TagString: GeneticMaterial
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &138006
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 489406}
-  - 33: {fileID: 3343898}
-  - 23: {fileID: 2318916}
-  - 65: {fileID: 6544492}
-  - 114: {fileID: 11436662}
+  - 114: {fileID: 11462338}
   m_Layer: 0
   m_Name: Genetisk Materiale
   m_TagString: GeneticMaterial
@@ -43,30 +26,17 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109510}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710665, w: 0.70710695}
-  m_LocalPosition: {x: 95.36815, y: 7.0714393, z: -2.747}
+  m_LocalPosition: {x: 95.3739, y: 13.971571, z: -2.9369245}
   m_LocalScale: {x: 0.11326804, y: 0.11326808, z: 0.11326808}
-  m_Children:
-  - {fileID: 489406}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &489406
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.51, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 430894}
-  m_RootOrder: 0
---- !u!23 &2318916
+--- !u!23 &2334980
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138006}
+  m_GameObject: {fileID: 109510}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -88,25 +58,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3343898
+--- !u!33 &3322182
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138006}
+  m_GameObject: {fileID: 109510}
   m_Mesh: {fileID: 4300000, guid: 3b6609c88dd2d2444b047a92871e6a65, type: 3}
---- !u!65 &6544492
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138006}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 6.12, y: 13.2, z: 7.38}
-  m_Center: {x: -1.22, y: 0.27, z: 0}
 --- !u!65 &6561364
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -117,31 +75,15 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.12, y: 13.2, z: 7.38}
-  m_Center: {x: -1.22, y: 0.27, z: 0}
---- !u!114 &11436662
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138006}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a411aa79d0011d4185a2d301eef3a4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beingCarried: 0
-  skillForCloning: 0
-  "medgj\xF8rlighetForCloning": 0
-  roleForCloning: 0
-  hand: {fileID: 0}
+  m_Size: {x: 7.75, y: 13.2, z: 7.38}
+  m_Center: {x: -1.88, y: 0.27, z: 0}
 --- !u!114 &11462338
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a411aa79d0011d4185a2d301eef3a4d, type: 3}
   m_Name: 
