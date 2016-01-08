@@ -4,18 +4,18 @@ using System.Collections.Generic;
 
 public class EventSystemet : MonoBehaviour {
 
-	public enum Event {Rasisme, DickPicLeak, Nothing};
+	public enum Event {Rasisme, DickPicLeak, FanGift, Nothing};
 	delegate void MyDelegate(int choice);
 
-	public Image rasismeBilde;
-	public Image dickPicBilde;
-	public Image[] personBilder;
+	public GameObject rasismeBilde;
+	public GameObject dickPicBilde;
+	public GameObject[] personBilder;
 
 	private Dictionary<Event, int> eventOversikt;
 	private int probabilitySum = 0;
 	public int minimumSecondDelayBetweenEvents = 120;
 	public float timeSinceLastEvent = 0;
-	MyDelegate eventFunction;
+	MyDelegate solveFunction;
 	MyDelegate hoverFunction;
 	public GameObject EventCanvas;
 	private bool playerChoosing = false;
@@ -33,13 +33,27 @@ public class EventSystemet : MonoBehaviour {
 		InitializeEvents ();
 		this.EventCanvas = GameObject.FindGameObjectWithTag ("EventCanvas");
 		headline = GameObject.FindGameObjectWithTag ("EventOverskrift").GetComponent<Text>();
-		flavourImage = GameObject.FindGameObjectsWithTag ("EventBilde")[0].GetComponent<Image>();
-		personImage = GameObject.FindGameObjectsWithTag ("EventBilde")[1].GetComponent<Image>();
+		//flavourImage = GameObject.FindGameObjectsWithTag ("EventBilde")[0].GetComponent<Image>();
+		//personImage = GameObject.FindGameObjectsWithTag ("EventBilde")[1].GetComponent<Image>();
 		text = GameObject.FindGameObjectWithTag ("EventText").GetComponent<Text>();
-		buttons = GameObject.FindGameObjectsWithTag ("EventKnapp");
+		InitializeButtons(GameObject.FindGameObjectsWithTag ("EventKnapp"));
 		hoverBox = GameObject.FindGameObjectWithTag ("EventHover");
 		this.EventCanvas.SetActive (false);
 
+	}
+
+	void InitializeButtons(GameObject[] buttonList){
+		this.buttons = new GameObject[4];
+		for (int i = 0; i < buttons.Length; i++) {
+			if (buttonList [i].name == "Knapp1")
+				buttons [0] = buttonList [i];
+			else if (buttonList [i].name == "Knapp2")
+				buttons [1] = buttonList [i];
+			else if (buttonList [i].name == "Knapp3")
+				buttons [2] = buttonList [i];
+			else if (buttonList [i].name == "Knapp4")
+				buttons [3] = buttonList [i];
+		}
 	}
 
 	// Update is called once per frame
@@ -56,7 +70,8 @@ public class EventSystemet : MonoBehaviour {
 		{
 			{Event.Rasisme, 1 },
 			{Event.DickPicLeak, 1 },
-			{Event.Nothing, 0}
+			{Event.Nothing, 1},
+			{Event.FanGift, 1}
 		};
 		foreach (KeyValuePair<Event, int> entry in eventOversikt)
 		{
@@ -97,6 +112,7 @@ public class EventSystemet : MonoBehaviour {
 			}
 		case Event.Nothing:
 			{
+				this.eventRunning = false;
 				break;
 			}
 		case Event.DickPicLeak:
@@ -104,15 +120,78 @@ public class EventSystemet : MonoBehaviour {
 				DickPicLeak ();
 				break;
 			}
+		case Event.FanGift:
+			{
+				FanGift ();
+				break;
+			}
 		}
 	}
 
+		//FanGift Event
+	private void FanGift()
+	{
+		string overskrift = "Fans vil gi bandet en gave!";
+		string text = "Fans elsker deg!\nDe trenger hjelp for å finne den beste gaven til sitt favorittbandmedlem.";
+		//Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();
+		//Image personenSomVarRasistisk = GetRandomPerson ();
+		//Karakterer som for eksempel " vil avslutte strengen. Dersom du vil ha det med, skriv \".
+		//Linjeskift er \n
+		SetUpCanvas (overskrift, text, "Han trenger teddybjørner!", "Gi meg pengene, så fikser jeg det :)", "Send ham kjærlighetstweets!");
+		this.solveFunction = SolveFanGift;
+		this.hoverFunction = hoverFanGift;
+	}
+
+	private void SolveFanGift(int alt){
+		switch (alt) {
+		case 0:
+			{
+				print ("FanGift0");
+				break;
+			}
+		case 1:
+			{
+				print ("FanGift1");
+				break;
+			}
+		case 2:
+			{
+				print ("FanGift2");
+				break;
+			}
+		}
+	}
+
+	private void hoverFanGift(int alt){
+		string hoverText = "";
+		switch (alt) {
+		case 0:
+			{
+				hoverText = "Happiness: +10";
+				break;
+			}
+		case 1:
+			{
+				hoverText = "Money: +10 000";
+				break;
+			}
+		case 2:
+			{
+				hoverText = "Popularity: +5\nHappiness: +5";
+				break;
+			}
+		}
+		SetHoverText(hoverText);
+	}
+		
+		//Rasisme event
 	private void Rasisme(){
 		string overskrift = "Hey, that's racist!";
 		string text = "Something racist has happened!";
-		Image personenSomVarRasistisk = GetRandomPerson (); 
-		SetUpCanvas (overskrift, rasismeBilde, personenSomVarRasistisk, text, "I guess I am racist :(");
-		this.eventFunction = SolveRasisme;	
+		//Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();
+		//Image personenSomVarRasistisk = GetRandomPerson (); 
+		SetUpCanvas (overskrift, text, "I guess I am racist :(");
+		this.solveFunction = SolveRasisme;	
 		this.hoverFunction = hoverRasisme;
 	}
 
@@ -130,7 +209,7 @@ public class EventSystemet : MonoBehaviour {
 		switch (alt) {
 		case 0:
 			{
-				hoverText = "hoverRasisme0";
+				hoverText = "rasisme";
 				break;
 			}
 		}
@@ -139,9 +218,10 @@ public class EventSystemet : MonoBehaviour {
 
 	private void DickPicLeak(){
 		string flavour = "A fan claims that they have a dick pic from one of your band members. If this is true, it will alienate your fans from the Christian Right. What do you want to do?";
-		Image personenSomLeakaDick = GetRandomPerson ();
-		SetUpCanvas ("DICK PIC LEAKED!", dickPicBilde, personenSomLeakaDick, flavour, "One dick", "Two dicks", "Three dicks", "ALL THE DICKS");
-		this.eventFunction = SolveDickPicLeak;
+		//Image dickPicBilde = this.dickPicBilde.GetComponent<Image> ();
+		//Image personenSomLeakaDick = GetRandomPerson ();
+		SetUpCanvas ("DICK PIC LEAKED!", flavour, "Pay the fan to stay quiet", "Let it leak!", "Make your band members prove that the dick is not theirs ;]", "Dicks have genetic material, right?");
+		this.solveFunction = SolveDickPicLeak;
 		this.hoverFunction = hoverDickPicLeak;
 	}
 
@@ -149,22 +229,22 @@ public class EventSystemet : MonoBehaviour {
 		switch (alt) {
 		case 0:
 			{
-				print ("dickpicleak0");
+				print ("dickpicleak 0");
 				break;
 			}
 		case 1:
 			{
-				print ("dickpicleak1");
+				print ("dickpicleak 1");
 				break;
 			}
 		case 2:
 			{
-				print ("dickpicleak2");
+				print ("dickpicleak 2");
 				break;
 			}
 		case 3:
 			{
-				print ("dickpicleak3");
+				print ("dickpicleak 3");
 				break;
 			}
 		}
@@ -175,22 +255,22 @@ public class EventSystemet : MonoBehaviour {
 		switch (alt) {
 		case 0:
 			{
-				hovertext = "dickpicHover0";
+				hovertext = "-50 000 money";
 				break;
 			}
 		case 1:
 			{
-				hovertext = "dickpicHover1";
+				hovertext = "-10 suspicion\n+10 popularity";
 				break;
 			}
 		case 2:
 			{
-				hovertext = "dickpiHover2";
+				hovertext = "All band members get -10 happiness\n+10 popularity";
 				break;
 			}
 		case 3:
 			{
-				hovertext = "dickpicHover3";
+				hovertext = "Genetic material from the band member shows up in basement";
 				break;
 			}
 		}
@@ -209,7 +289,7 @@ public class EventSystemet : MonoBehaviour {
 		hoverBoxText.text =  hoverText;
 	}
 
-	private void SetUpCanvas(string overskrift, Image flavourImage, Image personImage, string tekst, params string[] test){
+	private void SetUpCanvas(string overskrift,/* Image flavourImage, Image personImage, */string tekst, params string[] test){
 		this.EventCanvas.SetActive (true);
 
 		for (int i = 0; i < test.Length; i++) {
@@ -232,11 +312,11 @@ public class EventSystemet : MonoBehaviour {
 
 	Image GetRandomPerson(){
 		int randomIndex = Random.Range (0, 5);
-		return this.personBilder [randomIndex];
+		return this.personBilder[randomIndex].GetComponent<Image>();
 	}
 
 	public void ChooseAlternative(int alternative){
-		eventFunction (alternative);
+		solveFunction (alternative);
 		EventFinished ();
 	}
 
@@ -245,7 +325,7 @@ public class EventSystemet : MonoBehaviour {
 		hoverFunction (alternative);
 	}
 
-	public void hoverExit(int alternative){
+	public void hoverExit(){
 		hoverBox.SetActive (false);
 	}
 

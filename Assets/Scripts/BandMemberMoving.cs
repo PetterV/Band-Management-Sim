@@ -102,7 +102,7 @@ public class BandMemberMoving : MonoBehaviour {
 		bool goingUp = targetFloor > this.currentFloor ? true : false;
 		Stairs nearestStair = GetNearestStair(goingUp);
 		if(nearestStair == null){
-			print("En trapp er tagga 'Stairs' uten aa ha scriptet Stairs paa seg. Fiks!!!");
+			//print("En trapp er tagga 'Stairs' uten aa ha scriptet Stairs paa seg. Fiks!!!");
 			return;
 		}
 		Vector3 stairLocation = new Vector3(nearestStair.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
