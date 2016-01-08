@@ -183,7 +183,7 @@ public class Innfallsystemet : MonoBehaviour {
         ///spiller av innfallslyd
         if (inn != Innfall.Nothing)
         {
-            gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+          //  gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
         }
 
         switch (inn)

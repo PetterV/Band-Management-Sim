@@ -9,7 +9,7 @@ public class MoveSidetoSide : MonoBehaviour {
 	public float stairUseDelay = 0.1f;
 	private float timeSinceLastStairUse = 0f;
     private Animator animator;
-    private bool headedRight;
+    public bool headedRight;
 
 	// Use this for initialization
 	void Start () {
@@ -22,25 +22,26 @@ public class MoveSidetoSide : MonoBehaviour {
 		if (Input.GetKey("left")){
 			newPositionX = transform.position.x-moveSpeed;
 			transform.position = new Vector3 (newPositionX, transform.position.y, transform.position.z);
-
-            if (headedRight)
+            this.gameObject.transform.eulerAngles = new Vector3(0, 270.0f, 0);
+            /*if (headedRight)
             {
                 transform.Rotate(0, -180, 0);
                 headedRight = false;
-            }
+                
+            }*/
             animator.SetInteger("WalkMaybe", 2);
 		}
 		if (Input.GetKey("right")){
 			newPositionX = transform.position.x+moveSpeed;
 			transform.position = new Vector3 (newPositionX, transform.position.y, transform.position.z);
-
-            if (!headedRight)
+            this.gameObject.transform.eulerAngles = new Vector3(0, 90.0f, 0);
+            /*if (!headedRight)
             {
                 headedRight = true;
                 transform.Rotate(0, 180, 0);
-            }
-            
-            animator.SetInteger("WalkMaybe", 1);
+            }*/
+
+            animator.SetInteger("WalkMaybe", 2);
         }
 
         if (!Input.GetKey("right") && !Input.GetKey("left"))

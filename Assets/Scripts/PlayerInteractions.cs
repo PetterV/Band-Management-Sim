@@ -133,7 +133,7 @@ public class PlayerInteractions : MonoBehaviour {
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true && cloneMachineCollision == true){
 					//print ("Destroy me - GenMat");
-					GameObject.Find("CloneMachine").GetComponent<CloneMachine>().Cloning();
+					GameObject.FindWithTag("CloneMachine").GetComponent<CloneMachine>().Cloning();
 					Destroy(currentGenMat);
 					carryingGenMat = false;
 				}
@@ -205,11 +205,11 @@ public class PlayerInteractions : MonoBehaviour {
 			computerCollision = true;
 		}
 
-		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
-			isHitting = true;
-			bandMemberToKill.GetComponent<Innfallsystemet>().Interrupt();
-			bandMemberToKill.GetComponent<BandMemberMoving>().enabled = false;
-        }
+//		if (coll.gameObject.tag == "BandMember" && Input.GetKeyDown("space") && currentBandMember.GetComponent<BandMember>().dead == false){
+//			isHitting = true;
+//			bandMemberToKill.GetComponent<Innfallsystemet>().Interrupt();
+//			bandMemberToKill.GetComponent<BandMemberMoving>().enabled = false;
+//        }
 	}
 
 	void HittingBandMember (){

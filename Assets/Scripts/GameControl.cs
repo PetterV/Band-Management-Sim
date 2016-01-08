@@ -12,14 +12,15 @@ public class GameControl : MonoBehaviour {
 
 	// Penger og popularitet
 	public float penger = 100000;
-	public float popularitet = 1000000;
+	public float popularitet = 500000;
+	public float maxPopularitet = 1000000;
 	public float popularitetsfaktor = 100;
 
 	public float caymanKonto = 0f;
 
 
 	//Suspicion
-	public float publicSuspicion = 0f;
+	public float publicSuspicion = 100f;
 	public float maxPublicSuspicion = 1000f;
 	//
 

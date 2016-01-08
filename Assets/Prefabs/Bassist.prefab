@@ -963,7 +963,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166260}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 1.2675781, y: 27.589535, z: -2.5008178}
+  m_LocalPosition: {x: 8.89, y: 27.589535, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 454440}
@@ -1036,7 +1036,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.75, z: 5}
+  m_Size: {x: 1.5, y: 3.1, z: 1.5}
   m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!95 &9574930
 Animator:
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583f4db790af6430793b169eb00fd622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
 --- !u!114 &11444334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1120,12 +1120,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   innfallsTall: 0
-  harInfall: 0
+  harInnfall: 0
   target: {fileID: 0}
   riktigPlass: 0
-  actionCounter: 0
   success: 0
   handlingGjennomfort: 
+  gameControl: {fileID: 0}
   textToDisplay: 
 --- !u!114 &11448960
 MonoBehaviour:
@@ -1145,6 +1145,8 @@ MonoBehaviour:
   myCanvas: {fileID: 177378}
   GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
   instantiatedGenMat: {fileID: 0}
+  startGenDropTimer: 0
+  genDropRarity: 0
   "myMedgj\xF8rlighet": 99
   fikkKjeft: 0
   myHappiness: 0

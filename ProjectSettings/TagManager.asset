@@ -26,6 +26,9 @@ TagManager:
   - DeliveryPoint
   - EventText
   - HandAttachment
+  - popBar
+  - susBar
+  - MoneyDisplay
   layers:
   - Default
   - TransparentFX
