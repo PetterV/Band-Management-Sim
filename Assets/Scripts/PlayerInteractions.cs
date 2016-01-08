@@ -51,8 +51,7 @@ public class PlayerInteractions : MonoBehaviour {
         mainCam = GameObject.FindWithTag("MainCamera");
 		animator = GetComponent<Animator>();
 		weapon = GameObject.FindWithTag("Weapon");
-		weapon.SetActive(false);
-
+		//weapon.SetActive(false);
     }
 
 	// Update is called once per frame

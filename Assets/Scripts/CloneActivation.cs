@@ -11,7 +11,9 @@ public class CloneActivation : MonoBehaviour {
 	}
 
 	public void Activation() {
-		GetComponent<BandMember>().active = true;
+		if (GetComponent<BandMember>().dead == false){
+			GetComponent<BandMember>().active = true;
+		}
 		GetComponent<Innfallsystemet>().enabled = true;
 		GetComponent<BandMemberMoving>().enabled = true;
 		GetComponent<BandMemberMoving>().waypointToMoveTo = startWalkTarget;

@@ -291,46 +291,51 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void Score (){
-		ActuallyDoInfall("", "ScoreSted", "Jeg scorte", false);
+		ActuallyDoInfall("I kveld scorer jeg!", "ScoreSted", "Nå scorer jeg, du.", "Jeg scorte", false, false, true, false, false, false, 0, false, 0, true, 1);
 	}
 		//Strandturinnfall
 	void Strandtur (){
-		ActuallyDoInfall("", "StrandSted", "Nå har jeg strand i skoene.", false);
+		ActuallyDoInfall("Jeg vil gå på stranden", "StrandSted", "Jeg går på stranden", "Nå har jeg strand i skoene.", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
 		//solokarriæreinnfall
 	void Solokarriere (){
-		ActuallyDoInfall("Jeg vil starte solokarriere!", "SoloSted", "I'm outta here!", false);
+		ActuallyDoInfall("Jeg vil starte solokarriere!", "SoloSted", "Jeg forlater bandet!", "I'm outta here!", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
     //Musikklytteinnfal
 	void MusikkLytting (){
-		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Jeg hørte på litt muzak.", false);
+		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Mmm, dette er good shit.", "Jeg hørte på litt muzak.", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
         //SintTweetInnfal
 	void SintTweet (){
-		ActuallyDoInfall("Jeg er pissed of vil at hele verden skal vite det!", "TweeteSted", "Det var godt å få fram!", false);
+		ActuallyDoInfall("Jeg er pissed of vil at hele verden skal vite det!", "TweeteSted", "Denne tweeten kommer til å sjokkere!", "Det var godt å få fram!", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
         //Glad Tweet Innfall
 	void GladTweet (){
-		ActuallyDoInfall("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!", "TweeteSted", "Jeg elsker å bli satt pris på.", false);
+		ActuallyDoInfall("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!", "TweeteSted", "Publikum kommer til å digge denne tweeten.", "Jeg elsker å bli satt pris på.", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
        //Drikkeinnfall
 	void Drikke (){
-		ActuallyDoInfall("Nå skarre drekkes", "DrikkeSted", "Yay drekking! Livet betyr mer nå!", false);
+		ActuallyDoInfall("Nå skarre drekkes", "DrikkeSted", "Jeg drekker som bare fy!", "Yay drekking! Livet betyr mer nå!", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
         //Dusjeinnfall
 	void Dusje (){
-		ActuallyDoInfall("Oh boy, jeg trenger en dusj.", "DusjeSted", "Er dette sånn jeg egentlig lukter?", false);
+		ActuallyDoInfall("Oh boy, jeg trenger en dusj.", "DusjeSted", "Deilig å dusje, as.", "Er dette sånn jeg egentlig lukter?", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
         //Spiseinnfall
 	void Spise (){
-		ActuallyDoInfall("Nå er jeg sulten!", "SpiseSted", "Nå er jeg mett!", false);
+		ActuallyDoInfall("Nå er jeg sulten!", "SpiseSted", "Nom nom nom.", "Nå er jeg mett!", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
         //SexyDanceinnfall
 	void SexyDance (){
-		ActuallyDoInfall("Nå trenger jeg litt alenetid!", "DanseSted", "Det var godt å få fram.", false);
+		ActuallyDoInfall("Nå trenger jeg litt alenetid!", "DanseSted", "Ooooh yeah.", "Det var godt å få fram.", false, false, false, false, false, false, 0, false, 0, false, 0);
 	}
 
-	void ActuallyDoInfall(string statement, string placeToWalkTo, string handlingGjennomfort, bool increaseSkill){
+		//Practiceinnfall
+	void Ove (){
+		ActuallyDoInfall("Nå skal jeg øve.", "OveSted", "La oss se... A, så G, så...", "Nå er jeg bedre!", true, false, false, false, false, false, 0, false, 0, false, 0);
+	}
+
+	void ActuallyDoInfall(string statement, string placeToWalkTo, string doing, string handlingGjennomfort, bool increaseSkill, bool decreaseSkill, bool increaseHappiness, bool decreaseHappiness, bool leaveGenetics, bool increasePublicSuspicion, float susPubInc, bool increaseSuspicion, float mySusInc, bool increasePopFactor, float popFacInc){
 		if (setActionCounter == false){
 			actionCounter = this.gameControl.GetComponent<GameControl>().oveTid;
 			setActionCounter = true;
@@ -363,16 +368,16 @@ public class Innfallsystemet : MonoBehaviour {
 			//Send beskjed til tekstbobler
 			//ERSTATT DISSE MED EN TREDJE STRING!!!
 			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){
-				gameControl.GetComponent<Innfallsprinting>().crossSier = statement;
+				gameControl.GetComponent<Innfallsprinting>().crossSier = doing;
 			}
 			if (GetComponent<BandMember>().role == BandMember.Role.Drummer){
-				gameControl.GetComponent<Innfallsprinting>().ronnySier = statement;
+				gameControl.GetComponent<Innfallsprinting>().ronnySier = doing;
 			}
 			if (GetComponent<BandMember>().role == BandMember.Role.Singer){
-				gameControl.GetComponent<Innfallsprinting>().keithSier = statement;
+				gameControl.GetComponent<Innfallsprinting>().keithSier = doing;
 			}
 			if (GetComponent<BandMember>().role == BandMember.Role.BassPlayer){
-				gameControl.GetComponent<Innfallsprinting>().hannahSier = statement;
+				gameControl.GetComponent<Innfallsprinting>().hannahSier = doing;
 			}
 			if (actionCounter <= 0){
 				innfallComplete = true;
@@ -396,16 +401,37 @@ public class Innfallsystemet : MonoBehaviour {
 				gameControl.GetComponent<Innfallsprinting>().hannahSier = handlingGjennomfort;
 			}
 
+			//Effekter av å fullføre
 			if(increaseSkill){
 				int skillIncrease = UnityEngine.Random.Range(1, 5);
 				GetComponent<BandMember>().skill = GetComponent<BandMember>().skill + skillIncrease; 
 			}
+			if(decreaseSkill){
+				int skillIncrease = UnityEngine.Random.Range(-5, -1);
+				GetComponent<BandMember>().skill = GetComponent<BandMember>().skill + skillIncrease;
+			}
+			if(increaseHappiness){
+				int happinessIncrease = UnityEngine.Random.Range(1, 25);
+				GetComponent<BandMember>().myHappiness = GetComponent<BandMember>().myHappiness + happinessIncrease;
+			}
+			if(decreaseHappiness){
+				int happinessIncrease = UnityEngine.Random.Range(-15, -1);
+				GetComponent<BandMember>().myHappiness = GetComponent<BandMember>().myHappiness + happinessIncrease;
+			}
+			if(leaveGenetics){
+				GetComponent<BandMember>().LeaveGenetics();
+			}
+			if(increasePublicSuspicion){
+				gameControl.GetComponent<GameControl>().publicSuspicion = gameControl.GetComponent<GameControl>().publicSuspicion + susPubInc;
+			}
+			if(increaseSuspicion){
+				GetComponent<BandMember>().mySuspicion = GetComponent<BandMember>().mySuspicion + mySusInc;
+			}
+			if(increasePopFactor){
+				gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + popFacInc;
+			}
 			WrapUp();
 		}
-	}
-        //Practiceinnfall
-	void Ove (){
-		ActuallyDoInfall("Nå skal jeg øve.", "OveSted", "Nå er jeg bedre!", true);
 	}
 
 	void GoRight (){
