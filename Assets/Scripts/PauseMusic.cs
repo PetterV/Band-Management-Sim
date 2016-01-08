@@ -4,6 +4,8 @@ using System.Collections;
 public class PauseMusic : MonoBehaviour {
     private float timer = 0f;
 
+	public float pauseMusicForSeconds = 2f;
+
     // Use this for initialization
     void Start() {
     }
@@ -20,7 +22,7 @@ public class PauseMusic : MonoBehaviour {
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(pauseMusicForSeconds);
         GetComponent<AudioSource>().Play();
     }
 }

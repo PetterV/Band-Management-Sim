@@ -32,18 +32,14 @@ public class PlayerInteractions : MonoBehaviour {
 	float animationTimer;
 	public bool isHitting = false;
 	private bool madeHit = false;
-	private bool playedSound = false;
 	private bool stoppedMusic = false;
-	private bool stoppedAnimation = false;
-	private bool startedMusic = false;
+	private bool killedBandMember = false;
 	public float eventSpeed = 1f;
 	private float hitTimerStep;
 	private float hitTimer;
 	public float musicStopTarget = 0.1f;
-	public float soundEffectTarget = 0.4f;
-	public float animationStopTarget = 0.4f;
-	public float startMusicTarget = 1f;
-	public float doneTarget = 1.1f;
+	public float killTarget = 0.4f;
+	public float doneTarget = 0.5f;
 	public GameObject weapon;
 	public CapsuleCollider weaponColl;
 	//
@@ -214,35 +210,21 @@ public class PlayerInteractions : MonoBehaviour {
 
 	void HittingBandMember (){
 		//Timing the hit
-		if (isHitting == true){
-			hitTimerStep = eventSpeed * Time.deltaTime;
-			hitTimer = hitTimer + hitTimerStep;
-		}
-		if (hitTimer > soundEffectTarget && playedSound == false){
-			GetComponent<AudioSource>().Play();
-			playedSound = true;
-		}
+		hitTimerStep = eventSpeed * Time.deltaTime;
+		hitTimer = hitTimer + hitTimerStep;
 		if (hitTimer >= musicStopTarget && stoppedMusic == false){
 			stoppedMusic = true;
 			mainCam.GetComponent<PauseMusic>().Pause();
 		}
-		if (hitTimer >= soundEffectTarget && playedSound == false){
-		}
-		if (hitTimer >= animationStopTarget && stoppedAnimation == false){
+		if (hitTimer >= killTarget && killedBandMember == false){
 			bandMemberToKill.GetComponent<BandMember>().Dying();
-			stoppedAnimation = true;
-		}
-		if (hitTimer >= startMusicTarget && startedMusic == true){
-			//mainCam.GetComponent<PauseMusic>().UnPause();
-			startedMusic = true;
+			killedBandMember = true;
 		}
 		if (hitTimer >= doneTarget){
-			isHitting = false;
 			stoppedMusic = false;
-			playedSound = false;
-			stoppedAnimation = false;
-			startedMusic = false;
+			killedBandMember = false;
 			hitTimer = 0f;
+			isHitting = false;
 		}
 	}
 
