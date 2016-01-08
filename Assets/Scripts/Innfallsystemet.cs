@@ -6,7 +6,7 @@ public class Innfallsystemet : MonoBehaviour {
 	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Ove, GoLeft, GoRight, Nothing};
 	public Dictionary<Innfall, int> innfallsOversikt;
 	public int innfallsTall;
-	public bool harInfall = false;
+	public bool harInnfall = false;
 	public GameObject target;
 	public bool riktigPlass = false;
 	private float actionCounter;
@@ -72,8 +72,8 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Dusje, 1 },
 			{Innfall.Danse, 1 },
 			{Innfall.Ove, 1 },
-			{Innfall.GoLeft, 5 },
-			{Innfall.GoRight, 5 },
+			{Innfall.GoLeft, 0 },
+			{Innfall.GoRight, 0 },
 			{Innfall.Nothing, 100 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
@@ -90,59 +90,51 @@ public class Innfallsystemet : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (harInfall == false){
+		if (harInnfall == false){
 			textToDisplay = null;
-		}
-		if (Input.GetKeyDown("z")){
-			
-		}
-		if (harInfall == false){
 			setActionCounter = false;
 			CheckInnfall();
 		}
-		if (target == null){
-			
-		}
-		if (harInfall == true){
-		if (scoreInnfall == true){
-			Score();
-		}
-		if (strandInnfall == true){
-			Strandtur();
-		}
-		if (soloInnfall == true){
-			Solokarriere();
-		}
-		if (lytteInnfall == true){
-			MusikkLytting();
-		}
-		if (sintTweetInnfall == true){
-			SintTweet();
-		}
-		if (gladTweetInnfall == true){
-			GladTweet();
-		}
-		if (drikkeInnfall == true){
-			Drikke();
-		}
-		if (dusjeInnfall == true){
-			Dusje();
-		}
-		if (spiseInnfall == true){
-			Spise();
-		}
-		if (danseInnfall == true){
-			SexyDance();
-		}
-		if (oveInnfall == true){
-			Ove();
-		}
-		if (innfallGoLeft == true && !tooCloseToLeftWall){
-			GoLeft();
-		}
-		if (innfallGoRight == true && !tooCloseToRightWall){
-			GoRight();
-		}
+		if (harInnfall == true){
+			if (scoreInnfall == true){
+				Score();
+			}
+			if (strandInnfall == true){
+				Strandtur();
+			}
+			if (soloInnfall == true){
+				Solokarriere();
+			}
+			if (lytteInnfall == true){
+				MusikkLytting();
+			}
+			if (sintTweetInnfall == true){
+				SintTweet();
+			}
+			if (gladTweetInnfall == true){
+				GladTweet();
+			}
+			if (drikkeInnfall == true){
+				Drikke();
+			}
+			if (dusjeInnfall == true){
+				Dusje();
+			}
+			if (spiseInnfall == true){
+				Spise();
+			}
+			if (danseInnfall == true){
+				SexyDance();
+			}
+			if (oveInnfall == true){
+				Ove();
+			}
+			if (innfallGoLeft == true && !tooCloseToLeftWall){
+				GoLeft();
+			}
+			if (innfallGoRight == true && !tooCloseToRightWall){
+				GoRight();
+			}
 		}
 	}
 
@@ -170,10 +162,6 @@ public class Innfallsystemet : MonoBehaviour {
 		return colli.transform.position.x < this.transform.position.x;
 	}
 
-	/// <summary>
-	/// CHECK OG PERFORM INNFALL LIGGER HER	/////////////////////////
-	/// </summary>
-	//Innfallsoversikten ligger i enumen Innfall øverst.
 	void CheckInnfall () {
 		//Generer innfallstall og sjekk mot innfallsoversikten.
 		this.innfallsTall = UnityEngine.Random.Range(0, innfallSum);
@@ -183,7 +171,7 @@ public class Innfallsystemet : MonoBehaviour {
 			tempUpperBound += entry.Value;
 			if (innfallsTall < tempUpperBound)
 			{
-				harInfall = true;
+				harInnfall = true;
 				performInnfall(entry.Key);
 				break;
 			}
@@ -292,21 +280,11 @@ public class Innfallsystemet : MonoBehaviour {
 
 	//INTERRUPTION
 	public void Interrupt(){
-		if (harInfall == true){
+		if (harInnfall == true){
 			WrapUp();
 		}
 	}
 
-
-
-
-
-
-	//INNFALLSHANDLINGER
-	/// <summary>
-	/// Her er alle innfallshandlingene!/////////////////////////////////////////////////////////////////
-	/// </summary>
-	//Skal score
 	void Score (){
 		ActuallyDoInfall("", "ScoreSted", "Jeg scorte", false);
 	}
@@ -348,16 +326,15 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void ActuallyDoInfall(string statement, string placeToWalkTo, string handlingGjennomfort, bool increaseSkill){
-		print (statement);
-		harInfall = true;
-		GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;
 		if (setActionCounter == false){
-			actionCounter = GameObject.Find("GameControl").GetComponent<GameControl>().oveTid;
+			actionCounter = this.gameControl.GetComponent<GameControl>().oveTid;
 			setActionCounter = true;
 		}
 		if (!riktigPlass){
 			target = GameObject.Find(placeToWalkTo);
-			GetComponentInParent<BandMemberMoving>().waypointToMoveTo = target;	
+			if (target == null)
+				print ("ERROR ERROR ERROR, COULD NOT FIND " + placeToWalkTo);
+			GetComponent<BandMemberMoving>().waypointToMoveTo = target;
 		}
 		else if (riktigPlass){
 			float reduceCounter = 1f * Time.deltaTime;
@@ -370,7 +347,7 @@ public class Innfallsystemet : MonoBehaviour {
 			handlingGjennomfort = handlingGjennomfort;
 			if(increaseSkill){
 				int skillIncrease = UnityEngine.Random.Range(1, 5);
-				GetComponentInParent<BandMember>().skill = GetComponentInParent<BandMember>().skill + skillIncrease; 
+				GetComponent<BandMember>().skill = GetComponent<BandMember>().skill + skillIncrease; 
 			}
 			WrapUp();
 		}
@@ -381,7 +358,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void GoRight (){
-		harInfall = true;
+		harInnfall = true;
 		if (goingThere == false){
 			moveThisStep = this.transform.position.x + 1;
 			float walkDistance = UnityEngine.Random.Range(0, 3);
@@ -401,7 +378,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void GoLeft (){
-		harInfall = true;
+		harInnfall = true;
 		if (goingThere == false){
 			moveThisStep = this.transform.position.x + 1;
 			float walkDistance = UnityEngine.Random.Range(0, 3);
@@ -435,7 +412,7 @@ public class Innfallsystemet : MonoBehaviour {
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}
-		harInfall = false;
+		harInnfall = false;
 		target = null;
 		riktigPlass = false;
 		scoreInnfall = false;

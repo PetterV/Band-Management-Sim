@@ -50,13 +50,10 @@ public class BandMemberMoving : MonoBehaviour {
 		int wpHouse = GetHouseOfObject (wp.transform.parent.tag);
 		if (this.currentHouse != wpHouse) {
 			GoToOtherHouse ();
-            print("Going to the other house!");
 		}
 		else if (this.currentFloor != wp.floor) {
 			GoToFloor (wp.floor);
-            print("Right house, but going to right floor!");
 		} else {
-            print("Right floor, and walking to wp!");
 			WalkToWayPoint (wp);
 		}
 	}
@@ -132,16 +129,12 @@ public class BandMemberMoving : MonoBehaviour {
             }
             else
             {
-                this.waypointToMoveTo = null;
+				this.waypointToMoveTo = null;
                 GetComponent<Innfallsystemet>().riktigPlass = true;
 				animator.SetInteger("Walking", 0);
 				HeadTowardsCamera();
                 print("Arrived at waypoint!");
             }
-
-			//Lagt til innfall
-			/*TODO: DET KAN VÆRE BUG HER: "Parent" sikter til direkte parent (tror jeg),
-			som kan gjøre at dersom band members er barn av flere objekter, vil ikke neste linje funke.*/
 			
 		} else {
 			HeadCorrectDirection(transform.position, stepTowardsWp);
@@ -161,8 +154,6 @@ public class BandMemberMoving : MonoBehaviour {
 				bool possibleClosestIsInWrongHouse = GetHouseOfObject (possibleClosest.gameObject.transform.parent.tag) != this.currentHouse;
 				if (possibleClosestHasExitInWrongDirection || possibleClosestIsInWrongHouse)
                 {
-                    print("YO!");
-                    print(possibleClosest);
                     continue;
                 }
 				if (tempClosest == null)
@@ -172,7 +163,8 @@ public class BandMemberMoving : MonoBehaviour {
 				}
 			}
 		}
-        print(tempClosest + ", " + GetHouseOfObject(tempClosest.gameObject.transform.parent.tag));
+		if (tempClosest == null)
+			print ("ERROR ERROR ERROR, CANNOT FIND STAIRS!!! Check floors, tags and transfer center plz");
         return tempClosest;
 	}
 
