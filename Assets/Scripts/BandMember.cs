@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 
@@ -46,6 +47,11 @@ public class BandMember : MonoBehaviour{
 
 	Animator animator;
 
+	//Bars på canvaset!
+	public Image medgjorlighetsBar;
+	public Image skillBar;
+	public Image suspicionBar;
+
 
 	public BandMember (String name, float skill, Role role)
 	{
@@ -72,6 +78,22 @@ public class BandMember : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
+		//Stuff til canvas!
+		int maxMedgjørlighet = 100;
+		int maxSkill = 100;
+		float maxSuspicion = 100;
+
+		medgjorlighetsBar.fillAmount = myMedgjørlighet / maxMedgjørlighet;
+		skillBar.fillAmount = skill / maxSkill;
+		float suspicionToBeFilled = mySuspicion / maxSuspicion;
+		suspicionBar.fillAmount = suspicionToBeFilled;
+
+		float greenAndBlueLevel = 1 - suspicionToBeFilled;
+
+		suspicionBar.color = new Color (1, greenAndBlueLevel, greenAndBlueLevel);
+		//Woop woop!
+
+
 		if (Input.GetKey (KeyCode.Tab)) {
 			myCanvas.SetActive (true);
 		}
