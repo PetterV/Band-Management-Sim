@@ -26,6 +26,8 @@ TagManager:
   - DeliveryPoint
   - EventText
   - HandAttachment
+  - popBar
+  - susBar
   layers:
   - Default
   - TransparentFX
