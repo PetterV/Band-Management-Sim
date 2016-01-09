@@ -5743,7 +5743,7 @@ MonoBehaviour:
   rasismeBilde: {fileID: 0}
   dickPicBilde: {fileID: 0}
   personBilder: []
-  minimumSecondDelayBetweenEvents: 120
+  minimumSecondDelayBetweenEvents: 95
   timeSinceLastEvent: 0
   EventCanvas: {fileID: 0}
   playerChoosing: 0

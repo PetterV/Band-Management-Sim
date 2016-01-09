@@ -262,11 +262,11 @@ public class EventSystemet : MonoBehaviour {
 
     //Rasisme event
     private void Rasisme(){
-		string overskrift = "Hey, that's racist!";
-		string text = "Something racist has happened!";
+		string overskrift = "Dømt etter rasismeparagrafen";
+		string text = "Bandets offisielle Twitterkonto har blitt dømt \n etter Rasismeparagrafen. Uten noen å stille direkte til ansvar \n må du svare pressen alene.";
 		//Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();
 		//Image personenSomVarRasistisk = GetRandomPerson (); 
-		SetUpCanvas (overskrift, text, "I guess I am racist :(");
+		SetUpCanvas (overskrift, text, "Legger oss flate", "Dette skulle aldri ha skjedd.", "Per Sandberg har skylden");
 		this.solveFunction = SolveRasisme;	
 		this.hoverFunction = hoverRasisme;
 	}
@@ -278,6 +278,16 @@ public class EventSystemet : MonoBehaviour {
 				print ("rasisme0");
 				break;
 			}
+        case 1:
+            {
+                print("rasisme1");
+                break;
+            }
+        case 2:
+                {
+                    print("rasisme2");
+                    break;
+                }
 		}
 	}
 	private void hoverRasisme(int alt){
@@ -285,18 +295,29 @@ public class EventSystemet : MonoBehaviour {
 		switch (alt) {
 		case 0:
 			{
-				hoverText = "rasisme";
+				hoverText = "Populæritet -25";
 				break;
 			}
-		}
+            case 1:
+                {
+                    hoverText = "Populæritet -10 \n Penger -20 000";
+                    break;
+                }
+
+            case 2:
+                {
+                    hoverText = "Populæritet -20";
+                    break;
+                }
+        }
 		SetHoverText(hoverText);
 	}
 
 	private void DickPicLeak(){
-		string flavour = "A fan claims that they have a dick pic from one of your band members. If this is true, it will alienate your fans from the Christian Right. What do you want to do?";
+		string flavour = "En fan hevder å ha et lekket bilde av et bandmedlems penis. Hvis dette viser seg å være riktig, vil du miste populæritet blant kristne fans.";
 		//Image dickPicBilde = this.dickPicBilde.GetComponent<Image> ();
 		//Image personenSomLeakaDick = GetRandomPerson ();
-		SetUpCanvas ("DICK PIC LEAKED!", flavour, "Pay the fan to stay quiet", "Let it leak!", "Make your band members prove that the dick is not theirs ;]", "Dicks have genetic material, right?");
+		SetUpCanvas ("Fan truer med å lekke penisbilder.", flavour, "Betal vedkommende til stillhet", "La bildet lekke", "Peniser har da genetisk materiale?");
 		this.solveFunction = SolveDickPicLeak;
 		this.hoverFunction = hoverDickPicLeak;
 	}
@@ -318,11 +339,7 @@ public class EventSystemet : MonoBehaviour {
 				print ("dickpicleak 2");
 				break;
 			}
-		case 3:
-			{
-				print ("dickpicleak 3");
-				break;
-			}
+		
 		}
 	}
 
@@ -331,22 +348,17 @@ public class EventSystemet : MonoBehaviour {
 		switch (alt) {
 		case 0:
 			{
-				hovertext = "-50 000 money";
+				hovertext = "-40 000 Penger";
 				break;
 			}
 		case 1:
 			{
-				hovertext = "-10 suspicion\n+10 popularity";
+				hovertext = "-10 Mistenkelighet\n+10 Populæritet";
 				break;
 			}
 		case 2:
 			{
-				hovertext = "All band members get -10 happiness\n+10 popularity";
-				break;
-			}
-		case 3:
-			{
-				hovertext = "Genetic material from the band member shows up in basement";
+				hovertext = "Genetisk Materiale dukker opp i Klonekjelleren";
 				break;
 			}
 		}
