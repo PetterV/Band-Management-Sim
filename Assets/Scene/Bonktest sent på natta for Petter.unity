@@ -3970,7 +3970,7 @@ Transform:
   - {fileID: 1712918174}
   - {fileID: 1310983822}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 37
 --- !u!4 &97548474
 Transform:
   m_ObjectHideFlags: 0
@@ -9747,6 +9747,7 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 476843020}
   skillBar: {fileID: 2054712926}
   suspicionBar: {fileID: 1328427319}
@@ -12733,7 +12734,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 58
+  m_RootOrder: 55
 --- !u!1 &327751091
 GameObject:
   m_ObjectHideFlags: 0
@@ -13605,6 +13606,7 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 598267453}
   skillBar: {fileID: 883458217}
   suspicionBar: {fileID: 895018225}
@@ -19684,7 +19686,7 @@ MonoBehaviour:
   isHitting: 0
   eventSpeed: 1
   musicStopTarget: 0.1
-  killTarget: 0.4
+  killTarget: 0.7
   doneTarget: 1.1
   weapon: {fileID: 0}
   mainCam: {fileID: 0}
@@ -30557,7 +30559,7 @@ Transform:
   m_LocalScale: {x: 0.27930167, y: 0.27930167, z: 0.03424901}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
 --- !u!4 &813953482 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 86bf69abb4de05c40853f0226d962f8f, type: 3}
@@ -37474,6 +37476,7 @@ MonoBehaviour:
   mySuspicion: 50
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 1932648154}
   skillBar: {fileID: 1120442361}
   suspicionBar: {fileID: 1355677861}
@@ -39190,7 +39193,7 @@ Transform:
   - {fileID: 1057574408}
   - {fileID: 1057062961}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 41
 --- !u!4 &1088360663 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 86bf69abb4de05c40853f0226d962f8f, type: 3}
@@ -42349,7 +42352,7 @@ Transform:
   m_LocalScale: {x: 2.6604192, y: 2.509738, z: 2.509738}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 67
+  m_RootOrder: 61
 --- !u!1001 &1165010861
 Prefab:
   m_ObjectHideFlags: 0
@@ -43982,6 +43985,7 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 373120780}
   skillBar: {fileID: 1213958276}
   suspicionBar: {fileID: 881173671}
@@ -48270,7 +48274,7 @@ Transform:
   m_Children:
   - {fileID: 1594917425}
   m_Father: {fileID: 0}
-  m_RootOrder: 50
+  m_RootOrder: 45
 --- !u!1 &1328427318
 GameObject:
   m_ObjectHideFlags: 0
@@ -50985,7 +50989,7 @@ Transform:
   m_Children:
   - {fileID: 1166501993}
   m_Father: {fileID: 0}
-  m_RootOrder: 54
+  m_RootOrder: 53
 --- !u!1001 &1409817450
 Prefab:
   m_ObjectHideFlags: 0
@@ -54595,7 +54599,7 @@ RectTransform:
   - {fileID: 1207772215}
   - {fileID: 795699789}
   m_Father: {fileID: 0}
-  m_RootOrder: 51
+  m_RootOrder: 46
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -54805,6 +54809,7 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 413976268}
   skillBar: {fileID: 1140130904}
   suspicionBar: {fileID: 1368437739}
@@ -58925,6 +58930,7 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 22327019}
   skillBar: {fileID: 909799366}
   suspicionBar: {fileID: 51945564}
@@ -63944,7 +63950,7 @@ Transform:
   m_PrefabParentObject: {fileID: 426246, guid: a26c423dafea9364f86aa062a0075ecf, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1760749494}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -64786,6 +64792,7 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 997201789}
   skillBar: {fileID: 280776946}
   suspicionBar: {fileID: 1871500770}
@@ -73839,7 +73846,7 @@ Transform:
   - {fileID: 1658814098}
   - {fileID: 981038418}
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 39
 --- !u!1 &2067825422
 GameObject:
   m_ObjectHideFlags: 0
@@ -74209,6 +74216,7 @@ MonoBehaviour:
   mySuspicion: 50
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 750483164}
   skillBar: {fileID: 683457753}
   suspicionBar: {fileID: 1050583240}
