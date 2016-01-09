@@ -37,27 +37,27 @@ public class CloneMachine : MonoBehaviour {
 		if(roleImminentClone == BandMember.Role.BassPlayer){
 			bandMemberToBeCloned = bassist;
 			print ("Klona bassist");
-			cloneName = "Bassern";
+			cloneName = "Bassist";
 		}
 		if(roleImminentClone == BandMember.Role.GuitarPlayer){
 			bandMemberToBeCloned = gitarist;
 			print ("Klona gitarist");
-			cloneName = "Gittarn";
+			cloneName = "Gitarist";
 		}
 		if(roleImminentClone == BandMember.Role.Singer){
 			bandMemberToBeCloned = vokalist;
 			print ("Klona vokalist");
-			cloneName = "Sangern";
+			cloneName = "Singer";
 		}
 		if(roleImminentClone == BandMember.Role.Drummer){
 			bandMemberToBeCloned = trommis;
 			print ("Klona trommis");
-			cloneName = "Magnus på trommer";
+			cloneName = "Trommis";
 		}
         
 		GameObject clone = MakeNewBandMemberClone(cloneName, cloneSkill, cloneMedgjørlighet, roleImminentClone);
 		clone.GetComponent<CloneActivation>().active = false;
-		clone.GetComponent<BandMember>().enabled = false;
+		clone.GetComponent<BandMemberMoving>().enabled = false;
 		clone.GetComponent<Innfallsystemet>().enabled = false;
 	}
 
