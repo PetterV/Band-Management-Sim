@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EventSystemet : MonoBehaviour {
 
-	public enum Event {Rasisme, DickPicLeak, FanGift, Nothing};
+	public enum Event {Rasisme, DickPicLeak, FanGift, StalkStart, Nothing};
 	delegate void MyDelegate(int choice);
 
 	public GameObject rasismeBilde;
@@ -68,10 +68,11 @@ public class EventSystemet : MonoBehaviour {
 	{
 		this.eventOversikt = new Dictionary<Event, int>()
 		{
-			{Event.Rasisme, 1 },
-			{Event.DickPicLeak, 1 },
-			{Event.Nothing, 1},
-			{Event.FanGift, 1}
+			{Event.Rasisme, 0},
+			{Event.DickPicLeak, 0},
+			{Event.Nothing, 0},
+			{Event.FanGift, 0},
+            {Event.StalkStart, 1}
 		};
 		foreach (KeyValuePair<Event, int> entry in eventOversikt)
 		{
@@ -125,7 +126,12 @@ public class EventSystemet : MonoBehaviour {
 				FanGift ();
 				break;
 			}
-		}
+            case Event.StalkStart:
+                {
+                    StalkStart();
+                    break;
+                }
+        }
 	}
 
 		//FanGift Event
@@ -183,9 +189,79 @@ public class EventSystemet : MonoBehaviour {
 		}
 		SetHoverText(hoverText);
 	}
-		
-		//Rasisme event
-	private void Rasisme(){
+	
+        //Stalker Event
+    private void StalkStart()
+    {
+        string overskrift = "En Stalker forfølger bandet!";
+        string text = "En person har startet å overvåke bandmedlemmene dine \n tar bilder og har forsøkt å ta seg inn på eiendommen";
+        //Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();
+        //Image personenSomVarRasistisk = GetRandomPerson (); 
+        SetUpCanvas(overskrift, text, "Anmelde til politiet", "Betal Stalkeren for å stoppe", "La Stalkeren treffe bandet", "Ignorer problemet");
+        this.solveFunction = SolveStalker;
+        this.hoverFunction = hoverStalker;
+    }	
+
+    private void SolveStalker(int alt)
+    {
+        switch (alt)
+        {
+            case 0:
+                {
+                    print("Stalker0");
+                    break;
+                }
+            case 1:
+                {
+                    print("Stalker1");
+                    break;
+                }
+            case 2:
+                {
+                    print("Stalker2");
+                    break;
+                }
+            case 3:
+                {
+                    print("Stalker3");
+                    break;
+                }
+        }
+    }
+
+    private void hoverStalker(int alt)
+    {
+        string hoverText = "";
+        switch (alt)
+        {
+            case 0:
+                {
+                    hoverText = "Populæritet -15";
+                    break;
+                }
+            case 1:
+                {
+                    hoverText = "Penger: -10 000";
+                    break;
+                }
+            case 2:
+                {
+                    hoverText = "Populæritet +25: \n 50% sjangse for at Keith dør";
+                    break;
+                }
+            case 3:
+                {
+                    hoverText = "Stalkeren kan bli mer problematisk i fremtiden";
+                    //Bare drit i å gjøre noe her, vi kan heller snakke om det hvis det blir en greie
+                    break;
+                }
+        }
+        SetHoverText(hoverText);
+    }
+
+
+    //Rasisme event
+    private void Rasisme(){
 		string overskrift = "Hey, that's racist!";
 		string text = "Something racist has happened!";
 		//Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();

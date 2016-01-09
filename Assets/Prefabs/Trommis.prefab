@@ -80,7 +80,7 @@ GameObject:
   - 222: {fileID: 22296608}
   - 114: {fileID: 11443860}
   m_Layer: 0
-  m_Name: Status Bar (2)
+  m_Name: HappyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ GameObject:
   - 222: {fileID: 22257510}
   - 114: {fileID: 11442520}
   m_Layer: 0
-  m_Name: Status Bar
+  m_Name: SkillBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +240,7 @@ GameObject:
   - 222: {fileID: 22292294}
   - 114: {fileID: 11471888}
   m_Layer: 0
-  m_Name: Status Bar (1)
+  m_Name: SuspicionBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1133,7 @@ Animator:
   m_GameObject: {fileID: 100076}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c72c97e952bf7834b85e6164373d310d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f5573dc78b11aa42ba174834d8c67fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: f578b6d9db7ba41108c49fb4cab7c98e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1221,10 +1221,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 845c07a85e46c4f96905a918d39dcdc5, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1246,6 +1246,11 @@ MonoBehaviour:
   success: 0
   handlingGjennomfort: 
   gameControl: {fileID: 0}
+  progressBar: {fileID: 0}
+  crossDisplay: 
+  ronnyDisplay: 
+  keithDisplay: 
+  hannahDisplay: 
   textToDisplay: 
 --- !u!114 &11443860
 MonoBehaviour:
@@ -1267,10 +1272,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 845c07a85e46c4f96905a918d39dcdc5, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1369,10 +1374,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 845c07a85e46c4f96905a918d39dcdc5, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1392,8 +1397,9 @@ MonoBehaviour:
   dead: 0
   beingCarried: 0
   active: 0
+  rb: {fileID: 0}
   myCanvas: {fileID: 139248}
-  GenMat1: {fileID: 109510, guid: 88888832d1440a54ca285a78e60e9202, type: 2}
+  GenMat1: {fileID: 109510, guid: 13a99d02150114810801e071c84d9ebb, type: 2}
   instantiatedGenMat: {fileID: 0}
   startGenDropTimer: 0
   genDropRarity: 0
@@ -1406,6 +1412,9 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  medgjorlighetsBar: {fileID: 11443860}
+  skillBar: {fileID: 11442520}
+  suspicionBar: {fileID: 11471888}
 --- !u!114 &11479634
 MonoBehaviour:
   m_ObjectHideFlags: 1

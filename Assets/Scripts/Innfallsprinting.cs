@@ -44,38 +44,37 @@ public class Innfallsprinting : MonoBehaviour {
 		keithText.text = keithSier;
 		hannahText.text = hannahSier;
 
-//		if (crossSier != null){
-//			crossBoble.SetActive(true);
-//		}
-//		if (crossSier == null){
-//			crossBoble.SetActive(false);
-//		}
-//
-//
-//
-//		if (ronnySier != null){
-//			ronnyBoble.SetActive(true);
-//		}
-//		if (ronnySier == null){
-//			ronnyBoble.SetActive(false);
-//		}
-//
-//
-//
-//		if (keithSier != null){
-//			keithBoble.SetActive(true);
-//		}
-//		if (keithSier == null){
-//			keithBoble.SetActive(false);
-//		}
-//
-//
-//
-//		if (hannahSier != null){
-//			hannahBoble.SetActive(true);
-//		}
-//		if (hannahSier == null){
-//			hannahBoble.SetActive(false);
-//		}
+		if (crossSier != null){
+			crossBoble.SetActive(true);
+		}
+		if (crossSier == null){
+			crossBoble.SetActive(false);
+		}
+
+
+
+		if (ronnySier != null){
+			ronnyBoble.SetActive(true);		}
+		if (ronnySier == null){
+			ronnyBoble.SetActive(false);
+		}
+
+
+
+		if (keithSier != null){
+			keithBoble.SetActive(true);
+		}
+		if (keithSier == null){
+			keithBoble.SetActive(false);
+		}
+
+
+
+		if (hannahSier != null){
+			hannahBoble.SetActive(true);
+		}
+    	if (hannahSier == null){
+			hannahBoble.SetActive(false);
+		}
 	}
 }
