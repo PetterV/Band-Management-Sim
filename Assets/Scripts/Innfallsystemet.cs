@@ -138,7 +138,7 @@ public class Innfallsystemet : MonoBehaviour {
 				gameControl.GetComponent<Innfallsprinting>().keithSier = null;
 			}
 			if (GetComponent<BandMember>().role == BandMember.Role.BassPlayer){
-				gameControl.GetComponent<Innfallsprinting>().crossSier = null;
+				gameControl.GetComponent<Innfallsprinting>().hannahSier = null;
 			}
 			setActionCounter = false;
 			CheckInnfall();

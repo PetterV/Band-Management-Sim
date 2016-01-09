@@ -525,7 +525,7 @@ public class EventSystemet : MonoBehaviour {
 	public void UpdateHoverBoxPosition(){
 		Vector3 rectPosition = Input.mousePosition;
 		RectTransform hoverRect = hoverBox.GetComponent<RectTransform> ();
-		rectPosition.y += (hoverRect.rect.height/1.0f)+1.0f;
+		rectPosition.y += (hoverRect.rect.height/2.0f)+1.0f;
 		hoverBox.transform.position = rectPosition;
 	}
 
