@@ -27,7 +27,7 @@ public class BandMember : MonoBehaviour{
 	public float genDropRarity = 0.5f;
 	//
 
-	public float carryOffsetX = 0.1f;
+	public float carryOffsetX = 10f;
 	public float carryOffsetY = 1f;
 
 
@@ -48,6 +48,10 @@ public class BandMember : MonoBehaviour{
 	public float increaseSuspicion = 0.01f;
 	public float decreaseSuspicion = 0.0005f;
 
+	public float deadRotationSpeed = 0.1f;
+	//Quaternion startRot;
+	//Quaternion endRot = Quaternion.Euler(-90, 0, 0);
+	//bool deadRotate = false;
 
 	Animator animator;
 
@@ -87,6 +91,10 @@ public class BandMember : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
+//		startRot = transform.rotation;
+//		if (deadRotate = true){
+//			transform.rotation = Quaternion.Lerp(startRot, endRot, deadRotationSpeed * Time.time);
+//		}
 		//Stuff til canvas!
 		float maxMedgjørlighet = 100;
 		float maxSkill = 50;
@@ -151,12 +159,17 @@ public class BandMember : MonoBehaviour{
 		animator.SetInteger("Walking", 0);
 		GetComponent<Innfallsystemet>().enabled = false;
 		GetComponent<BandMemberMoving>().enabled = false;
-		float rotX = UnityEngine.Random.Range(50, 300);
-		float rotY = UnityEngine.Random.Range(50, 300);
-		float rotZ = UnityEngine.Random.Range(50, 300);
-		Vector3 deadRot = new Vector3(rotX, rotY, rotZ);
-		rb.AddTorque(deadRot, ForceMode.Force);
-		//transform.Rotate(deadRot, Space.Self);
+		//float rotX = UnityEngine.Random.Range(50, 300);
+		//float rotY = UnityEngine.Random.Range(50, 300);
+		//float rotZ = UnityEngine.Random.Range(50, 300);
+		//float rotX = -90f;
+		//float rotY = 0;
+		//float rotZ = 0;
+		//Quaternion toRot = Quaternion.Euler
+		Vector3 deadRot = new Vector3(0, 0, -90);
+		//rb.AddTorque(deadRot, ForceMode.Force);
+		transform.Rotate(deadRot, Space.World);
+		//deadRotate = true;
 		GetComponent<CloneActivation>().active = false;
 	}
 
