@@ -438,7 +438,6 @@ public class Innfallsystemet : MonoBehaviour {
 
 	void ActuallyDoInfall(string statement, string placeToWalkTo, string doing, string handlingGjennomfort, bool increaseSkill, bool decreaseSkill, bool increaseHappiness, bool decreaseHappiness, bool leaveGenetics, bool increasePublicSuspicion, float susPubInc, bool increaseSuspicion, float mySusInc, bool increasePopFactor, float popFacInc, int turn){
 		if (!riktigPlass){
-			bobleToDisplay.SetActive(true);
 			target = GameObject.Find(placeToWalkTo);
 			if (target == null)
 				print ("ERROR ERROR ERROR, COULD NOT FIND " + placeToWalkTo);
@@ -460,7 +459,6 @@ public class Innfallsystemet : MonoBehaviour {
 
 		}
 		else if (riktigPlass){
-			bobleToDisplay.SetActive(false);
 			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			float progToBeFilled = actionCounter / maxActionCounter;
@@ -498,7 +496,6 @@ public class Innfallsystemet : MonoBehaviour {
 
 		}
 		if (innfallComplete == true){
-			handlingGjennomfort = handlingGjennomfort;
 
 			//Si ifra til snakkebobla
 			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){
@@ -602,8 +599,7 @@ public class Innfallsystemet : MonoBehaviour {
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}
-		bobleToDisplay.SetActive(false);
-		progressBar.enabled = false;
+        progressBar.enabled = false;
 		progressFrame.enabled = false;
 		harInnfall = false;
 		target = null;
