@@ -14,6 +14,7 @@ public class PlayerInteractions : MonoBehaviour {
 	public GameObject currentHappinessObject;
 	public GameObject computer;
 	public GameObject computerCanvas;
+    public Canvas salesScreen;
 	public GameObject bandMemberToKill;
 	public BandMember.Role bringingRole;
 	public float bringingSkill;
@@ -51,7 +52,8 @@ public class PlayerInteractions : MonoBehaviour {
 
     void Start (){
 		computer = GameObject.Find("Computer");
-		computerCanvas = GameObject.FindWithTag("ComputerCanvas");
+		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+        salesScreen = computerCanvas.GetComponent<Canvas>();
         mainCam = GameObject.FindWithTag("MainCamera");
 		animator = GetComponent<Animator>();
 		weapon = GameObject.FindWithTag("Weapon");
@@ -163,10 +165,10 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 
 		if (computerActive == true){
-			//computerCanvas.SetActive(true);
+            salesScreen.enabled = true;
 		}
 		if (computerActive == false){
-			//computerCanvas.SetActive(false);
+            salesScreen.enabled = false;
 		}
 
 		//Whacking bandmembers
