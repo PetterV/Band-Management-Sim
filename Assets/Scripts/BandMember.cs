@@ -161,7 +161,7 @@ public class BandMember : MonoBehaviour{
 		GetComponent<BandMemberMoving>().enabled = false;
 		this.gameObject.transform.eulerAngles = new Vector3(-90, -90, 0);
 		GetComponent<CloneActivation>().active = false;
-		bloodParticles.GetComponent<ParticleSystem>().Emit();
+		bloodParticles.GetComponent<ParticleSystem>().Play();
 	}
 
 	public void HappinessGain (){
