@@ -54,7 +54,7 @@ public class Innfallsprinting : MonoBehaviour {
 
 
 		if (ronnySier != null){
-			ronnyBoble.SetActive(true);		}
+			ronnyBoble.SetActive(true);		
 		}
 
 		if (ronnySier == null){

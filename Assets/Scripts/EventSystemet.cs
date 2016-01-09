@@ -68,10 +68,10 @@ public class EventSystemet : MonoBehaviour {
 	{
 		this.eventOversikt = new Dictionary<Event, int>()
 		{
-			{Event.Rasisme, 0},
-			{Event.DickPicLeak, 0},
-			{Event.Nothing, 0},
-			{Event.FanGift, 0},
+			{Event.Rasisme, 1},
+			{Event.DickPicLeak, 1},
+			{Event.Nothing, 1},
+			{Event.FanGift, 1},
             {Event.StalkStart, 1}
 		};
 		foreach (KeyValuePair<Event, int> entry in eventOversikt)
@@ -194,7 +194,7 @@ public class EventSystemet : MonoBehaviour {
     private void StalkStart()
     {
         string overskrift = "En Stalker forfølger bandet!";
-        string text = "En person har startet å overvåke bandmedlemmene dine \n tar bilder og har forsøkt å ta seg inn på eiendommen";
+        string text = "En person har startet å overvåke bandmedlemmene dine \n hen tar bilder og har forsøkt å ta seg inn på eiendommen.";
         //Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();
         //Image personenSomVarRasistisk = GetRandomPerson (); 
         SetUpCanvas(overskrift, text, "Anmelde til politiet", "Betal Stalkeren for å stoppe", "La Stalkeren treffe bandet", "Ignorer problemet");
