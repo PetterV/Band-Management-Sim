@@ -28,6 +28,7 @@ public class PlayerInteractions : MonoBehaviour {
     private Animator animator;
 	public bool suspiciousAction = false;
 
+    public float cloneTimer = 1.0f;
 
 	//Stuff til whacking
 	float animationTimer;
@@ -63,7 +64,8 @@ public class PlayerInteractions : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        if (cloneTimer > 0)
+            cloneTimer -= Time.deltaTime;
 
 		if (carryingGenMat == true || carryingBody == true || carryingHappiness == true){
 			carryingAny = true;
@@ -91,7 +93,7 @@ public class PlayerInteractions : MonoBehaviour {
 			kjefteSensor.enabled = false;
 		}
 		//Går nedover lista i prioritert rekkefølge for å interacte 
-		if (Input.GetKeyDown("e")){
+		if (Input.GetKeyUp("e")){
 			if (bandCollision == true && happinessCollision == false){
 				if(currentBandMember.GetComponent<BandMember>().dead == true && currentBandMember.GetComponent<BandMember>().beingCarried == false && carryingAny == false ){
 					print ("Carrying dead body");
@@ -134,9 +136,13 @@ public class PlayerInteractions : MonoBehaviour {
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true && cloneMachineCollision == true){
 					//print ("Destroy me - GenMat");
-					GameObject.FindWithTag("CloneMachine").GetComponent<CloneMachine>().Cloning();
-					Destroy(currentGenMat);
-					carryingGenMat = false;
+                    if(cloneTimer <= 0)
+                    {
+                        GameObject.FindWithTag("CloneMachine").GetComponent<CloneMachine>().Cloning();
+                        Destroy(currentGenMat);
+                        carryingGenMat = false;
+                        cloneTimer = 1.0f;
+                    }
 				}
 				else if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == true){
 					currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = false;
@@ -182,7 +188,11 @@ public class PlayerInteractions : MonoBehaviour {
 		animationTimer = animationTimer + animationTimerStep;
 		if (!Input.GetKey("space") && animationTimer > 1f){
 			animator.SetInteger("Punch", 0);
-			weapon.SetActive(false);
+        if (weapon != null)
+            {
+                weapon.SetActive(false);
+            }
+			
 			suspiciousAction = false;
 		}
 		if (isHitting == true){

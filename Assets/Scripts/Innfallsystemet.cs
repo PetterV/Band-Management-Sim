@@ -98,20 +98,20 @@ public class Innfallsystemet : MonoBehaviour {
 		{
 			{Innfall.Score, 5 },
 			{Innfall.Strandtur, 5 }, //sannsynligheten for Strandtur er dobbelt så stor som Score.
-			{Innfall.Solo, 1 },
+			{Innfall.Solo, 5 },
 			{Innfall.Lytte, 5 },
 			{Innfall.SintTweet, 3 },
 			{Innfall.GladTweet, 3 },
-			{Innfall.Drikke, 5 },
-			{Innfall.Spise, 8 },
-			{Innfall.Dusje, 5 },
+			{Innfall.Drikke, 7 },
+			{Innfall.Spise, 7 },
+			{Innfall.Dusje, 15 },
 			{Innfall.Danse, 10 },
 			{Innfall.Ove, 3 },
-			{Innfall.GoLeft, 1000 },
-			{Innfall.GoRight, 1000 },
+			{Innfall.GoLeft, 0 },
+			{Innfall.GoRight, 0 },
             {Innfall.Ove2, 3 },
             {Innfall.Ove3, 3 },
-            {Innfall.Nothing, 80000 } //Sannsynligheten for Nothing er sju ganger større enn Score
+            {Innfall.Nothing,80000 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
 		{
@@ -608,18 +608,18 @@ public class Innfallsystemet : MonoBehaviour {
 	void GoRight (){
 		harInnfall = true;
 		if (goingThere == false){
-			float walkDistance = UnityEngine.Random.Range(1, 50);
+            float walkDistance = 15;//UnityEngine.Random.Range(2, 15);
 			moveTarget = transform.position.x + walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x < moveTarget){
-			moveThisStep = transform.position.x + 100f;
-			//print ("Going right!");
+            moveThisStep = transform.position.x + Time.deltaTime * 3.0f;
+			print ("Going right!");
 			this.gameObject.GetComponent<BandMemberMoving>().HeadRight();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
 		}
 		if (transform.position.x >= moveTarget){
-			//print ("Got there!");
+			print ("Got there!");
 			WrapUp();
 		}
 	}
@@ -627,18 +627,18 @@ public class Innfallsystemet : MonoBehaviour {
 	void GoLeft (){
 		harInnfall = true;
 		if (goingThere == false){
-			float walkDistance = UnityEngine.Random.Range(1, 50);
+			float walkDistance = UnityEngine.Random.Range(2, 15);
 			moveTarget = transform.position.x - walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x > moveTarget){
-			moveThisStep = transform.position.x - 100f;
-			//print ("Going left!");
+			moveThisStep = transform.position.x - 1f;
+			print ("Going left!");
 			this.gameObject.GetComponent<BandMemberMoving>().HeadLeft();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
 		}
 		if (transform.position.x <= moveTarget){
-			//print ("Got there");
+			print ("Got there");
 			WrapUp();
 		}
 	}

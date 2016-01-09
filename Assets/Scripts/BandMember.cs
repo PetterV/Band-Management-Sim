@@ -158,7 +158,11 @@ public class BandMember : MonoBehaviour{
 		LeaveGenetics();
         dead = true;
 		animator.SetInteger("Walking", 0);
-		GetComponent<Innfallsystemet>().enabled = false;
+        Innfallsystemet infs = GetComponent<Innfallsystemet>();
+        infs.progressBar.enabled = false;
+        infs.progressFrame.enabled = false;
+        Destroy(myCanvas);
+        GetComponent<Innfallsystemet>().enabled = false;
 		GetComponent<BandMemberMoving>().enabled = false;
 		this.gameObject.transform.eulerAngles = new Vector3(-90, -90, 0);
 		GetComponent<CloneActivation>().active = false;

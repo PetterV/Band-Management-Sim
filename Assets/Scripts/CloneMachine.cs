@@ -61,8 +61,15 @@ public class CloneMachine : MonoBehaviour {
 		GameObject clone = MakeNewBandMemberClone(cloneName, cloneSkill, cloneMedgjørlighet, roleImminentClone);
 		clone.GetComponent<CloneActivation>().active = false;
 		clone.GetComponent<BandMemberMoving>().enabled = false;
-		clone.GetComponent<Innfallsystemet>().enabled = false;
-	}
+        Innfallsystemet infs = clone.GetComponent<Innfallsystemet>();
+        infs.progressBar.enabled = false;
+        infs.progressFrame.enabled = false;
+        infs.enabled = false;
+        
+        
+    }
+
+
 
     private GameObject MakeNewBandMemberClone(string name, float skill, float myMedgjørlighet, BandMember.Role role)
     {
