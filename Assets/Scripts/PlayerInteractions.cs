@@ -51,7 +51,7 @@ public class PlayerInteractions : MonoBehaviour {
 
     void Start (){
 		computer = GameObject.Find("Computer");
-		computerCanvas = GameObject.FindGameObjectWithTag("ComputerCanvas");
+		computerCanvas = GameObject.FindWithTag("ComputerCanvas");
         mainCam = GameObject.FindWithTag("MainCamera");
 		animator = GetComponent<Animator>();
 		weapon = GameObject.FindWithTag("Weapon");

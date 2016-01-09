@@ -28,6 +28,8 @@ public class EventSystemet : MonoBehaviour {
 	private Image personImage;
 	private GameObject hoverBox;
 
+	public GameObject gameControl;
+
 	// Use this for initialization
 	void Start () {
 		InitializeEvents ();
@@ -39,7 +41,7 @@ public class EventSystemet : MonoBehaviour {
 		InitializeButtons(GameObject.FindGameObjectsWithTag ("EventKnapp"));
 		hoverBox = GameObject.FindGameObjectWithTag ("EventHover");
 		this.EventCanvas.SetActive (false);
-
+		gameControl = GameObject.FindWithTag("GameController");
 	}
 
 	void InitializeButtons(GameObject[] buttonList){
@@ -143,7 +145,7 @@ public class EventSystemet : MonoBehaviour {
 		//Image personenSomVarRasistisk = GetRandomPerson ();
 		//Karakterer som for eksempel " vil avslutte strengen. Dersom du vil ha det med, skriv \".
 		//Linjeskift er \n
-		SetUpCanvas (overskrift, text, "Han trenger teddybjørner!", "Gi meg pengene, så fikser jeg det :)", "Send ham kjærlighetstweets!");
+		SetUpCanvas (overskrift, text, "Medlemmet trenger teddybjørner!", "Gi meg pengene, så fikser jeg det :)", "Send ham kjærlighetstweets!");
 		this.solveFunction = SolveFanGift;
 		this.hoverFunction = hoverFanGift;
 	}
@@ -153,16 +155,21 @@ public class EventSystemet : MonoBehaviour {
 		case 0:
 			{
 				print ("FanGift0");
+				GameObject popMember = GameObject.FindWithTag("BandMember");
+				popMember.GetComponent<BandMember>().myMedgjørlighet = popMember.GetComponent<BandMember>().myMedgjørlighet + 10f;
 				break;
 			}
 		case 1:
 			{
 				print ("FanGift1");
+				gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger + 10000f;
 				break;
 			}
 		case 2:
 			{
 				print ("FanGift2");
+				gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + 5f;
+				gameControl.GetComponent<GameControl>().publicSuspicion = gameControl.GetComponent<GameControl>().publicSuspicion - 5f;
 				break;
 			}
 		}
@@ -209,16 +216,23 @@ public class EventSystemet : MonoBehaviour {
             case 0:
                 {
                     print("Stalker0");
+					gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor - 15f;
                     break;
                 }
             case 1:
                 {
                     print("Stalker1");
+					gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger - 10000f;
                     break;
                 }
             case 2:
                 {
                     print("Stalker2");
+					gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + 25f;
+					float keithDeadChance = UnityEngine.Random.Range(1, 100);
+					if (keithDeadChance < 51){
+						GameObject.Find("Singer").GetComponent<BandMember>().Dying();
+					}
                     break;
                 }
             case 3:
@@ -276,16 +290,20 @@ public class EventSystemet : MonoBehaviour {
 		case 0:
 			{
 				print ("rasisme0");
+				gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor - 25f;
 				break;
 			}
         case 1:
             {
                 print("rasisme1");
+				gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor - 10f;
+				gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger - 20000f;
                 break;
             }
         case 2:
                 {
                     print("rasisme2");
+					gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor - 20f;
                     break;
                 }
 		}
@@ -314,7 +332,7 @@ public class EventSystemet : MonoBehaviour {
 	}
 
 	private void DickPicLeak(){
-		string flavour = "En fan hevder å ha et lekket bilde av et bandmedlems penis. Hvis dette viser seg å være riktig, vil du miste populæritet blant kristne fans.";
+		string flavour = "En fan hevder å ha et lekket bilde av et bandmedlems penis. Hvis dette viser seg å være riktig, vil du miste populæritet blant alle sosialt konservative fans.";
 		//Image dickPicBilde = this.dickPicBilde.GetComponent<Image> ();
 		//Image personenSomLeakaDick = GetRandomPerson ();
 		SetUpCanvas ("Fan truer med å lekke penisbilder.", flavour, "Betal vedkommende til stillhet", "La bildet lekke", "Peniser har da genetisk materiale?");
@@ -327,11 +345,14 @@ public class EventSystemet : MonoBehaviour {
 		case 0:
 			{
 				print ("dickpicleak 0");
+				gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger - 40000f;
 				break;
 			}
 		case 1:
 			{
 				print ("dickpicleak 1");
+				gameControl.GetComponent<GameControl>().publicSuspicion = gameControl.GetComponent<GameControl>().publicSuspicion + 10f;
+				gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + 10f;
 				break;
 			}
 		case 2:
@@ -353,7 +374,7 @@ public class EventSystemet : MonoBehaviour {
 			}
 		case 1:
 			{
-				hovertext = "-10 Mistenkelighet\n+10 Populæritet";
+				hovertext = "+10 Mistenkelighet\n+10 Populæritet";
 				break;
 			}
 		case 2:
