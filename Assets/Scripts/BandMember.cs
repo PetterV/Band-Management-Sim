@@ -54,6 +54,10 @@ public class BandMember : MonoBehaviour{
 	public Image suspicionBar;
 
 
+	//Particle System
+	public GameObject bloodParticles;
+
+
 	public BandMember (String name, float skill, Role role)
 	{
 		this.name = name;

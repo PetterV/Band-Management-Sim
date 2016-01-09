@@ -45,14 +45,12 @@ public class Innfallsystemet : MonoBehaviour {
 
 
 	//Her er GameObjects til å vise innfallssnakkebobler
-	public GameObject scoreBoble;
 	public GameObject strandBoble;
 	public GameObject soloBoble;
 	public GameObject lytteBoble;
 	public GameObject sintTweetBoble;
 	public GameObject gladTweetBoble;
 	public GameObject drikkeBoble;
-	public GameObject dusjeBoble;
 	public GameObject spiseBoble;
 	public GameObject danseBoble;
 	public GameObject oveBoble;
@@ -82,6 +80,7 @@ public class Innfallsystemet : MonoBehaviour {
 		InitializeInnfall();
 		animator = GetComponent<Animator>();
         gameControl = GameObject.FindWithTag("GameController");
+		bobleToDisplay = null;
 	}
 
 	private void InitializeInnfall()
@@ -335,7 +334,6 @@ public class Innfallsystemet : MonoBehaviour {
 	void Score (){
 		ActuallyDoInfall("Nå skal jeg se på TV.", "ScoreSted", "Dette er chill.", "TV er nesten like bra som å være rockestjerne.", false, false, true, false, false, false, 0, false, 0, true, 1, 2);
 		if (setActionCounter == false){
-			bobleToDisplay = scoreBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().scoreTid;
 			maxActionCounter = actionCounter;
 			setActionCounter = true;
@@ -405,7 +403,6 @@ public class Innfallsystemet : MonoBehaviour {
 	void Dusje (){
 		ActuallyDoInfall("Oh boy, jeg trenger en dusj.", "DusjeSted", "Deilig å dusje, as.", "Er dette sånn jeg egentlig lukter?", false, false, false, false, false, false, 0, false, 0, false, 0, 2);
 		if (setActionCounter == false){
-			bobleToDisplay = dusjeBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().dusjeTid;
 			maxActionCounter = actionCounter;
 			setActionCounter = true;
