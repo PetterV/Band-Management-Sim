@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Innfallsystemet : MonoBehaviour {
 
-	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Ove, GoLeft, GoRight, Nothing};
+	public enum Innfall {Score, Strandtur, Solo, Lytte, SintTweet, GladTweet, Drikke, Spise, Dusje, Danse, Ove, Ove2, Ove3, GoLeft, GoRight, Nothing};
 	public Dictionary<Innfall, int> innfallsOversikt;
 	public int innfallsTall;
 	public bool harInnfall = false;
@@ -40,7 +40,9 @@ public class Innfallsystemet : MonoBehaviour {
 	private bool danseInnfall = false;
 	private bool oveInnfall = false;
 	private bool innfallGoRight = false;
-	private bool innfallGoLeft = false;
+    private bool innfallGoLeft = false;
+    private bool ove2Innfall = false;
+    private bool ove3Innfall = false;
 	//Innfallstriggers over.									^ Innfall her ^
 
 
@@ -100,10 +102,12 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Spise, 8 },
 			{Innfall.Dusje, 5 },
 			{Innfall.Danse, 10 },
-			{Innfall.Ove, 10 },
+			{Innfall.Ove, 3 },
 			{Innfall.GoLeft, 50 },
 			{Innfall.GoRight, 50 },
-			{Innfall.Nothing, 5000 } //Sannsynligheten for Nothing er sju ganger større enn Score
+            {Innfall.Ove2, 3 },
+            {Innfall.Ove3, 3 },
+            {Innfall.Nothing, 120000 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
 		{
@@ -169,11 +173,21 @@ public class Innfallsystemet : MonoBehaviour {
 			if (oveInnfall == true){
 				Ove();
 			}
-			if (innfallGoLeft == true && !tooCloseToLeftWall){
+            if (ove2Innfall == true)
+            {
+                Ove2();
+            }
+
+            if (ove3Innfall == true)
+            {
+                Ove3();
+            }
+            if (innfallGoLeft == true && !tooCloseToLeftWall){
 				GoLeft();
 			}
 			if (innfallGoRight == true && !tooCloseToRightWall){
 				GoRight();
+                
 			}
 		}
 	}
@@ -293,7 +307,19 @@ public class Innfallsystemet : MonoBehaviour {
 				oveInnfall = true;
 				break;
 			}
-		case Innfall.GoRight:
+        case Innfall.Ove2:
+			{
+				harInnfall = true;
+				ove2Innfall = true;
+				break;
+			}
+            case Innfall.Ove3:
+                {
+                    harInnfall = true;
+                    ove3Innfall = true;
+                    break;
+                }
+            case Innfall.GoRight:
 			{
 				innfallGoRight = true;
 				animator.SetInteger("Walking", 1);
@@ -435,8 +461,29 @@ public class Innfallsystemet : MonoBehaviour {
 			setActionCounter = true;
 		}
 	}
-
-	void ActuallyDoInfall(string statement, string placeToWalkTo, string doing, string handlingGjennomfort, bool increaseSkill, bool decreaseSkill, bool increaseHappiness, bool decreaseHappiness, bool leaveGenetics, bool increasePublicSuspicion, float susPubInc, bool increaseSuspicion, float mySusInc, bool increasePopFactor, float popFacInc, int turn){
+    void Ove2()
+    {
+        ActuallyDoInfall("Nå skal jeg øve.", "OveSted 2", "La oss se... E, så C, så...", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0);
+        if (setActionCounter == false)
+        {
+            bobleToDisplay = oveBoble;
+            actionCounter = this.gameControl.GetComponent<GameControl>().oveTid;
+            maxActionCounter = actionCounter;
+            setActionCounter = true;
+        }
+    }
+    void Ove3()
+    {
+        ActuallyDoInfall("Nå skal jeg øve.", "OveSted 3", "La oss se... Æ, så Ø, så... Å", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0);
+        if (setActionCounter == false)
+        {
+            bobleToDisplay = oveBoble;
+            actionCounter = this.gameControl.GetComponent<GameControl>().oveTid;
+            maxActionCounter = actionCounter;
+            setActionCounter = true;
+        }
+    }
+    void ActuallyDoInfall(string statement, string placeToWalkTo, string doing, string handlingGjennomfort, bool increaseSkill, bool decreaseSkill, bool increaseHappiness, bool decreaseHappiness, bool leaveGenetics, bool increasePublicSuspicion, float susPubInc, bool increaseSuspicion, float mySusInc, bool increasePopFactor, float popFacInc, int turn){
 		if (!riktigPlass){
 			target = GameObject.Find(placeToWalkTo);
 			if (target == null)
@@ -618,7 +665,9 @@ public class Innfallsystemet : MonoBehaviour {
 		innfallComplete = false;
 		goingThere = false;
 		innfallGoLeft = false;
-		innfallGoRight = false;
+        innfallGoRight = false;
+        ove2Innfall = false;
+        ove3Innfall = false;
 		animator.SetInteger("Walking", 0);
 		GetComponent<BandMember>().fikkKjeft = false;
 	}
