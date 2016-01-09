@@ -27,6 +27,9 @@ public class BandMember : MonoBehaviour{
 	public float genDropRarity = 0.5f;
 	//
 
+	public float carryOffsetX = 0.1f;
+	public float carryOffsetY = 1f;
+
 
 	//Kjeftesystem
 	public float myMedgjørlighet = 70;
@@ -111,7 +114,10 @@ public class BandMember : MonoBehaviour{
 			LeaveGenetics ();
 		}
 		if (beingCarried == true) {
-			this.transform.position = GameObject.Find ("Player").transform.position;	
+			float carryPosX = GameObject.FindWithTag("Player").transform.position.x + carryOffsetX; 
+			float carryPosY = GameObject.FindWithTag("Player").transform.position.y + carryOffsetY;
+			Vector3 carryPos = new Vector3(carryPosX, carryPosY, this.transform.position.z);
+			this.transform.position = carryPos;
 		}
 
 		//Happiness - Vi har en greie som bare direkte feeder inn i myMedgjørlighet, og så har vi en separat greie som er nærmere det "ekte" systemet, som ikke brukes ennå
@@ -145,12 +151,12 @@ public class BandMember : MonoBehaviour{
 		animator.SetInteger("Walking", 0);
 		GetComponent<Innfallsystemet>().enabled = false;
 		GetComponent<BandMemberMoving>().enabled = false;
-		float rotX = UnityEngine.Random.Range(50, 500);
-		float rotY = UnityEngine.Random.Range(50, 500);
-		float rotZ = UnityEngine.Random.Range(50, 500);
+		float rotX = UnityEngine.Random.Range(50, 300);
+		float rotY = UnityEngine.Random.Range(50, 300);
+		float rotZ = UnityEngine.Random.Range(50, 300);
 		Vector3 deadRot = new Vector3(rotX, rotY, rotZ);
 		rb.AddTorque(deadRot, ForceMode.Force);
-		transform.Rotate(deadRot, Space.Self);
+		//transform.Rotate(deadRot, Space.Self);
 		GetComponent<CloneActivation>().active = false;
 	}
 
