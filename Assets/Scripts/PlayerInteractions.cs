@@ -102,11 +102,6 @@ public class PlayerInteractions : MonoBehaviour {
 					currentBandMember.GetComponent<BandMember>().beingCarried = false;
 					carryingBody = false;
 				}
-				else if(currentBandMember.GetComponent<CloneActivation>().active == false && currentBandMember.GetComponent<BandMember>().dead == false){
-					currentBandMember.GetComponent<CloneActivation>().active = true;
-					currentBandMember.GetComponent<CloneActivation>().Activation();
-					print ("I'm active now!");
-				}
 			}
 			else if (happinessCollision == true){
 				if (carryingAny == false){
@@ -158,6 +153,15 @@ public class PlayerInteractions : MonoBehaviour {
 				}
 			}
 		}
+
+		if (Input.GetButtonDown("w")){
+			if(currentBandMember.GetComponent<CloneActivation>().active == false && currentBandMember.GetComponent<BandMember>().dead == false){
+				currentBandMember.GetComponent<CloneActivation>().active = true;
+				currentBandMember.GetComponent<CloneActivation>().Activation();
+				print ("I'm active now!");
+			}
+		}
+
 		if (computerActive == true){
 			//computerCanvas.SetActive(true);
 		}
@@ -216,25 +220,6 @@ public class PlayerInteractions : MonoBehaviour {
 //        }
 	}
 
-	void HittingBandMember (){
-		//Timing the hit
-		hitTimerStep = eventSpeed * Time.deltaTime;
-		hitTimer = hitTimer + hitTimerStep;
-		if (hitTimer >= musicStopTarget && stoppedMusic == false){
-			stoppedMusic = true;
-			mainCam.GetComponent<PauseMusic>().Pause();
-		}
-		if (hitTimer >= killTarget && killedBandMember == false){
-			bandMemberToKill.GetComponent<BandMember>().Dying();
-			killedBandMember = true;
-		}
-		if (hitTimer >= doneTarget){
-			stoppedMusic = false;
-			killedBandMember = false;
-			hitTimer = 0f;
-			isHitting = false;
-		}
-	}
 
 	void OnTriggerExit (Collider coll){
 		if (coll.gameObject.tag == "BandMember"){
@@ -254,5 +239,26 @@ public class PlayerInteractions : MonoBehaviour {
 			computerActive = false;
 		}
 		//print ("No longer hanging out with" + coll.gameObject.tag);
+	}
+
+
+	void HittingBandMember (){
+		//Timing the hit
+		hitTimerStep = eventSpeed * Time.deltaTime;
+		hitTimer = hitTimer + hitTimerStep;
+		if (hitTimer >= musicStopTarget && stoppedMusic == false){
+			stoppedMusic = true;
+			mainCam.GetComponent<PauseMusic>().Pause();
+		}
+		if (hitTimer >= killTarget && killedBandMember == false){
+			bandMemberToKill.GetComponent<BandMember>().Dying();
+			killedBandMember = true;
+		}
+		if (hitTimer >= doneTarget){
+			stoppedMusic = false;
+			killedBandMember = false;
+			hitTimer = 0f;
+			isHitting = false;
+		}
 	}
 }
