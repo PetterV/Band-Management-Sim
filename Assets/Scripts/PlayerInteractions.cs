@@ -59,7 +59,7 @@ public class PlayerInteractions : MonoBehaviour {
 		weapon = GameObject.FindWithTag("Weapon");
 		kjefteSensor = GetComponent<CapsuleCollider>();
 		kjefteSensor.enabled = false;
-		//weapon.SetActive(false);
+		weapon.SetActive(false);
     }
 
 	// Update is called once per frame

@@ -103,11 +103,11 @@ public class Innfallsystemet : MonoBehaviour {
 			{Innfall.Dusje, 5 },
 			{Innfall.Danse, 10 },
 			{Innfall.Ove, 3 },
-			{Innfall.GoLeft, 50 },
-			{Innfall.GoRight, 50 },
+			{Innfall.GoLeft, 1000 },
+			{Innfall.GoRight, 1000 },
             {Innfall.Ove2, 3 },
             {Innfall.Ove3, 3 },
-            {Innfall.Nothing, 100000 } //Sannsynligheten for Nothing er sju ganger større enn Score
+            {Innfall.Nothing, 80000 } //Sannsynligheten for Nothing er sju ganger større enn Score
 		};
 		foreach (KeyValuePair<Innfall, int> entry in innfallsOversikt)
 		{
@@ -383,7 +383,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
     //Musikklytteinnfal
 	void MusikkLytting (){
-		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Mmm, dette er good shit.", "Jeg hørte på litt muzak.", true, false, true, false, false, false, 0, false, 0, true, 5, 2);
+		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Mmm, dette er good stuff.", "Jeg hørte på litt musikk.", true, false, true, false, false, false, 0, false, 0, true, 5, 2);
 		if (setActionCounter == false){
 			bobleToDisplay = lytteBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().lytteTid;
@@ -393,7 +393,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //SintTweetInnfal
 	void SintTweet (){
-		ActuallyDoInfall("Jeg er pissed, og vil at hele verden skal vite det!", "TweeteSted", "Denne tweeten kommer til å sjokkere!", "Det var godt å få fram!", false, false, true, false, false, true, 10f, true, 10, true, -15, 2);
+		ActuallyDoInfall("Jeg skal ut aggresjon på internet!", "TweeteSted", "Jeg er pissed, og vil at hele verden skal vite det!", "Det var godt å få fram!", false, false, true, false, false, true, 10f, true, 10, true, -15, 2);
 		if (setActionCounter == false){
 			bobleToDisplay = sintTweetBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().tweeteTid;

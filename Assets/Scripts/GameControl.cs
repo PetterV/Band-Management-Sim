@@ -49,11 +49,11 @@ public class GameControl : MonoBehaviour {
 	void Update () {
 		float popularitetOppNed = popularitetsfaktor * Time.deltaTime;
 		popularitet = popularitet + popularitetOppNed;
-		if (popularitet < 450){
-			penger = penger - 10;
+		if (popularitet < 40000){
+			penger = penger - 100;
 		}
-		if (popularitet > 450){
-			penger = penger + 10;
+		if (popularitet > 600000){
+			penger = penger + 100;
 		}
 
 

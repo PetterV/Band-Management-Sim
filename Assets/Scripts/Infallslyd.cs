@@ -28,5 +28,19 @@ public class Infallslyd : MonoBehaviour {
             audio.Play();
             print("lyd!");
         }
+        if (str == "positivt")
+        {
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.clip = positivt_utfall;
+            audio.Play();
+            print("lyd!");
+        }
+        if (str == "negativt")
+        {
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.clip = negativt_utfall;
+            audio.Play();
+            print("lyd!");
+        }
     }
 }
