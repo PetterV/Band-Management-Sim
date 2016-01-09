@@ -15,7 +15,7 @@ public class ChangeSong : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown("p") && playingSong2 == false)
+	    if (Input.GetKeyUp("p") && playingSong2 == false)
         {
             AudioSource audio = GetComponent<AudioSource>();
             audio.clip = song2;
@@ -23,7 +23,7 @@ public class ChangeSong : MonoBehaviour {
             audio.loop = true;
             playingSong2 = true;
         }
-        if (Input.GetKeyDown("p") && playingSong2 == true)
+        if (Input.GetKeyUp("p") && playingSong2 == true)
         {
             AudioSource audio = GetComponent<AudioSource>();
             audio.clip = song1;
