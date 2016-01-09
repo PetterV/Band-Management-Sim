@@ -155,6 +155,7 @@ public class BandMember : MonoBehaviour{
     //Blir bonka av spilleren
     public void Dying (){
 		print ("I'm dying!");
+		LeaveGenetics();
         dead = true;
 		animator.SetInteger("Walking", 0);
 		GetComponent<Innfallsystemet>().enabled = false;
