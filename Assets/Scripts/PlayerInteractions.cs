@@ -32,7 +32,6 @@ public class PlayerInteractions : MonoBehaviour {
 	//Stuff til whacking
 	float animationTimer;
 	public bool isHitting = false;
-	private bool madeHit = false;
 	private bool stoppedMusic = false;
 	private bool killedBandMember = false;
 	public float eventSpeed = 1f;
@@ -101,11 +100,12 @@ public class PlayerInteractions : MonoBehaviour {
 				}
 				else if (currentBandMember.GetComponent<BandMember>().beingCarried == true){
 					print ("No longer carrying dead body");
-					currentBandMember.GetComponent<BandMember>().beingCarried = false;
+					carryingAny = false;
 					carryingBody = false;
+					currentBandMember.GetComponent<BandMember>().beingCarried = false;
 				}
 			}
-			else if (happinessCollision == true){
+			if (happinessCollision == true){
 				if (carryingAny == false){
 					print ("This will make someone happy");
 					happinessToGive = currentHappinessObject.GetComponent<HappinessObject>().happinessGained;
@@ -123,8 +123,8 @@ public class PlayerInteractions : MonoBehaviour {
 					Destroy(currentHappinessObject);
 				}
 			}
-			else if (genMatCollision == true){
-				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false && carryingBody == false && carryingHappiness == false && carryingGenMat == false){
+			if (genMatCollision == true){
+				if (currentGenMat.GetComponent<GenetiskMateriale>().beingCarried == false && carryingAny == false){
 				print ("Yuck!");
 				currentGenMat.GetComponent<GenetiskMateriale>().beingCarried = true;
 				bringingRole = currentGenMat.GetComponent<GenetiskMateriale>().roleForCloning;
@@ -187,6 +187,12 @@ public class PlayerInteractions : MonoBehaviour {
 		}
 		if (isHitting == true){
 			HittingBandMember();
+		}
+		if (genMatCollision == false && carryingAny == true){
+			carryingGenMat = false;
+		}
+		if (bandCollision == false && carryingAny == true){
+			carryingBody = false;
 		}
 	}
 

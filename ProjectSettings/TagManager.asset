@@ -34,6 +34,7 @@ TagManager:
   - RonnyText
   - KeithText
   - HannahText
+  - Banning
   layers:
   - Default
   - TransparentFX

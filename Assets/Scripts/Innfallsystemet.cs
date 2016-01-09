@@ -60,6 +60,9 @@ public class Innfallsystemet : MonoBehaviour {
 	public GameObject oveBoble;
 	GameObject bobleToDisplay;
 	///  //  // //
+	/// 
+	/// 
+	Camera mainCam;
 
 
 	public string crossDisplay;
@@ -85,6 +88,7 @@ public class Innfallsystemet : MonoBehaviour {
 		animator = GetComponent<Animator>();
         gameControl = GameObject.FindWithTag("GameController");
 		bobleToDisplay = null;
+
 	}
 
 	private void InitializeInnfall()
@@ -236,7 +240,7 @@ public class Innfallsystemet : MonoBehaviour {
         ///spiller av innfallslyd
         if (inn != Innfall.Nothing)
         {
-          //  gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+          //gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
         }
 
         switch (inn)
@@ -354,7 +358,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void Score (){
-		ActuallyDoInfall("Nå skal jeg se på TV.", "ScoreSted", "Dette er chill.", "TV er nesten like bra som å være rockestjerne.", false, true, true, false, false, false, 0, false, 0, true, -5f, 2);
+		ActuallyDoInfall("Nå skal jeg se på TV.", "ScoreSted", "Dette er chill.", "TV er nesten like bra som å være rockestjerne.", false, true, true, false, false, false, 0, false, 0, true, -5f, 2, "negativt");
 		if (setActionCounter == false){
 			actionCounter = this.gameControl.GetComponent<GameControl>().scoreTid;
 			maxActionCounter = actionCounter;
@@ -363,7 +367,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 		//Strandturinnfall
 	void Strandtur (){
-		ActuallyDoInfall("Jeg vil chille litt.", "StrandSted", "Jeg liker å henge på rommet.", "Nå er jeg uthvilt.", false, false, true, false, false, false, 0, true, -5f, false, 0, 0);
+		ActuallyDoInfall("Jeg vil chille litt.", "StrandSted", "Jeg liker å henge på rommet.", "Nå er jeg uthvilt.", false, false, true, false, false, false, 0, true, -5f, false, 0, 0, "positivt");
 		if (setActionCounter == false){
 			bobleToDisplay = strandBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().strandTid;
@@ -373,7 +377,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 		//solokarriæreinnfall
 	void Solokarriere (){
-		ActuallyDoInfall("Jeg vil starte solokarriere!", "SoloSted", "Jeg forlater bandet!", "I'm outta here!", false, false, false, false, true, false, 0, false, 0, true, -50f, 2);
+		ActuallyDoInfall("Jeg vil starte solokarriere!", "SoloSted", "Jeg forlater bandet!", "I'm outta here!", false, false, false, false, true, false, 0, false, 0, true, -50f, 2, "negativt");
 		if (setActionCounter == false){
 			bobleToDisplay = soloBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().soloTid;
@@ -383,7 +387,8 @@ public class Innfallsystemet : MonoBehaviour {
 	}
     //Musikklytteinnfal
 	void MusikkLytting (){
-		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Mmm, dette er good stuff.", "Jeg hørte på litt musikk.", true, false, true, false, false, false, 0, false, 0, true, 5, 2);
+
+		ActuallyDoInfall("Jeg vil høre på musikk.", "LytteSted", "Mmm, dette er good shit.", "Jeg hørte på litt muzak.", true, false, true, false, false, false, 0, false, 0, true, 5, 2, "positivt");
 		if (setActionCounter == false){
 			bobleToDisplay = lytteBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().lytteTid;
@@ -393,7 +398,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //SintTweetInnfal
 	void SintTweet (){
-		ActuallyDoInfall("Jeg skal ut aggresjon på internet!", "TweeteSted", "Jeg er pissed, og vil at hele verden skal vite det!", "Det var godt å få fram!", false, false, true, false, false, true, 10f, true, 10, true, -15, 2);
+		ActuallyDoInfall("Jeg er pissed, og vil at hele verden skal vite det!", "TweeteSted", "Denne tweeten kommer til å sjokkere!", "Det var godt å få fram!", false, false, true, false, false, true, 10f, true, 10, true, -15, 2, "negativt");
 		if (setActionCounter == false){
 			bobleToDisplay = sintTweetBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().tweeteTid;
@@ -403,7 +408,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //Glad Tweet Innfall
 	void GladTweet (){
-		ActuallyDoInfall("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!", "TweeteSted", "Publikum kommer til å digge denne tweeten.", "Jeg elsker å bli satt pris på.", false, false, true, false, false, true, 5f, false, 0, true, 10f, 2);
+		ActuallyDoInfall("Jeg vil fortelle fansen hvor mye jeg setter pris på dem!", "TweeteSted", "Publikum kommer til å digge denne tweeten.", "Jeg elsker å bli satt pris på.", false, false, true, false, false, true, 5f, false, 0, true, 10f, 2, "positivt");
 		if (setActionCounter == false){
 			bobleToDisplay = gladTweetBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().tweeteTid;
@@ -413,7 +418,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
        //Drikkeinnfall
 	void Drikke (){
-		ActuallyDoInfall("Nå skarre drekkes", "DrikkeSted", "Jeg drekker som bare fy!", "Yay drekking! Livet betyr mer nå!", false, true, true, false, true, false, 0, false, 0, false, 0, 2);
+		ActuallyDoInfall("Nå skarre drekkes", "DrikkeSted", "Jeg drekker som bare fy!", "Yay drekking! Livet betyr mer nå!", false, true, true, false, true, false, 0, false, 0, false, 0, 2, "negativt");
 		if (setActionCounter == false){
 			bobleToDisplay = drikkeBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().drikkeTid;
@@ -423,7 +428,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //Dusjeinnfall
 	void Dusje (){
-		ActuallyDoInfall("Oh boy, jeg trenger en dusj.", "DusjeSted", "Deilig å dusje, as.", "Er dette sånn jeg egentlig lukter?", false, false, false, false, true, false, 0, false, 0, false, 0, 2);
+		ActuallyDoInfall("Oh boy, jeg trenger en dusj.", "DusjeSted", "Deilig å dusje, as.", "Er dette sånn jeg egentlig lukter?", false, false, false, false, true, false, 0, false, 0, false, 0, 2, "positivt");
 		if (setActionCounter == false){
 			actionCounter = this.gameControl.GetComponent<GameControl>().dusjeTid;
 			maxActionCounter = actionCounter;
@@ -432,7 +437,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //Spiseinnfall
 	void Spise (){
-		ActuallyDoInfall("Nå er jeg sulten!", "SpiseSted", "Nom nom nom.", "Nå er jeg mett!", false, false, false, false, true, false, 0, false, 0, false, 0, 2);
+		ActuallyDoInfall("Nå er jeg sulten!", "SpiseSted", "Nom nom nom.", "Nå er jeg mett!", false, false, false, false, true, false, 0, false, 0, false, 0, 2, "positivt");
 		if (setActionCounter == false){
 			bobleToDisplay = spiseBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().spiseTid;
@@ -442,7 +447,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //SexyDanceinnfall
 	void SexyDance (){
-		ActuallyDoInfall("Nå trenger jeg litt alenetid!", "DanseSted", "Ooooh yeah.", "Det var godt å få fram.", false, false, true, false, false, false, 0, false, 0, true, -5f, 0);
+		ActuallyDoInfall("Nå trenger jeg litt alenetid!", "DanseSted", "Ooooh yeah.", "Det var godt å få fram.", false, false, true, false, false, false, 0, false, 0, true, -5f, 0, "positivt");
 		if (setActionCounter == false){
 			bobleToDisplay = danseBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().danceTid;
@@ -453,7 +458,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 		//Practiceinnfall
 	void Ove (){
-		ActuallyDoInfall("Nå skal jeg øve.", "OveSted", "La oss se... A, så G, så...", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0);
+		ActuallyDoInfall("Nå skal jeg øve.", "OveSted", "La oss se... A, så G, så...", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0, "positivt");
 		if (setActionCounter == false){
 			bobleToDisplay = oveBoble;
 			actionCounter = this.gameControl.GetComponent<GameControl>().oveTid;
@@ -463,7 +468,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
     void Ove2()
     {
-        ActuallyDoInfall("Nå skal jeg øve.", "OveSted 2", "La oss se... E, så C, så...", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0);
+        ActuallyDoInfall("Nå skal jeg øve.", "OveSted 2", "La oss se... E, så C, så...", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0, "positivt");
         if (setActionCounter == false)
         {
             bobleToDisplay = oveBoble;
@@ -474,7 +479,7 @@ public class Innfallsystemet : MonoBehaviour {
     }
     void Ove3()
     {
-        ActuallyDoInfall("Nå skal jeg øve.", "OveSted 3", "La oss se... Æ, så Ø, så... Å", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0);
+        ActuallyDoInfall("Nå skal jeg øve.", "OveSted 3", "La oss se... Æ, så Ø, så... Å", "Nå er jeg bedre!", true, false, false, true, false, false, 0, false, 0, true, 5f, 0, "positivt");
         if (setActionCounter == false)
         {
             bobleToDisplay = oveBoble;
@@ -483,7 +488,7 @@ public class Innfallsystemet : MonoBehaviour {
             setActionCounter = true;
         }
     }
-    void ActuallyDoInfall(string statement, string placeToWalkTo, string doing, string handlingGjennomfort, bool increaseSkill, bool decreaseSkill, bool increaseHappiness, bool decreaseHappiness, bool leaveGenetics, bool increasePublicSuspicion, float susPubInc, bool increaseSuspicion, float mySusInc, bool increasePopFactor, float popFacInc, int turn){
+    void ActuallyDoInfall(string statement, string placeToWalkTo, string doing, string handlingGjennomfort, bool increaseSkill, bool decreaseSkill, bool increaseHappiness, bool decreaseHappiness, bool leaveGenetics, bool increasePublicSuspicion, float susPubInc, bool increaseSuspicion, float mySusInc, bool increasePopFactor, float popFacInc, int turn, string utfall){
 		if (!riktigPlass){
 			target = GameObject.Find(placeToWalkTo);
 			if (target == null)
@@ -587,6 +592,7 @@ public class Innfallsystemet : MonoBehaviour {
 			if(increasePopFactor){
 				gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + popFacInc;
 			}
+			gameControl.GetComponent<Infallslyd>().PlaySound(utfall);
 			WrapUp();
 		}
 	}
@@ -594,13 +600,12 @@ public class Innfallsystemet : MonoBehaviour {
 	void GoRight (){
 		harInnfall = true;
 		if (goingThere == false){
-			moveThisStep = this.transform.position.x + 1;
-			float walkDistance = UnityEngine.Random.Range(0, 3);
+			float walkDistance = UnityEngine.Random.Range(1, 50);
 			moveTarget = transform.position.x + walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x < moveTarget){
-			moveThisStep = transform.position.x + 0.1f;
+			moveThisStep = transform.position.x + 100f;
 			//print ("Going right!");
 			this.gameObject.GetComponent<BandMemberMoving>().HeadRight();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
@@ -614,13 +619,12 @@ public class Innfallsystemet : MonoBehaviour {
 	void GoLeft (){
 		harInnfall = true;
 		if (goingThere == false){
-			moveThisStep = this.transform.position.x + 1f;
-			float walkDistance = UnityEngine.Random.Range(0, 3);
+			float walkDistance = UnityEngine.Random.Range(1, 50);
 			moveTarget = transform.position.x - walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x > moveTarget){
-			moveThisStep = transform.position.x - 0.1f;
+			moveThisStep = transform.position.x - 100f;
 			//print ("Going left!");
 			this.gameObject.GetComponent<BandMemberMoving>().HeadLeft();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
