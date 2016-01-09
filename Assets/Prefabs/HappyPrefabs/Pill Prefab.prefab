@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d81cf8320364a9d8e59360604c7e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  happinessGained: 15
+  happinessGained: 30
   happinessBeingCarried: 0
 --- !u!1001 &100100000
 Prefab:
@@ -96,7 +96,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: happinessGained
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125450}

@@ -332,7 +332,90 @@ public class EventSystemet : MonoBehaviour {
 		SetHoverText(hoverText);
 	}
 
-	private void DickPicLeak(){
+    /// <summary>
+    /// ///////
+    /// </summary>
+
+    //Concert Event
+    private void ConcertStart()
+    {
+        string overskrift = "En stor konsert!";
+        string text = "Det er på tide å få bandet til å opptre på en massiv konsert! Dette er en sjanse til å tjene stort.";
+        //Image rasismeBilde = this.rasismeBilde.GetComponent<Image> ();
+        //Image personenSomVarRasistisk = GetRandomPerson (); 
+        SetUpCanvas(overskrift, text, "Vi går all in!", "La oss være noens åpningsband.", "Book en liten konserthall for å ta mer per sete.", "Bandet er ikke klart til noen konsert!");
+        this.solveFunction = SolveConcert;
+        this.hoverFunction = hoverConcert;
+    }
+
+    private void SolveConcert(int alt)
+    {
+        switch (alt)
+        {
+            case 0:
+                {
+                    print("Concert0");
+                    gameControl.GetComponent<GameControl>().popularitet = gameControl.GetComponent<GameControl>().popularitet + 50000f;
+                    gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger + 30000f;
+                    gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + 20f;
+                    break;
+                }
+            case 1:
+                {
+                    print("Concert1");
+                    gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger + 10000f;
+                    gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + 20f;
+                    break;
+                }
+            case 2:
+                {
+                    print("Concert2");
+                    gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor + 25f;
+                    gameControl.GetComponent<GameControl>().penger = gameControl.GetComponent<GameControl>().penger + 20000f;
+                    gameControl.GetComponent<GameControl>().popularitetsfaktor = gameControl.GetComponent<GameControl>().popularitetsfaktor - 5f;
+                    break;
+                }
+            case 3:
+                {
+                    print("Concert3");
+                    break;
+                }
+        }
+    }
+
+    private void hoverConcert(int alt)
+    {
+        string hoverText = "";
+        switch (alt)
+        {
+            case 0:
+                {
+                    hoverText = " Populæritet++ /n Penger++ /n Fans++ /n Hvis bandet ditt er godt nok...";
+                    break;
+                }
+            case 1:
+                {
+                    hoverText = "Penger +10 000 /n Populæritet+";
+                    break;
+                }
+            case 2:
+                {
+                    hoverText = "Penger +30 000 /n Populæritet-";
+                    break;
+                }
+            case 3:
+                {
+                    hoverText = "Du går glipp av en stor sjanse, men også en stor risiko.";
+                    //Bare drit i å gjøre noe her, vi kan heller snakke om det hvis det blir en greie
+                    break;
+                }
+        }
+        SetHoverText(hoverText);
+    }
+
+    /////////////
+
+    private void DickPicLeak(){
 		string flavour = "En fan hevder å ha et lekket bilde av et bandmedlems penis. Hvis dette viser seg å være riktig, vil du miste populæritet blant alle sosialt konservative fans.";
 		//Image dickPicBilde = this.dickPicBilde.GetComponent<Image> ();
 		//Image personenSomLeakaDick = GetRandomPerson ();

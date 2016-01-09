@@ -50,10 +50,22 @@ public class GameControl : MonoBehaviour {
 		float popularitetOppNed = popularitetsfaktor * Time.deltaTime;
 		popularitet = popularitet + popularitetOppNed;
 		if (popularitet < 40000){
-			penger = penger - 100;
+            float pengerNed = 10 * Time.deltaTime;
+            penger = penger - 1;
 		}
-		if (popularitet > 600000){
-			penger = penger + 100;
+        if (popularitet > 40000)
+        {
+            float pengerNed = 1 * Time.deltaTime;
+            penger = penger - pengerNed;
+        }
+        if (popularitet > 50000)
+        {
+            float pengerNed = 1 * Time.deltaTime;
+            penger = penger + pengerNed;
+        }
+		if (popularitet > 60000){
+            float pengerNed = 10 * Time.deltaTime;
+            penger = penger + pengerNed;
 		}
 
 
@@ -66,18 +78,5 @@ public class GameControl : MonoBehaviour {
 		if (gameOver == true){
 			print ("Game over!");
 		}
-
-//		if (Input.GetKeyDown("p")){
-//			playGood();
-//		}
 	}
-
-
-
-//	public void playGood (){
-//		goodSound.PlayOneShot(vellykket_utfall, 1);
-//	}
-//	public void playBad (){
-//		failSound.PlayOneShot(mislykket_utfall, 1);
-//	}
 }

@@ -5232,15 +5232,15 @@ MonoBehaviour:
   maxPublicSuspicion: 300
   scoreTid: 15
   strandTid: 10
-  oveTid: 20
+  oveTid: 15
   lytteTid: 15
-  soloTid: 50
-  tweeteTid: 20
+  soloTid: 40
+  tweeteTid: 15
   drikkeTid: 10
   dusjeTid: 20
   bajsTid: 20
-  spiseTid: 30
-  danceTid: 15
+  spiseTid: 20
+  danceTid: 10
   oppkastTid: 3
 --- !u!4 &190257653
 Transform:
@@ -11883,15 +11883,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 442686933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2047140976f6f438503a54e52cbc75, type: 3}
+  m_Script: {fileID: 11500000, guid: ab5b35e2ec0d463438c76e880a9ce122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameControl: {fileID: 188166, guid: ba1f60ebe9db5d3448cc5e768cce0cd2, type: 2}
-  infall: {fileID: 8300000, guid: 7d667918b0c36db4d9dbb726d8e0516c, type: 3}
-  positivt_utfall: {fileID: 8300000, guid: 0d755f36acd357d4e9c55ee4232d0e0c, type: 3}
-  negativt_utfall: {fileID: 8300000, guid: b90a7f02117d88f4c90e6a2a93bfae05, type: 3}
-  cloneMachine: {fileID: 0}
-  buttonClick: {fileID: 0}
+  song1: {fileID: 8300000, guid: d6d71dcca270fa64c91118650af8bde1, type: 3}
+  song2: {fileID: 8300000, guid: f84d6b5dbe9168149aabe6752f73fa72, type: 3}
 --- !u!1 &444016939
 GameObject:
   m_ObjectHideFlags: 0
