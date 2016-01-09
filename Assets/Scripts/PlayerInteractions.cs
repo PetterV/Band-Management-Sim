@@ -175,6 +175,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (Input.GetKeyDown("space")){
 			animator.SetInteger("Punch", 1);
 			animationTimer = 0;
+			suspiciousAction = true;
 			weapon.SetActive(true);
 		}
 		float animationTimerStep = 1f * Time.deltaTime;
@@ -182,6 +183,7 @@ public class PlayerInteractions : MonoBehaviour {
 		if (!Input.GetKey("space") && animationTimer > 1f){
 			animator.SetInteger("Punch", 0);
 			weapon.SetActive(false);
+			suspiciousAction = false;
 		}
 		if (isHitting == true){
 			HittingBandMember();

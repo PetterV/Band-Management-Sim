@@ -159,18 +159,9 @@ public class BandMember : MonoBehaviour{
 		animator.SetInteger("Walking", 0);
 		GetComponent<Innfallsystemet>().enabled = false;
 		GetComponent<BandMemberMoving>().enabled = false;
-		//float rotX = UnityEngine.Random.Range(50, 300);
-		//float rotY = UnityEngine.Random.Range(50, 300);
-		//float rotZ = UnityEngine.Random.Range(50, 300);
-		//float rotX = -90f;
-		//float rotY = 0;
-		//float rotZ = 0;
-		//Quaternion toRot = Quaternion.Euler
-		Vector3 deadRot = new Vector3(0, 0, -90);
-		//rb.AddTorque(deadRot, ForceMode.Force);
-		transform.Rotate(deadRot, Space.World);
-		//deadRotate = true;
+		this.gameObject.transform.eulerAngles = new Vector3(-90, -90, 0);
 		GetComponent<CloneActivation>().active = false;
+		bloodParticles.GetComponent<ParticleSystem>().Emit();
 	}
 
 	public void HappinessGain (){
