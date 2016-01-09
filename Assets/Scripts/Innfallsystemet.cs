@@ -237,88 +237,96 @@ public class Innfallsystemet : MonoBehaviour {
 
 	void performInnfall(Innfall inn)
     {
-        ///spiller av innfallslyd
-        if (inn != Innfall.Nothing)
-        {
-          //gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
-        }
 
         switch (inn)
 		{
 		case Innfall.Score:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				scoreInnfall = true;
 				break;
 			}
 		case Innfall.Strandtur:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				strandInnfall = true;
 				break;
 			}
 		case Innfall.Solo:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				soloInnfall = true;
 				break;
 			}
 		case Innfall.Lytte:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				lytteInnfall = true;
 				break;
 			}
 		case Innfall.SintTweet:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				sintTweetInnfall = true;
 				break;
 			}
 		case Innfall.GladTweet:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				gladTweetInnfall = true;
 				break;
 			}
 		case Innfall.Drikke:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				drikkeInnfall = true;
 				break;
 			}
 		case Innfall.Dusje:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				dusjeInnfall = true;
 				break;
 			}
 		case Innfall.Spise:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				spiseInnfall = true;
 				break;
 			}
 		case Innfall.Danse:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				danseInnfall = true;
 				break;
 			}
 		case Innfall.Ove:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				oveInnfall = true;
 				break;
 			}
         case Innfall.Ove2:
 			{
-				harInnfall = true;
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
+                    harInnfall = true;
 				ove2Innfall = true;
 				break;
 			}
             case Innfall.Ove3:
                 {
+                    gameControl.GetComponent<Infallslyd>().PlaySound("innfall");
                     harInnfall = true;
                     ove3Innfall = true;
                     break;

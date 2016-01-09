@@ -10,6 +10,7 @@ public class CloneMachine : MonoBehaviour {
 	public GameObject bassist;
 	public GameObject trommis;
 	public BandMember.Role roleImminentClone;
+    public GameObject gameControl;
 
 	//Sett spawn point
 	public GameObject cloneSpawnPoint;
@@ -23,13 +24,15 @@ public class CloneMachine : MonoBehaviour {
 
 
 	void Start () {
+        gameControl = GameObject.FindWithTag("GameController");
 		cloneSpawnPoint = GameObject.FindWithTag("CloneSpawn");
 		spawnPos = cloneSpawnPoint.transform.position;
 		spawnRot = cloneSpawnPoint.transform.rotation;
 	}
 
 	public void Cloning(){
-		roleImminentClone = GameObject.Find("Player").GetComponent<PlayerInteractions>().bringingRole;
+        gameControl.GetComponent<Infallslyd>().PlaySound("cloneMachine");
+        roleImminentClone = GameObject.Find("Player").GetComponent<PlayerInteractions>().bringingRole;
 		cloneSkill = GameObject.Find("Player").GetComponent<PlayerInteractions>().bringingSkill;
 		cloneMedgjørlighet = GameObject.Find("Player").GetComponent<PlayerInteractions>().bringingMedgjørlighet;
 		print (roleImminentClone);

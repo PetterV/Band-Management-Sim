@@ -1304,6 +1304,8 @@ MonoBehaviour:
   instantiatedGenMat: {fileID: 0}
   startGenDropTimer: 0
   genDropRarity: 0
+  carryOffsetX: 0
+  carryOffsetY: 0
   "myMedgj\xF8rlighet": 99
   fikkKjeft: 0
   myHappiness: 0
@@ -1313,9 +1315,11 @@ MonoBehaviour:
   mySuspicion: 0
   increaseSuspicion: 0
   decreaseSuspicion: 0
+  deadRotationSpeed: 0
   medgjorlighetsBar: {fileID: 11493606}
   skillBar: {fileID: 11434646}
   suspicionBar: {fileID: 11478882}
+  bloodParticles: {fileID: 0}
 --- !u!114 &11452974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1348,7 +1352,7 @@ MonoBehaviour:
   speed: 5
   waypointToMoveTo: {fileID: 0}
   houseTransferFloors: 
-  startFloor: 0
+  startFloor: -1
   startHouse: 0
   currentFloor: 0
   currentHouse: 0
@@ -1409,6 +1413,18 @@ MonoBehaviour:
   handlingGjennomfort: 
   gameControl: {fileID: 0}
   progressBar: {fileID: 0}
+  progressFrame: {fileID: 0}
+  strandBoble: {fileID: 0}
+  scoreBoble: {fileID: 0}
+  soloBoble: {fileID: 0}
+  lytteBoble: {fileID: 0}
+  sintTweetBoble: {fileID: 0}
+  gladTweetBoble: {fileID: 0}
+  drikkeBoble: {fileID: 0}
+  spiseBoble: {fileID: 0}
+  dusjeBoble: {fileID: 0}
+  danseBoble: {fileID: 0}
+  oveBoble: {fileID: 0}
   crossDisplay: 
   ronnyDisplay: 
   keithDisplay: 
@@ -2266,7 +2282,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: startFloor
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112732}
