@@ -100,6 +100,8 @@ public class GameControl : MonoBehaviour {
     void ErViFulltallig()
     {
         int activeBandMembers = GetNumberOfActiveBandMembers();
+        if (activeBandMembers == 4)
+            popularitetsfaktor = 250.0f;
         if (activeBandMembers == 3)
             popularitetsfaktor = -1000.0f;
         if (activeBandMembers == 2)
