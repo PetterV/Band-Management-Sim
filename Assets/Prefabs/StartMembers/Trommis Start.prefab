@@ -2363,7 +2363,7 @@ MonoBehaviour:
   medgjorlighetsBar: {fileID: 11402864}
   skillBar: {fileID: 11497618}
   suspicionBar: {fileID: 11454166}
-  bloodParticles: {fileID: 0}
+  bloodParticles: {fileID: 104450}
 --- !u!137 &13737530
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2465,7 +2465,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104450}
   serializedVersion: 2
-  lengthInSec: 2.5
+  lengthInSec: 1
   startDelay:
     scalar: 0
     maxCurve:
@@ -2505,7 +2505,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:
@@ -4537,7 +4537,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170858}
   m_LocalRotation: {x: 0, y: 0.707104, z: 0, w: -0.70710963}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22442592}
@@ -4546,7 +4546,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.104, y: 1.3309999}
+  m_AnchoredPosition: {x: -0.8959998, y: 1.3309999}
   m_SizeDelta: {x: 9.68, y: 9.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22466100
