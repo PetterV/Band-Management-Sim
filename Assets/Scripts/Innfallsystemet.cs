@@ -23,6 +23,7 @@ public class Innfallsystemet : MonoBehaviour {
 
 	//Needs to be set individually for each member
 	public Image progressBar;
+	public Image progressFrame;
 	private float maxActionCounter;
 
 
@@ -212,8 +213,6 @@ public class Innfallsystemet : MonoBehaviour {
 			{
 				harInnfall = true;
 				scoreInnfall = true;
-				print ("I kveld scorer jeg!");
-				textToDisplay = "I kveld scorer jeg!";
 				break;
 			}
 		case Innfall.Strandtur:
@@ -317,7 +316,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
 
 	void Score (){
-		ActuallyDoInfall("I kveld scorer jeg!", "ScoreSted", "Nå scorer jeg, du.", "Jeg scorte", false, false, true, false, false, false, 0, false, 0, true, 1);
+		ActuallyDoInfall("Nå skal jeg se på TV.", "ScoreSted", "Dette er chill.", "TV er nesten like bra som å være rockestjerne.", false, false, true, false, false, false, 0, false, 0, true, 1);
 		if (setActionCounter == false){
 			actionCounter = this.gameControl.GetComponent<GameControl>().scoreTid;
 			maxActionCounter = actionCounter;
@@ -353,7 +352,7 @@ public class Innfallsystemet : MonoBehaviour {
 	}
         //SintTweetInnfal
 	void SintTweet (){
-		ActuallyDoInfall("Jeg er pissed of vil at hele verden skal vite det!", "TweeteSted", "Denne tweeten kommer til å sjokkere!", "Det var godt å få fram!", false, false, false, false, false, false, 0, false, 0, false, 0);
+		ActuallyDoInfall("Jeg er pissed, og vil at hele verden skal vite det!", "TweeteSted", "Denne tweeten kommer til å sjokkere!", "Det var godt å få fram!", false, false, false, false, false, false, 0, false, 0, false, 0);
 		if (setActionCounter == false){
 			actionCounter = this.gameControl.GetComponent<GameControl>().tweeteTid;
 			maxActionCounter = actionCounter;
@@ -442,9 +441,10 @@ public class Innfallsystemet : MonoBehaviour {
 			float reduceCounter = 1f * Time.deltaTime;
 			actionCounter = actionCounter - reduceCounter;
 			float progToBeFilled = actionCounter / maxActionCounter;
-			//progressBar.fillAmount = 1 - progToBeFilled;
+			progressBar.enabled = true;
+			progressFrame.enabled = true;
+			progressBar.fillAmount = 1 - progToBeFilled;
 			//Send beskjed til tekstbobler
-			//ERSTATT DISSE MED EN TREDJE STRING!!!
 			if (GetComponent<BandMember>().role == BandMember.Role.GuitarPlayer){
 				gameControl.GetComponent<Innfallsprinting>().crossSier = doing;
 			}
@@ -567,6 +567,8 @@ public class Innfallsystemet : MonoBehaviour {
 		if (innfallComplete == true){
 			print (handlingGjennomfort);
 		}
+		progressBar.enabled = false;
+		progressFrame.enabled = false;
 		harInnfall = false;
 		target = null;
 		riktigPlass = false;
