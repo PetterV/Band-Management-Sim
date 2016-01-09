@@ -594,13 +594,12 @@ public class Innfallsystemet : MonoBehaviour {
 	void GoRight (){
 		harInnfall = true;
 		if (goingThere == false){
-			moveThisStep = this.transform.position.x + 1;
-			float walkDistance = UnityEngine.Random.Range(0, 3);
+			float walkDistance = UnityEngine.Random.Range(1, 10);
 			moveTarget = transform.position.x + walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x < moveTarget){
-			moveThisStep = transform.position.x + 0.1f;
+			moveThisStep = transform.position.x + 1f;
 			//print ("Going right!");
 			this.gameObject.GetComponent<BandMemberMoving>().HeadRight();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
@@ -614,13 +613,12 @@ public class Innfallsystemet : MonoBehaviour {
 	void GoLeft (){
 		harInnfall = true;
 		if (goingThere == false){
-			moveThisStep = this.transform.position.x + 1f;
-			float walkDistance = UnityEngine.Random.Range(0, 3);
+			float walkDistance = UnityEngine.Random.Range(1, 10);
 			moveTarget = transform.position.x - walkDistance;
 			goingThere = true;
 		}
 		if (transform.position.x > moveTarget){
-			moveThisStep = transform.position.x - 0.1f;
+			moveThisStep = transform.position.x - 1f;
 			//print ("Going left!");
 			this.gameObject.GetComponent<BandMemberMoving>().HeadLeft();
 			transform.position = new Vector3 (moveThisStep, this.transform.position.y, this.transform.position.z);
